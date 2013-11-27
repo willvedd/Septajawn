@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Philadelphia Underground</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+	<div class="container" >
+		<div class="row">
+			<div class="span4">
+			<h1>Start:</h1>
+				<select name="start_destination" id="start_dest">
+					 <option value="" disabled="disabled" selected="selected">Starting Station</option>
+					<option value="fern">Fern Rock</option>
+					<option value="olney">Olney</option>
+					<option value="logan">Logan</option>
+					<option value="wyoming">Wyoming</option>
+					<option value="hunt_park">Hunting Park</option>
+					<option value="erie">Erie</option>
+					<option value="allegh">Allegheny</option>
+					<option value="nphilly">North Philly</option>
+					<option value="susque">Susquehanna-Dauphin</option>
+					<option value="cecil">Cecil B</option>
+					<option value="girard">Girard</option>
+					<option value="fairmount">Fairmount</option>
+					<option value="spring">Spring Garden</option>
+					<option value="race">Race-Vine</option>
+					<option value="city_hall">City Hall</option>
+					<option value="walnut">Walnut-Locust</option>
+					<option value="lombard">Lombard-South</option>
+					<option value="ellsworth">Ellsworth-Federal</option>
+					<option value="tasker">Tasker-Morris</option>
+					<option value="snyder">Snyder</option>
+					<option value="oregon">Oregon</option>
+					<option value="att">AT&T</option>
+				</select>
+			</div><!-- span end --> 
+			
+			<div class="span4">
+				<h1>Destination:</h1>
+				<select name="end_destination" id="end_dest">
+					<option value="" disabled="disabled" selected="selected">Ending Station</option>
+					<option value="fern">Fern Rock</option>
+					<option value="olney">Olney</option>
+					<option value="logan">Logan</option>
+					<option value="wyoming">Wyoming</option>
+					<option value="hunt_park">Hunting Park</option>
+					<option value="erie">Erie</option>
+					<option value="allegh">Allegheny</option>
+					<option value="nphilly">North Philly</option>
+					<option value="susque">Susquehanna-Dauphin</option>
+					<option value="cecil">Cecil B</option>
+					<option value="girard">Girard</option>
+					<option value="fairmount">Fairmount</option>
+					<option value="spring">Spring Garden</option>
+					<option value="race">Race-Vine</option>
+					<option value="city_hall">City Hall</option>
+					<option value="walnut">Walnut-Locust</option>
+					<option value="lombard">Lombard-South</option>
+					<option value="ellsworth">Ellsworth-Federal</option>
+					<option value="tasker">Tasker-Morris</option>
+					<option value="snyder">Snyder</option>
+					<option value="oregon">Oregon</option>
+					<option value="att">AT&T</option>
+				</select>
+			</div><!-- span end --> 
+			<div class="span4">
+				<h1>When:</h1>
+				
+				
+				<div class="input-append bootstrap-timepicker">
+            <input id="timepicker" type="text" class="input-small">
+            <span class="add-on"><i class="icon-time"></i></span>
+        </div>
+ 
+        
+				
+			</div><!-- span end --> 
+		</div>
+			<div class="row">
+			<div class="span12">
+				<button class="btn" onClick="submit();">Submit</button>
+			</div><!-- span end --> 
+		</div><!-- row end --> 
+	</div><!-- Container end --> 
+</body>
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.min.js"></script>	
+	<script src="js/bootstrap-datetimepicker.min.js"></script>	
+	<script src="js/subway.js"></script>
+	<script type="text/javascript">
+            $('#timepicker').timepicker();
+            var time = timepicker.value;
+            $('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
+	            time = e.time.value;
+            });
+    </script>
+</html>
