@@ -21,7 +21,7 @@ var logan = {
 	order: 3,
 	id:   "logan",
 	name: "Logan",
-	sched_wk_sb: schedule(olney.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,5),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -30,7 +30,7 @@ var wyoming = {
 	order: 4,
 	id:   "wyoming",
 	name: "Wyoming",
-	sched_wk_sb: schedule(logan.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,7),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -39,7 +39,7 @@ var hunt_park = {
 	order: 5,
 	id:   "hunt_park",
 	name: "Hunting Park",
-	sched_wk_sb: schedule(wyoming.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,9),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -48,7 +48,7 @@ var erie = {
 	order: 6,
 	id:   "erie",
 	name: "Erie",
-	sched_wk_sb: schedule(hunt_park.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,11),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -57,7 +57,7 @@ var allegh = {
 	order: 7,
 	id:   "allegh",
 	name: "Allegheny",
-	sched_wk_sb: schedule(erie.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,12),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -66,7 +66,7 @@ var nphilly = {
 	order: 8,
 	id:   "nphilly",
 	name: "North Philly",
-	sched_wk_sb: schedule(allegh.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,14),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -75,7 +75,7 @@ var susque = {
 	order: 9,
 	id:   "susque",
 	name: "Susquehanna-Dauphin",
-	sched_wk_sb: schedule(nphilly.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,16),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -84,7 +84,7 @@ var cecil = {
 	order: 10,
 	id:   "cecil",
 	name: "Cecil B Moore",
-	sched_wk_sb: schedule(susque.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,17),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -93,7 +93,7 @@ var girard = {
 	order: 11,
 	id:   "girard",
 	name: "Girard",
-	sched_wk_sb: schedule(cecil.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,18),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -102,7 +102,7 @@ var fairmount = {
 	order: 12,
 	id:   "fairmount",
 	name: "Fairmount",
-	sched_wk_sb: schedule(girard.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,20),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -111,7 +111,7 @@ var spring = {
 	order: 13,
 	id:   "spring",
 	name: "Spring Garden",
-	sched_wk_sb: schedule(fairmount.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,22),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -120,7 +120,7 @@ var race = {
 	order: 14,
 	id:   "race",
 	name: "Race-Vine",
-	sched_wk_sb: schedule(spring.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,23),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -129,7 +129,7 @@ var city_hall = {
 	order: 15,
 	id:   "city_hall",
 	name: "City Hall",
-	sched_wk_sb: schedule(race.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,25),
 	sched_sat_sb: [12.06, 12.16,12.30,12.44,13.31,13.40],
 	sched_sun_sb: [12.45, 12.49,12.51,12.53,13.12,13.19]
 };
@@ -138,7 +138,7 @@ var walnut = {
 	order: 16,
 	id:   "walnut",
 	name: "Walnut-Locust",
-	sched_wk_sb: schedule(city_hall.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,26),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -147,7 +147,7 @@ var lombard = {
 	order: 17,
 	id:   "lombard",
 	name: "Lombard-South",
-	sched_wk_sb: schedule(walnut.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,27),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -156,7 +156,7 @@ var ellsworth = {
 	order: 18,
 	id:   "ellsworth",
 	name: "Ellsworth-Federal",
-	sched_wk_sb: schedule(lombard.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,28),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -165,7 +165,7 @@ var tasker = {
 	order: 19,
 	id:   "tasker",
 	name: "Tasker-Morris",
-	sched_wk_sb: schedule(ellsworth.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,30),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -174,7 +174,7 @@ var snyder = {
 	order: 20,
 	id:   "snyder",
 	name: "Snyder",
-	sched_wk_sb: schedule(tasker.sched_wk_sb,2),
+	sched_wk_sb: schedule(fern.sched_wk_sb,32),
 	sched_sat_sb: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun_sb: [12.40, 12.46,12.50,12.59,13.12,13.10],
 };
@@ -183,7 +183,7 @@ var oregon = {
 	order: 21,
 	id:   "oregon",
 	name: "Oregon",
-	sched_wk_sb: schedule(snyder.sched_wk_sb,1),
+	sched_wk_sb: schedule(fern.sched_wk_sb,33),
 	sched_sat_sb: [12.00, 12.16,12.20,12.57,13.12,13.50],
 	sched_sun_sb: [12.30, 12.36,12.50,12.54,13.11,13.20]
 };
@@ -192,7 +192,7 @@ var att = {
 	order: 22,
 	id:   "att",
 	name: "AT&T",
-	sched_wk_sb: schedule(oregon.sched_wk_sb,3),
+	sched_wk_sb: schedule(fern.sched_wk_sb,36),
 	sched_sat: [12.30, 12.36,12.50,12.54,13.11,13.20],
 	sched_sun: [12.20, 12.36,12.40,12.57,13.22,13.59]
 };
@@ -208,6 +208,7 @@ function submit(){
     
     route(start,end,parseTime(time),parseDay());
     
+    $('.times').append("<p>"+window.leave_time1+"</p>")
 };
 
 function schedule(prev_station,diff){
@@ -216,14 +217,12 @@ function schedule(prev_station,diff){
 	for(i=0; i < prev_station.length; i++){
 		
 		schedule[i] = prev_station[i] + (diff/100);
-
 		
 		if((schedule[i] - Math.floor(schedule[i])) > .59){
-			console.log("Impossible time");
-			schedule[i] = Math.floor(schedule[i]) + 1;
+			var minutes = schedule[i] - Math.floor(schedule[i]) - .60;
+			schedule[i] = Math.floor(schedule[i]) + 1 + minutes;
 		} 
-	};
-	
+	};	
 	return schedule;
 };
 
@@ -279,9 +278,13 @@ function route(start,end,time,day){ //Using form to get times
 			for(i=0; i < start_station.sched_wk_sb.length; i++){
 				if(start_station.sched_wk_sb[i] > time){
 					console.log("Leave time: "+start_station.sched_wk_sb[i]);
-					var leave_time = start_station.sched_wk_sb[i];
+					var leave_time1 = start_station.sched_wk_sb[i];
+					var leave_time2 = start_station.sched_wk_sb[i+1];
+					var leave_time3 = start_station.sched_wk_sb[i+2];
 					console.log("Arrive time: "+end_station.sched_wk_sb[i]);
-					var arrive_time = end_station.sched_wk_sb[i];
+					var arrive_time1 = end_station.sched_wk_sb[i];
+					var arrive_time2 = end_station.sched_wk_sb[i+1];
+					var arrive_time3 = end_station.sched_wk_sb[i+2];
 					break;
 				};//endif
 			};//endfor
@@ -290,9 +293,13 @@ function route(start,end,time,day){ //Using form to get times
 			for(i=0; i < start_station.sched_sat_sb.length; i++){
 				if(start_station.sched_sat[i] > time){
 					console.log("Leave time: "+start_station.sched_sat_sb[i]);
-					var leave_time = start_station.sched_sat_sb[i];
+					var leave_time1 = start_station.sched_sat_sb[i];
+					var leave_time2 = start_station.sched_sat_sb[i+1];
+					var leave_time3 = start_station.sched_sat_sb[i+2];
 					console.log("Arrive time: "+end_station.sched_sat_sb[i]);
-					var arrive_time = end_station.sched_sat_sb[i];
+					var arrive_time1 = end_station.sched_sat_sb[i];
+					var arrive_time2 = end_station.sched_sat_sb[i+1];
+					var arrive_time3 = end_station.sched_sat_sb[i+2];
 					break;
 				};
 			};
@@ -301,9 +308,13 @@ function route(start,end,time,day){ //Using form to get times
 			for(i=0; i < start_station.sched_sun_sb.length; i++){
 				if(start_station.sched_sun_sb[i] > time){
 					console.log("Leave time: "+start_station.sched_sun_sb[i]);
-					var leave_time = start_station.sched_sun_sb[i];
+					var leave_time1 = start_station.sched_sun_sb[i];
+					var leave_time2 = start_station.sched_sun_sb[i+1];
+					var leave_time3 = start_station.sched_sun_sb[i+2];
 					console.log("Arrive time: "+end_station.sched_sun_sb[i]);
-					var arrive_time = end_station.sched_sun_sb[i];
+					var arrive_time1 = end_station.sched_sun_sb[i];
+					var arrive_time2 = end_station.sched_sun_sb[i+1];
+					var arrive_time3 = end_station.sched_sun_sb[i+2];
 					break;
 				};
 				
@@ -315,9 +326,13 @@ function route(start,end,time,day){ //Using form to get times
 			for(i=0; i < start_station.sched_wk_nb.length; i++){
 				if(start_station.sched_wk_nb[i] > time){
 					console.log("Leave time: "+start_station.sched_wk_nb[i]);
-					var leave_time = start_station.sched_wk_nb[i];
+					var leave_time1 = start_station.sched_wk_nb[i];
+					var leave_time2 = start_station.sched_wk_nb[i+1];
+					var leave_time3 = start_station.sched_wk_nb[i+2];
 					console.log("Arrive time: "+end_station.sched_wk_nb[i]);
-					var arrive_time = end_station.sched_wk_nb[i];
+					var arrive_time1 = end_station.sched_wk_nb[i];
+					var arrive_time2 = end_station.sched_wk_nb[i+1];
+					var arrive_time3 = end_station.sched_wk_nb[i+2];
 					break;
 				};//endif
 			};//endfor
@@ -325,10 +340,17 @@ function route(start,end,time,day){ //Using form to get times
 		else if(day === "sat"){//saturday northbound scheduling
 			for(i=0; i < start_station.sched_sat_nb.length; i++){
 				if(start_station.sched_sat[i] > time){
-					console.log("Leave time: "+start_station.sched_sat_nb[i]);
-					var leave_time = start_station.sched_sat_nb[i];
+					
+					var leave_time1 = start_station.sched_sat_nb[i];
+					var leave_time2 = start_station.sched_sat_nb[i+1];
+					var leave_time3 = start_station.sched_sat_nb[i+2];
+					console.log("Leave time: "+leave_time1);
+					console.log("Leave time: "+leave_time2);
+					console.log("Leave time: "+leave_time3);
+					var arrive_time1 = end_station.sched_sat_nb[i];
+					var arrive_time2 = end_station.sched_sat_nb[i+1];
+					var arrive_time3 = end_station.sched_sat_nb[i+2];
 					console.log("Arrive time: "+end_station.sched_sat_nb[i]);
-					var arrive_time = end_station.sched_sat_nb[i];
 					break;
 				};
 			};
@@ -337,16 +359,26 @@ function route(start,end,time,day){ //Using form to get times
 			for(i=0; i < start_station.sched_sun_nb.length; i++){
 				if(start_station.sched_sun_nb[i] > time){
 					console.log("Leave time: "+start_station.sched_sun_nb[i]);
-					var leave_time = start_station.sched_sun_nb[i];
+					var leave_time1 = start_station.sched_sun_nb[i];
+					var leave_time2 = start_station.sched_sun_nb[i+1];
+					var leave_time3 = start_station.sched_sun_nb[i+2];
 					console.log("Arrive time: "+end_station.sched_sun_nb[i]);
-					var arrive_time = end_station.sched_sun_nb[i];
+					var arrive_time1 = end_station.sched_sun_nb[i];
+					var arrive_time2 = end_station.sched_sun_nb[i+1];
+					var arrive_time3 = end_station.sched_sun_nb[i+2];
 					break;
 				};
-				
 			};
 		};				
 	};
 };
+
+$('#timepicker').timepicker();
+    var time = timepicker.value;
+    $('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
+        time = e.time.value;
+});
+           
 
 
 

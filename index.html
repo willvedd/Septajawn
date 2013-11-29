@@ -86,9 +86,12 @@
 			</div><!-- span end --> 
 		</div>
 			<div class="row">
-			<div class="span12">
+			<div class="span2">
 				<button class="btn" onClick="submit();">Submit</button>
 			</div><!-- span end --> 
+			<div class="row">
+				<div class="times"></div>
+			</div>
 		</div><!-- row end --> 
 	</div><!-- Container end --> 
 </body>
@@ -96,11 +99,4 @@
 	<script src="js/bootstrap.min.js"></script>	
 	<script src="js/bootstrap-datetimepicker.min.js"></script>	
 	<script src="js/subway.js"></script>
-	<script type="text/javascript">
-            $('#timepicker').timepicker();
-            var time = timepicker.value;
-            $('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
-	            time = e.time.value;
-            });
-    </script>
 </html>
