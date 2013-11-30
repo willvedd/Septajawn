@@ -371,12 +371,12 @@ function route(start,end,time,day){ //Using form to get times
 		};				
 	};
 	
-	$('.times').append("<p>(1) Leave time:"+leave_time1+"</p>");
-	$('.times').append("<p>(2) Leave time:"+leave_time2+"</p>");
-	$('.times').append("<p>(3) Leave time:"+leave_time3+"</p>");
-	$('.times').append("<p>(1) Leave time:"+leave_time1+"</p>");
-	$('.times').append("<p>(2) Leave time:"+leave_time2+"</p>");
-	$('.times').append("<p>(3) Leave time:"+leave_time3+"</p>");
+	$('.times').append(leave_time1);
+	$('.times').append(leave_time2);
+	$('.times').append(leave_time3);
+	$('.times').append(leave_time1);
+	$('.times').append(leave_time2);
+	$('.times').append(leave_time3);
 };
 
 $('#timepicker').timepicker();
