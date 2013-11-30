@@ -208,7 +208,7 @@ function submit(){
     
     route(start,end,parseTime(time),parseDay());
     
-    $('.times').append("<p>"+window.leave_time1+"</p>")
+    
 };
 
 function schedule(prev_station,diff){
@@ -277,14 +277,14 @@ function route(start,end,time,day){ //Using form to get times
 		if(day === "wk"){//weekday southbound scheduling
 			for(i=0; i < start_station.sched_wk_sb.length; i++){
 				if(start_station.sched_wk_sb[i] > time){
-					console.log("Leave time: "+start_station.sched_wk_sb[i]);
 					var leave_time1 = start_station.sched_wk_sb[i];
 					var leave_time2 = start_station.sched_wk_sb[i+1];
 					var leave_time3 = start_station.sched_wk_sb[i+2];
-					console.log("Arrive time: "+end_station.sched_wk_sb[i]);
+					console.log("Leave time: "+leave_time1);
 					var arrive_time1 = end_station.sched_wk_sb[i];
 					var arrive_time2 = end_station.sched_wk_sb[i+1];
 					var arrive_time3 = end_station.sched_wk_sb[i+2];
+					console.log("Arrive time: "+arrive_time1);
 					break;
 				};//endif
 			};//endfor
@@ -292,11 +292,11 @@ function route(start,end,time,day){ //Using form to get times
 		else if(day === "sat"){//saturday southbound scheduling
 			for(i=0; i < start_station.sched_sat_sb.length; i++){
 				if(start_station.sched_sat[i] > time){
-					console.log("Leave time: "+start_station.sched_sat_sb[i]);
+					console.log("Leave time: "+leave_time1);
 					var leave_time1 = start_station.sched_sat_sb[i];
 					var leave_time2 = start_station.sched_sat_sb[i+1];
 					var leave_time3 = start_station.sched_sat_sb[i+2];
-					console.log("Arrive time: "+end_station.sched_sat_sb[i]);
+					console.log("Arrive time: "+arrive_time1);
 					var arrive_time1 = end_station.sched_sat_sb[i];
 					var arrive_time2 = end_station.sched_sat_sb[i+1];
 					var arrive_time3 = end_station.sched_sat_sb[i+2];
@@ -307,17 +307,16 @@ function route(start,end,time,day){ //Using form to get times
 		else {//sunday southbound scheduling
 			for(i=0; i < start_station.sched_sun_sb.length; i++){
 				if(start_station.sched_sun_sb[i] > time){
-					console.log("Leave time: "+start_station.sched_sun_sb[i]);
+					console.log("Leave time: "+leave_time1);
 					var leave_time1 = start_station.sched_sun_sb[i];
 					var leave_time2 = start_station.sched_sun_sb[i+1];
 					var leave_time3 = start_station.sched_sun_sb[i+2];
-					console.log("Arrive time: "+end_station.sched_sun_sb[i]);
+					console.log("Arrive time: "+arrive_time1);
 					var arrive_time1 = end_station.sched_sun_sb[i];
 					var arrive_time2 = end_station.sched_sun_sb[i+1];
 					var arrive_time3 = end_station.sched_sun_sb[i+2];
 					break;
 				};
-				
 			};
 		}
 	}	
@@ -371,6 +370,13 @@ function route(start,end,time,day){ //Using form to get times
 			};
 		};				
 	};
+	
+	$('.times').append("<p>(1) Leave time:"+leave_time1+"</p>");
+	$('.times').append("<p>(2) Leave time:"+leave_time2+"</p>");
+	$('.times').append("<p>(3) Leave time:"+leave_time3+"</p>");
+	$('.times').append("<p>(1) Leave time:"+leave_time1+"</p>");
+	$('.times').append("<p>(2) Leave time:"+leave_time2+"</p>");
+	$('.times').append("<p>(3) Leave time:"+leave_time3+"</p>");
 };
 
 $('#timepicker').timepicker();
