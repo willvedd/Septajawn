@@ -234,7 +234,7 @@ function submit(){
     
 };
 
-function schedule(prev_station,diff){//sets schedules for most stations
+function schedule(prev_station,diff){//sets schedules for all stations except fern rock
 	var schedule = new Array();
 	
 	if(diff>0){	//for southbound schedules, positive difference
@@ -246,6 +246,7 @@ function schedule(prev_station,diff){//sets schedules for most stations
 				var minutes = schedule[i] - Math.floor(schedule[i]) - .60;
 				schedule[i] = Math.floor(schedule[i]) + 1 + minutes;
 			} 
+			schedule[i] = round(schedule[i]);
 		};	
 	}
 	else{//for northbound schedules, negative difference
@@ -255,8 +256,9 @@ function schedule(prev_station,diff){//sets schedules for most stations
 			
 			if((schedule[i] - Math.floor(schedule[i])) > .59){
 				var minutes = Math.ceil(schedule[i]) - schedule[i];
-				schedule[i] = Math.floor(schedule[i]) + (.6 - minutes);
-			}
+				schedule[i] = Math.floor(schedule[i]) + (.6 - minutes); 
+			}		
+			schedule[i] = round(schedule[i]);
 		};
 	}
 	return schedule;
@@ -278,18 +280,11 @@ function parseTime(time){
 	if((mer === "PM") && (hrs != 12)){	//  Converting 24hr format
 		hrs = hrs + 12;
 	}
-	else if((mer === "AM") && (hrs === 12)){ //Midnight to hour zero
+	else if((mer === "AM") && (hrs === 12)){ //Midnight to hour 24 to make it easier to handle
 		hrs = 24;
 	};
 	
-	var time = (hrs+(min/100)); // Finally set time variable
-	
-	return precise_round(time,2);
-	
-	function precise_round(num,decimals){
-   		var sign = num >= 0 ? 1 : -1;
-   		return (Math.round((num*Math.pow(10,decimals))+(sign*0.001))/Math.pow(10,decimals)).toFixed(decimals);
-   	};
+	return (hrs+(min/100)); // Finally set time variable
 	
 };
 
@@ -434,6 +429,12 @@ function route(start,end,time,day){ //Using form to get times
 	$('.end3').append(arrive_time3);
 	
 };
+
+function round(num){//rounding function necessary because javascript has issues adding doubles to each other.
+   	return ((Math.round(num *100))/100);
+   	console.log("Rounding");
+};
+
 
 $('#timepicker').timepicker();
     var time = timepicker.value;
