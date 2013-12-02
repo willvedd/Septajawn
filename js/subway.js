@@ -252,10 +252,12 @@ function parseDay(){
 	console.log(day[0]);
 	
 	if(day[0] == "Sat"){
-		return "sat";
+		//return "sat";
+		return "wk";
 	}
 	else if (day[0] == "Sun"){
-		return "sun";
+		//return "sun";
+		return "wk";
 	}
 	else{
 		return "wk";
@@ -266,11 +268,11 @@ function route(start,end,time,day){ //Using form to get times
 	for(i=0; i < stations.length; i++){
 		if(stations[i].id == start){
 			console.log("Starting from: "+stations[i].name);
-			start_station = stations[i];
+			var start_station = stations[i];
 		}
 		else if(stations[i].id == end){
 			console.log("Ending at: "+stations[i].name);
-			end_station = stations[i];
+			var end_station = stations[i];
 		};
 	}
 	if(start_station.order < end_station.order){//southbound
@@ -371,12 +373,11 @@ function route(start,end,time,day){ //Using form to get times
 		};				
 	};
 	
-	$('.times').append(leave_time1);
-	$('.times').append(leave_time2);
-	$('.times').append(leave_time3);
-	$('.times').append(leave_time1);
-	$('.times').append(leave_time2);
-	$('.times').append(leave_time3);
+	//$('.start1').append(leave_time1);
+	//$('.start1').replaceWith(leave_time1);
+	display(leave_time1,leave_time2,leave_time3,arrive_time1,arrive_time2,arrive_time3);
+	
+	
 };
 
 $('#timepicker').timepicker();
@@ -386,7 +387,22 @@ $('#timepicker').timepicker();
 });
            
 
-
+function display(leave_time1,leave_time2,leave_time3,arrive_time1,arrive_time2,arrive_time3){
+	
+	$('.start1').empty();
+	$('.start1').append(leave_time1);
+	$('.start2').empty();	
+	$('.start2').append(leave_time2);
+	$('.start3').empty();
+	$('.start3').append(leave_time3);
+	$('.end1').empty();
+	$('.end1').append(arrive_time1);
+	$('.end2').empty();
+	$('.end2').append(arrive_time2);
+	$('.end3').empty();
+	$('.end3').append(arrive_time3);
+	
+};
 
 
 
