@@ -224,14 +224,14 @@ var att = {
 var stations = [fern,olney,logan,wyoming,hunt_park,erie,allegh,nphilly,susque,cecil,girard,fairmount,spring,race,city_hall,walnut,lombard,ellsworth,tasker,snyder,oregon,att];//Setting array of stations
 
 function submit(){
+
     var start_sel = document.getElementById("start_dest");
     var start = start_sel.options[start_sel.selectedIndex].value;
     
     var end_sel = document.getElementById("end_dest");
     var end = end_sel.options[end_sel.selectedIndex].value;
-    
-    route(start,end,parseTime(time),parseDay()); 
-    
+        
+    route(start,end,parseTime(time),parseDay());  
 };
 
 function schedule(prev_station,diff){//sets schedules for all stations except fern rock
@@ -264,10 +264,6 @@ function schedule(prev_station,diff){//sets schedules for all stations except fe
 	return schedule;
 };
 
-
-
-
-
 function parseTime(time){
 	
 	var parseOne = time.split(":"); //Splitting hour value from string
@@ -285,7 +281,6 @@ function parseTime(time){
 	};
 	
 	return (hrs+(min/100)); // Finally set time variable
-	
 };
 
 function parseDay(){
@@ -427,14 +422,11 @@ function route(start,end,time,day){ //Using form to get times
 	$('.end2').append(arrive_time2);
 	$('.end3').empty();
 	$('.end3').append(arrive_time3);
-	
 };
 
 function round(num){//rounding function necessary because javascript has issues adding doubles to each other.
    	return ((Math.round(num *100))/100);
-   	console.log("Rounding");
 };
-
 
 $('#timepicker').timepicker();
     var time = timepicker.value;
@@ -442,5 +434,6 @@ $('#timepicker').timepicker();
         time = e.time.value;
 });
 
-
-
+$('#start_dest').change(function(){
+  $('#end_dest').append(
+});
