@@ -283,8 +283,16 @@ function parseTime(time){
 	else if((mer === "AM") && (hrs === 12)){ //Midnight to hour 24 to make it easier to handle
 		hrs = 24;
 	};
-	
 	return (hrs+(min/100)); // Finally set time variable
+};
+
+function timeformat(time){//formats time from a double into hh:mm
+	
+	time = time.toString();
+	
+	var mins = Math.floor(time);
+	var time2 = time.split(".");
+	return (time2[0]+":"+time2[1]);
 };
 
 function parseDay(){
@@ -415,17 +423,17 @@ function route(start,end,time,day){ //Using form to get times
 	};
 	
 	$('.start1').empty();
-	$('.start1').append(leave_time1);
+	$('.start1').append(timeformat(leave_time1));
 	$('.start2').empty();	
-	$('.start2').append(leave_time2);
+	$('.start2').append(timeformat(leave_time2));
 	$('.start3').empty();
-	$('.start3').append(leave_time3);
+	$('.start3').append(timeformat(leave_time3));
 	$('.end1').empty();
-	$('.end1').append(arrive_time1);
+	$('.end1').append(timeformat(arrive_time1));
 	$('.end2').empty();
-	$('.end2').append(arrive_time2);
+	$('.end2').append(timeformat(arrive_time2));
 	$('.end3').empty();
-	$('.end3').append(arrive_time3);
+	$('.end3').append(timeformat(arrive_time3));
 };
 
 function round(num){//rounding function necessary because javascript has issues adding doubles to each other.
