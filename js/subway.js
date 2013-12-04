@@ -223,15 +223,19 @@ var att = {
 
 var stations = [fern,olney,logan,wyoming,hunt_park,erie,allegh,nphilly,susque,cecil,girard,fairmount,spring,race,city_hall,walnut,lombard,ellsworth,tasker,snyder,oregon,att];//Setting array of stations
 
+
 function submit(){
 
     var start_sel = document.getElementById("start_dest");
     var start = start_sel.options[start_sel.selectedIndex].value;
     
+    console.log("star_sel"+start_sel);
+    console.log("start"+start);
+    
     var end_sel = document.getElementById("end_dest");
     var end = end_sel.options[end_sel.selectedIndex].value;
         
-    route(start,end,parseTime(time),parseDay());  
+    route(start,end,parseTime(time),parseDay());
 };
 
 function schedule(prev_station,diff){//sets schedules for all stations except fern rock
@@ -434,6 +438,16 @@ $('#timepicker').timepicker();
         time = e.time.value;
 });
 
-$('#start_dest').change(function(){
-  $('#end_dest').append(
+$('#start_dest').change(function(){//Function sees start destination and removes it as an option for end destination
+	var selection = document.getElementById("start_dest").options[document.getElementById("start_dest").selectedIndex].value;
+		
+	$('#end_dest').empty();
+	
+	$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>Ending Station</option>");
+
+	for (i=0; i<stations.length; i++){
+  		if(selection != stations[i].id){
+  			$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
+  		}
+  	}
 });
