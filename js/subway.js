@@ -288,11 +288,29 @@ function parseTime(time){
 
 function timeformat(time){//formats time from a double into hh:mm
 	
+	
+	if((time >= 12) && (time < 24)){
+		var meridian = "PM";
+		
+		if (time > 12.59){
+		time = round((time) - 12.00)
+		};
+	}
+	else {
+		var meridian = "AM"
+	};
+	
 	time = time.toString();
 	
+	console.log("Time: "+time);
+	
 	var mins = Math.floor(time);
+	
+	console.log("Mins: "+mins);
+	
 	var time2 = time.split(".");
-	return (time2[0]+":"+time2[1]);
+	
+	return (time2[0]+":"+time2[1]+" "+meridian);
 };
 
 function parseDay(){
