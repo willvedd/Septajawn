@@ -1,21 +1,31 @@
 
-$blue:#327CCB;
+$blue:#0055A0;
 $white: #E4E4E4;
 $black:#222222;
-$yellow:#EAC617;
+$orange:#F15D30;
 
 h1{
-	color: $white;
+	color: $blue;
 }
 
 
 body{
-	//background-image: url(../img/navy_blue.png);
+	background-image: url(../img/navy_blue.png);
 	background-repeat: repeat;
-	background-color: white;
 }
 
 
 .navbar{
 	background-color: $black;
+}
+.times{
+	display: none;
+	color: $white;
+	
+	td{
+		text-align: center;
+		.station{
+			font-size: 2rem;
+		}
+	}
 }

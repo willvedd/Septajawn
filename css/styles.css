@@ -1,15 +1,29 @@
 /* line 7, styles.scss */
 h1 {
-  color: #e4e4e4;
+  color: #0055a0;
 }
 
 /* line 12, styles.scss */
 body {
+  background-image: url(../img/navy_blue.png);
   background-repeat: repeat;
-  background-color: white;
 }
 
-/* line 19, styles.scss */
+/* line 18, styles.scss */
 .navbar {
   background-color: #222222;
+}
+
+/* line 21, styles.scss */
+.times {
+  display: none;
+  color: #e4e4e4;
+}
+/* line 25, styles.scss */
+.times td {
+  text-align: center;
+}
+/* line 27, styles.scss */
+.times td .station {
+  font-size: 2rem;
 }
