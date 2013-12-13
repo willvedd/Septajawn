@@ -1,6 +1,7 @@
+
 $blue:#327CCB;
 $white: #E4E4E4;
-$black:#353535;
+$black:#222222;
 $yellow:#EAC617;
 
 h1{
@@ -9,6 +10,12 @@ h1{
 
 
 body{
-	background-color: $blue;
+	//background-image: url(../img/navy_blue.png);
+	background-repeat: repeat;
+	background-color: white;
 }
 
+
+.navbar{
+	background-color: $black;
+}

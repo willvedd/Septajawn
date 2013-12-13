@@ -310,6 +310,13 @@ function timeformat(time){//formats time from a double into hh:mm
 	
 	var time2 = time.split(".");
 	
+	if(time2[1] === undefined){
+		time2[1] = "00"; //Converts undefined minutes to hh:00;
+	};
+	if(time2[1].length == 1 ){
+		time2[1] = time2[1]*10; //Adds trailing zero to hh:m0 numbers that otherwise display as hh:m;
+	};
+	
 	return (time2[0]+":"+time2[1]+" "+meridian);
 };
 
@@ -376,11 +383,11 @@ function route(start,end,time,day){ //Using form to get times
 		else {//sunday southbound scheduling
 			for(i=0; i < start_station.sched_sun_sb.length; i++){
 				if(start_station.sched_sun_sb[i] > time){
-					console.log("Leave time: "+leave_time1);
+					console.log("Leave time: " + leave_time1);
 					var leave_time1 = start_station.sched_sun_sb[i];
 					var leave_time2 = start_station.sched_sun_sb[i+1];
 					var leave_time3 = start_station.sched_sun_sb[i+2];
-					console.log("Arrive time: "+arrive_time1);
+					console.log("Arrive time: " + arrive_time1);
 					var arrive_time1 = end_station.sched_sun_sb[i];
 					var arrive_time2 = end_station.sched_sun_sb[i+1];
 					var arrive_time3 = end_station.sched_sun_sb[i+2];
