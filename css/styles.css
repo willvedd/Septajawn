@@ -27,3 +27,46 @@ body {
 .times td .station {
   font-size: 2rem;
 }
+
+/* line 36, styles.scss */
+.switch-button-label {
+  float: left;
+  font-size: 12pt;
+  cursor: pointer;
+}
+
+/* line 42, styles.scss */
+.switch-button-label.off {
+  color: #adadad;
+  opacity: .5;
+}
+
+/* line 47, styles.scss */
+.switch-button-label.on {
+  color: #f15d30;
+}
+
+/* line 51, styles.scss */
+.switch-button-background {
+  float: left;
+  position: relative;
+  background: #ccc;
+  border: 1px solid #aaa;
+  margin: 1px 10px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* line 67, styles.scss */
+.switch-button-button {
+  position: absolute;
+  left: -1px;
+  top: -1px;
+  background: #FAFAFA;
+  border: 1px solid #aaa;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+}

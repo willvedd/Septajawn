@@ -29,3 +29,51 @@ body{
 		}
 	}
 }
+
+
+//Switch Button Styles
+
+.switch-button-label {
+    float: left;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+.switch-button-label.off {
+    color: #adadad;
+    opacity: .5;
+}
+
+.switch-button-label.on {
+    color: $orange;
+}
+
+.switch-button-background {
+    float: left;
+    position: relative;
+
+    background: #ccc;
+    border: 1px solid #aaa;
+
+    margin: 1px 10px;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.switch-button-button {
+    position: absolute;
+
+    left: -1px;
+    top : -1px;
+
+    background: #FAFAFA;
+    border: 1px solid #aaa;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}

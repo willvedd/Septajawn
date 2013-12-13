@@ -493,7 +493,11 @@ var sixtynine = {
 	sched_wk_nb: schedule(milb.sched_wk_sb,-4),
 };
 
+//-----------------------------------------------------------
+
 var stations = [fern,olney,logan,wyoming,hunt_park,erie,allegh,nphilly,susque,cecil,girard,fairmount,spring,race,city_hall,walnut,lombard,ellsworth,tasker,snyder,oregon,att,frank,marg,church,eriet,tioga,alleghmf,somer,hunt,york,berks,girardmf,springmf,second,fifth,eight,elev,fif,thirty,thirtyfour,fourty,fourtysix,fiftytwo,fiftysix,sixty,sixtythree,milb,sixtynine];//Setting array of stations
+
+//-----------------------------------------------------------
 
 
 function submit(){
@@ -509,6 +513,8 @@ function submit(){
         
     route(start,end,parseTime(time),parseDay());
 };
+
+//-----------------------------------------------------------
 
 function schedule(prev_station,diff){//sets schedules for all stations except fern rock
 	var schedule = new Array();
@@ -540,6 +546,8 @@ function schedule(prev_station,diff){//sets schedules for all stations except fe
 	return schedule;
 };
 
+//-----------------------------------------------------------
+
 function parseTime(time){
 	
 	var parseOne = time.split(":"); //Splitting hour value from string
@@ -557,6 +565,8 @@ function parseTime(time){
 	};
 	return (hrs+(min/100)); // Finally set time variable
 };
+
+//-----------------------------------------------------------
 
 function timeformat(time){//formats time from a double into hh:mm
 	
@@ -592,6 +602,8 @@ function timeformat(time){//formats time from a double into hh:mm
 	return (time2[0]+":"+time2[1]+" "+meridian);
 };
 
+//-----------------------------------------------------------
+
 function parseDay(){
 	var day = Date().split(" "); //Gets day of the week
 	
@@ -609,6 +621,8 @@ function parseDay(){
 		return "wk";
 	}
 };
+
+//-----------------------------------------------------------
 
 function route(start,end,time,day){ //Using form to get times
 	for(i=0; i < stations.length; i++){
@@ -632,11 +646,9 @@ function route(start,end,time,day){ //Using form to get times
 					var leave_time1 = start_station.sched_wk_sb[i];
 					var leave_time2 = start_station.sched_wk_sb[i+1];
 					var leave_time3 = start_station.sched_wk_sb[i+2];
-					console.log("Leave time: "+leave_time1);
 					var arrive_time1 = end_station.sched_wk_sb[i];
 					var arrive_time2 = end_station.sched_wk_sb[i+1];
 					var arrive_time3 = end_station.sched_wk_sb[i+2];
-					console.log("Arrive time: "+arrive_time1);
 					break;
 				};//endif
 			};//endfor
@@ -644,11 +656,9 @@ function route(start,end,time,day){ //Using form to get times
 		else if(day === "sat"){//saturday southbound scheduling
 			for(i=0; i < start_station.sched_sat_sb.length; i++){
 				if(start_station.sched_sat[i] > time){
-					console.log("Leave time: "+leave_time1);
 					var leave_time1 = start_station.sched_sat_sb[i];
 					var leave_time2 = start_station.sched_sat_sb[i+1];
 					var leave_time3 = start_station.sched_sat_sb[i+2];
-					console.log("Arrive time: "+arrive_time1);
 					var arrive_time1 = end_station.sched_sat_sb[i];
 					var arrive_time2 = end_station.sched_sat_sb[i+1];
 					var arrive_time3 = end_station.sched_sat_sb[i+2];
@@ -659,11 +669,9 @@ function route(start,end,time,day){ //Using form to get times
 		else {//sunday southbound scheduling
 			for(i=0; i < start_station.sched_sun_sb.length; i++){
 				if(start_station.sched_sun_sb[i] > time){
-					console.log("Leave time: " + leave_time1);
 					var leave_time1 = start_station.sched_sun_sb[i];
 					var leave_time2 = start_station.sched_sun_sb[i+1];
 					var leave_time3 = start_station.sched_sun_sb[i+2];
-					console.log("Arrive time: " + arrive_time1);
 					var arrive_time1 = end_station.sched_sun_sb[i];
 					var arrive_time2 = end_station.sched_sun_sb[i+1];
 					var arrive_time3 = end_station.sched_sun_sb[i+2];
@@ -676,11 +684,9 @@ function route(start,end,time,day){ //Using form to get times
 		if(day === "wk"){//weekday northbound scheduling
 			for(i=0; i < start_station.sched_wk_nb.length; i++){
 				if(start_station.sched_wk_nb[i] > time){
-					console.log("Leave time: "+start_station.sched_wk_nb[i]);
 					var leave_time1 = start_station.sched_wk_nb[i];
 					var leave_time2 = start_station.sched_wk_nb[i+1];
 					var leave_time3 = start_station.sched_wk_nb[i+2];
-					console.log("Arrive time: "+end_station.sched_wk_nb[i]);
 					var arrive_time1 = end_station.sched_wk_nb[i];
 					var arrive_time2 = end_station.sched_wk_nb[i+1];
 					var arrive_time3 = end_station.sched_wk_nb[i+2];
@@ -698,7 +704,6 @@ function route(start,end,time,day){ //Using form to get times
 					var arrive_time1 = end_station.sched_sat_nb[i];
 					var arrive_time2 = end_station.sched_sat_nb[i+1];
 					var arrive_time3 = end_station.sched_sat_nb[i+2];
-					console.log("Arrive time: "+end_station.sched_sat_nb[i]);
 					break;
 				};
 			};
@@ -737,11 +742,15 @@ function route(start,end,time,day){ //Using form to get times
 	$('.table').fadeIn("slow");
 };
 
+//-----------------------------------------------------------
+
 function round(num){//rounding function necessary because javascript has issues adding doubles to each other.
    	return ((Math.round(num *100))/100);
 };
 
-$('#timepicker').timepicker();
+//-----------------------------------------------------------
+
+$('#timepicker').timepicker();//Following code is used to set time picker to current time
     var time = timepicker.value;
     var now = new Date();
     var hours = now.getHours();
@@ -760,7 +769,63 @@ $('#timepicker').timepicker();
         time = e.time.value;
 });
 
+//-----------------------------------------------------------
+
+$('.line1').ready(function(){
+	$(".line1").change(function(){
+		
+		console.log("It Changed!");
+		
+		var lineval1 = $('.line1');
+		
+		if(lineval1.is(":checked")) {
+			var linevalue1 = "mf";
+		}
+		else{
+			var linevalue1 = "bs";
+		}
+		;
+		
+		$('#start_dest').empty();
+		
+		for (i=0; i<stations.length; i++){
+  			if(linevalue1 == stations[i].line){
+  				$('#start_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
+  			}
+  		}
+	});
+});
+//-----------------------------------------------------------
+
+$('.line2').ready(function(){
+	$(".line2").change(function(){
+		
+		console.log("Line2 Changed!");
+		
+		var lineval2 = $('.line2');
+		
+		if(lineval2.is(":checked")) {
+			var linevalue2 = "mf";
+		}
+		else{
+			var linevalue2 = "bs";
+		}
+		;
+		
+		$('#end_dest').empty();
+		
+		for (i=0; i<stations.length; i++){
+  			if(linevalue2 == stations[i].line){
+  				$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
+  			}
+  		}
+	});
+});
+
+//-----------------------------------------------------------
+
 $('#start_dest').change(function(){//Function sees start destination and removes it as an option for end destination
+	
 	var selection = document.getElementById("start_dest").options[document.getElementById("start_dest").selectedIndex].value;
 		
 	$('#end_dest').empty();
@@ -773,3 +838,26 @@ $('#start_dest').change(function(){//Function sees start destination and removes
   		}
   	}
 });
+
+//-----------------------------------------------------------
+
+$('.line1').switchButton({//initializes and configures subway line slider UI
+  on_label: 'MF',
+  off_label: 'BSL',
+  width: 40,
+  height: 15,
+  button_width: 25
+});
+
+$('.line2').switchButton({//initializes and configures subway line slider UI
+  on_label: 'MF',
+  off_label: 'BSL',
+  width: 40,
+  height: 15,
+  button_width: 25
+});
+
+
+
+
+

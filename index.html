@@ -27,13 +27,13 @@
 	<div class="row">
 		<div class="span3">
 			<h1>Start:</h1>
-			<div data-role="fieldcontain">
-<label for="flip-b">Flip switch:</label>
-	<select name="slider" id="flip-b" data-role="slider">
-		<option value="no">No</option>
-		<option value="yes">Yes</option>
-	</select> 
-</div>
+			
+			<div class="switch-wrapper">
+				<form>
+					<input class="line1" type="checkbox" value="1">
+				</form>
+			</div>
+			
 			<select name="start_destination" id="start_dest">
 				<option value="" disabled="disabled" selected="selected">--Starting Station--</option>
 				<option value="fern">Fern Rock</option>
@@ -64,6 +64,9 @@
 		
 		<div class="span3">
 			<h1>Destination:</h1>
+			<div class="switch-wrapper">
+				<input class="line2" type="checkbox" value="1" checked/>
+			</div>
 			<select name="end_destination" id="end_dest">
 				<option value="" disabled="disabled" selected="selected">--Ending Station--</option>
 			</select>
@@ -111,7 +114,8 @@
 <!-- Container end -->
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
-<script type="text/javascript" src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+<script src="js/jqueryui.js"></script>
+<script src="js/jquery.switchButton.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/bootstrap-datetimepicker.min.js"></script>
 <script src="js/subway.js"></script>
