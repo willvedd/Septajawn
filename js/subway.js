@@ -831,9 +831,20 @@ $('#start_dest').change(function(){//Function sees start destination and removes
 	$('#end_dest').empty();
 	
 	$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>Ending Station</option>");
+	
+	
+	var lineval2 = $('.line2');
+		
+		if(lineval2.is(":checked")) {
+			var linevalue2 = "mf";
+		}
+		else{
+			var linevalue2 = "bs";
+		};
+
 
 	for (i=0; i<stations.length; i++){
-  		if(selection != stations[i].id){
+  		if(selection != stations[i].id && linevalue2 == stations[i].line){
   			$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
   		}
   	}
