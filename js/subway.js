@@ -751,107 +751,253 @@ function route2(start_station,end_station,day,time){
 
 function route3(start_station,end_station,day,time){
 	
-	
 	if(start_station.line == "bs"){
-		var transfer_station = city_hall.name;
+		var transfer_station = city_hall;
+		var transfer_station2 = fif;
 	}
 	else{
-		var transfer_station = fif.name;
-	};
+		var transfer_station = fif;
+		var transfer_station2 = city_hall;
+	};//Setting appropriate transfer stations
 	
-	
-	if(start_station.order < city_hall.order){//southbound & westbound
-		if(day === "wk"){//weekday southbound scheduling
-			if(start_station.line == "bs"){
-				var transfer_time1 = city_hall.sched_wk_sb[i];
-				var transfer_time2 = city_hall.sched_wk_sb[i+1];
-				var transfer_time3 = city_hall.sched_wk_sb[i+2];
-			}
-			else{
-				var transfer_time1 = fif.sched_wk_sb[i];
-				var transfer_time2 = fif.sched_wk_sb[i+1];
-				var transfer_time3 = fif.sched_wk_sb[i+2];
-			}; 				
-		}//endif
-		else if(day === "sat"){//saturday southbound & westbound scheduling
-			if(start_station.line == "bs"){
-				var transfer_time1 = city_hall.sched_sat_sb[i];
-				var transfer_time2 = city_hall.sched_sat_sb[i+1];
-				var transfer_time3 = city_hall.sched_sat_sb[i+2];
-			}
-			else{
-				var transfer_time1 = fif.sched_sat_sb[i];
-				var transfer_time2 = fif.sched_sat_sb[i+1];
-				var transfer_time3 = fif.sched_sat_sb[i+2];
+	if(start_station.order < transfer_station.order){//Iniital northbound trip
+		if(day === "wk"){
+			for(i=0; i < start_station.sched_wk_nb.length; i++){
+				if(start_station.sched_wk_nb[i] > time){
+					var leave_time1 = start_station.sched_wk_nb[i];
+					var leave_time2 = start_station.sched_wk_nb[i+1];
+					var leave_time3 = start_station.sched_wk_nb[i+2];
+					var transfer_time1a = transfer_station.sched_wk_nb[i];
+					var transfer_time2a = transfer_station.sched_wk_nb[i+1];
+					var transfer_time3a = transfer_station.sched_wk_nb[i+2];
+					break;
+				};	
 			};
-		}
-	else {//sunday southbound & westbound scheduling
-			if(start_station.line == "bs"){
-				var transfer_time1 = city_hall.sched_sun_sb[i];
-				var transfer_time2 = city_hall.sched_sun_sb[i+1];
-				var transfer_time3 = city_hall.sched_sun_sb[i+2];
-			}
+			
+			if(transfer_station2.order > end_station.order){
+				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
+					if(transfer_station2.sched_wk_nb[i] > time){
+						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						var arrive_time1 = end_station.sched_wk_nb[i];
+						var arrive_time2 = end_station.sched_wk_nb[i+1];
+						var arrive_time3 = end_station.sched_wk_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
 			else{
-				var transfer_time1 = fif.sched_sun_sb[i];
-				var transfer_time2 = fif.sched_sun_sb[i+1];
-				var transfer_time3 = fif.sched_sun_sb[i+2];
-			};	
+				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
+					if(transfer_station2.sched_wk_sb[i] > time){
+						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						var arrive_time1 = end_station.sched_wk_sb[i];
+						var arrive_time2 = end_station.sched_wk_sb[i+1];
+						var arrive_time3 = end_station.sched_wk_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
+		}
+		else if (day ==="sat"){
+			for(i=0; i < start_station.sched_sat_nb.length; i++){
+				if(start_station.sched_sat_nb[i] > time){
+					var leave_time1 = start_station.sched_sat_nb[i];
+					var leave_time2 = start_station.sched_sat_nb[i+1];
+					var leave_time3 = start_station.sched_sat_nb[i+2];
+					var transfer_time1 = transfer_station.sched_sat_nb[i];
+					var transfer_time2 = transfer_station.sched_sat_nb[i+1];
+					var transfer_time3 = transfer_station.sched_sat_nb[i+2];
+					break;
+				};
+			};
+			
+			if(transfer_station2.order < end_station.order){
+				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
+					if(transfer_station2.sched_sat_nb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						var arrive_time1 = end_station.sched_sat_nb[i];
+						var arrive_time2 = end_station.sched_sat_nb[i+1];
+						var arrive_time3 = end_station.sched_sat_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
+			else{
+				for(i=0; i < transfer_station2.sched_sat_sb.length; i++){
+					if(transfer_station2.sched_sat_sb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sat_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_sat_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						var arrive_time1 = end_station.sched_sat_sb[i];
+						var arrive_time2 = end_station.sched_sat_sb[i+1];
+						var arrive_time3 = end_station.sched_sat_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
+			
+		}
+		else{
+			for(i=0; i < start_station.sched_sun_nb.length; i++){
+				if(start_station.sched_sun_nb[i] > time){
+					var leave_time1 = start_station.sched_sun_nb[i];
+					var leave_time2 = start_station.sched_sun_nb[i+1];
+					var leave_time3 = start_station.sched_sun_nb[i+2];
+					var transfer_time1 = transfer_station.sched_sun_nb[i];
+					var transfer_time2 = transfer_station.sched_sun_nb[i+1];
+					var transfer_time3 = transfer_station.sched_sun_nb[i+2];
+					break;
+				};
+			};
+			if(transfer_station2.order < end_station.order){
+				for(i=0; i < transfer_station2.sched_sun_nb.length; i++){
+					if(transfer_station2.sched_sun_nb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sun_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_sun_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_sun_nb[i+2];						var arrive_time1 = end_station.sched_sun_nb[i];
+						var arrive_time2 = end_station.sched_sun_nb[i+1];
+						var arrive_time3 = end_station.sched_sun_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
+			else{
+				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
+					if(transfer_station2.sched_sun_sb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						var arrive_time1 = end_station.sched_sun_sb[i];
+						var arrive_time2 = end_station.sched_sun_sb[i+1];
+						var arrive_time3 = end_station.sched_sun_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
 		};
-	}	
-	else{//northbound & eastbound
-		if(day === "wk"){//weekday northbound & eastbound scheduling
-			var leave_time1 = start_station.sched_wk_nb[i];
-			var leave_time2 = start_station.sched_wk_nb[i+1];
-			var leave_time3 = start_station.sched_wk_nb[i+2];
-			if(start_station.line == "bs"){
-				var transfer_time1 = city_hall.sched_wk_nb[i];
-				var transfer_time2 = city_hall.sched_wk_nb[i+1];
-				var transfer_time3 = city_hall.sched_wk_nb[i+2];
-			}
-			else{
-				var transfer_time1 = fif.sched_wk_nb[i];
-				var transfer_time2 = fif.sched_wk_nb[i+1];
-				var transfer_time3 = fif.sched_wk_nb[i+2];
+	}
+	else{//Initial southbound trip
+		if(day === "wk"){
+			for(i=0; i < start_station.sched_wk_sb.length; i++){
+				if(start_station.sched_wk_sb[i] > time){
+					var leave_time1 = start_station.sched_wk_sb[i];
+					var leave_time2 = start_station.sched_wk_sb[i+1];
+					var leave_time3 = start_station.sched_wk_sb[i+2];
+					var transfer_time1 = transfer_station.sched_wk_sb[i];
+					var transfer_time2 = transfer_station.sched_wk_sb[i+1];
+					var transfer_time3 = transfer_station.sched_wk_sb[i+2];
+					break;
+				};
 			};
-		}//endif
-		else if(day === "sat"){//saturday northbound & eastbound scheduling
-					
-			var leave_time1 = start_station.sched_sat_nb[i];
-			var leave_time2 = start_station.sched_sat_nb[i+1];
-			var leave_time3 = start_station.sched_sat_nb[i+2];
-			if(start_station.line == "bs"){
-				var transfer_time1 = city_hall.sched_sat_nb[i];
-				var transfer_time2 = city_hall.sched_sat_nb[i+1];
-				var transfer_time3 = city_hall.sched_sat_nb[i+2];
-			}
+			if(transfer_station2.order < end_station.order){
+				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
+					if(transfer_station2.sched_wk_nb[i] > time){
+						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						var arrive_time1 = end_station.sched_wk_nb[i];
+						var arrive_time2 = end_station.sched_wk_nb[i+1];
+						var arrive_time3 = end_station.sched_wk_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
 			else{
-				var transfer_time1 = fif.sched_sat_nb[i];
-				var transfer_time2 = fif.sched_sat_nb[i+1];
-				var transfer_time3 = fif.sched_sat_nb[i+2];
-			};
+				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
+					if(transfer_station2.sched_wk_sb[i] > time){
+						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						var arrive_time1 = end_station.sched_wk_sb[i];
+						var arrive_time2 = end_station.sched_wk_sb[i+1];
+						var arrive_time3 = end_station.sched_wk_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
 		}
-		else {//sunday northbound & eastbound scheduling
-			var leave_time1 = start_station.sched_sun_nb[i];
-			var leave_time2 = start_station.sched_sun_nb[i+1];
-			var leave_time3 = start_station.sched_sun_nb[i+2];
-			if(start_station.line == "bs"){
-				var transfer_time1 = city_hall.sched_sun_nb[i];
-				var transfer_time2 = city_hall.sched_sun_nb[i+1];
-				var transfer_time3 = city_hall.sched_sun_nb[i+2];
-			}
-			else{
-				var transfer_time1 = fif.sched_sun_nb[i];
-				var transfer_time2 = fif.sched_sun_nb[i+1];
-				var transfer_time3 = fif.sched_sun_nb[i+2];
+		else if (day === "sat"){
+			for(i=0; i < start_station.sched_sat_sb.length; i++){
+				if(start_station.sched_sat_sb[i] > time){
+					var leave_time1 = start_station.sched_sat_sb[i];
+					var leave_time2 = start_station.sched_sat_sb[i+1];
+					var leave_time3 = start_station.sched_sat_sb[i+2];
+					var transfer_time1 = transfer_station.sched_sat_sb[i];
+					var transfer_time2 = transfer_station.sched_sat_sb[i+1];
+					var transfer_time3 = transfer_station.sched_sat_sb[i+2];
+					break;
+				};
 			};
-		};				
+			
+			if(transfer_station2.order < end_station.order){
+				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
+					if(transfer_station2.sched_sat_nb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						var arrive_time1 = end_station.sched_sat_nb[i];
+						var arrive_time2 = end_station.sched_sat_nb[i+1];
+						var arrive_time3 = end_station.sched_sat_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
+			else{
+				for(i=0; i < transfer_station2.sched_sat_sb.length; i++){
+					if(transfer_station2.sched_sat_sb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sat_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_sat_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						var arrive_time1 = end_station.sched_sat_sb[i];
+						var arrive_time2 = end_station.sched_sat_sb[i+1];
+						var arrive_time3 = end_station.sched_sat_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
+		}
+		else{
+			for(i=0; i < start_station.sched_sun_nb.length; i++){
+				if(start_station.sched_sun_nb[i] > time){
+					var leave_time1 = start_station.sched_wk_nb[i];
+					var leave_time2 = start_station.sched_wk_nb[i+1];
+					var leave_time3 = start_station.sched_wk_nb[i+2];
+					var transfer_time1 = transfer_station.sched_wk_nb[i];
+					var transfer_time2 = transfer_station.sched_wk_nb[i+1];
+					var transfer_time3 = transfer_station.sched_wk_nb[i+2];
+					break;
+				};
+			};
+			
+			if(transfer_station2.order < end_station.order){
+				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
+					if(transfer_station2.sched_sun_sb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						var arrive_time1 = end_station.sched_sun_sb[i];
+						var arrive_time2 = end_station.sched_sun_sb[i+1];
+						var arrive_time3 = end_station.sched_sun_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
+			else{
+				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
+					if(transfer_station2.sched_sun_sb[i] > time){
+						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						var arrive_time1 = end_station.sched_sun_sb[i];
+						var arrive_time2 = end_station.sched_sun_sb[i+1];
+						var arrive_time3 = end_station.sched_sun_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
+		};
 	};
-	
-	var arrive_time1 = 12;
-	var arrive_time2 = 13;
-	var arrive_time3 = 14;
-	
-				render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1,transfer_time2,transfer_time3,arrive_time1,arrive_time2,arrive_time3);	
+				render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,arrive_time1,arrive_time2,arrive_time3);	
 	
 };
 
@@ -882,26 +1028,26 @@ function render2(start_station,end_station,leave_time1,leave_time2,leave_time3,a
 
 //-----------------------------------------------------------
 
-function render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1,transfer_time2,transfer_time3,arrive_time1,arrive_time2,arrive_time3){
+function render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,arrive_time1,arrive_time2,arrive_time3){
 
 	$('.start_station').empty();
 	$('.start_station').append(start_station.name);
 	$('.transfer_station').remove();
-	$('.start_station').after('<td class="transfer_station">'+transfer_station+' (Transfer) </td>');
+	$('.start_station').after('<td class="transfer_station">'+transfer_station.name+' (Transfer) </td>');
 	$('.end_station').empty();
 	$('.end_station').append(end_station.name);
 	$('.start1').empty();
 	$('.start1').append(timeformat(leave_time1));
 	$('.transfer1').remove();
-	$('.start1').after('<td class="transfer1">'+timeformat(transfer_time1)+'</td>');
+	$('.start1').after('<td class="transfer1">'+timeformat(transfer_time1a)+'</td>');
 	$('.start2').empty();	
 	$('.start2').append(timeformat(leave_time2));
 	$('.transfer2').remove();
-	$('.start2').after('<td class="transfer2">'+timeformat(transfer_time2)+'</td>');
+	$('.start2').after('<td class="transfer2">'+timeformat(transfer_time2a)+'</td>');
 	$('.start3').empty();
 	$('.start3').append(timeformat(leave_time3));
 	$('.transfer3').remove();
-	$('.start3').after('<td class="transfer3">'+timeformat(transfer_time3)+'</td>');
+	$('.start3').after('<td class="transfer3">'+timeformat(transfer_time3a)+'</td>');
 	$('.end1').empty();
 	$('.end1').append(timeformat(arrive_time1));
 	$('.end2').empty();
