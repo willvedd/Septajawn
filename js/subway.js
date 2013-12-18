@@ -1,7 +1,7 @@
 //Broad Street Line
 var fern = {
 	line: "bs",
-	order: 1,
+	order: -14,
 	id:   "fern",
 	name: "Fern Rock",
 	sched_wk_sb: 		[5.00,5.15,5.30,5.45,5.56,6.06,6.16,6.24,6.32,6.39,6.46,6.53,7.00,7.07,7.14,7.21,7.28,7.35,7.42,7.49,7.56,8.03,8.10,8.17,8.24,8.31,8.38,8.45,8.52,9.00,9.08,9.16,9.24,9.32,9.40,9.48,9.56,10.04,10.12,10.20,10.28,10.36,10.44,10.52,11.00,11.08,11.16,11.24,11.32,11.40,11.48,11.56,12.04,12.12,12.20,12.28,12.36,12.44,12.52,13.00,13.08,13.16,13.24,13.32,13.40,13.48,13.56,14.04,14.12,14.20,14.28,14.36,14.44,14.52,15.00,15.08,15.16,15.24,15.32,15.40,15.48,15.56,16.03,16.10,16.17,16.24,16.31,16.38,16.45,16.52,16.59,17.06,17.13,17.20,17.27,17.34,17.41,17.48,17.55,18.02,18.10,18.20,18.30,18.40,18.50,19.00,19.10,19.20,19.30,19.40,19.50,20.00,20.12,20.24,20.36,20.48,21.00,21.12,21.24,21.36,21.48,22.00,22.12,22.24,22.36,22.48,23.00,23.12,23.24,23.36,23.49,24.03],
@@ -11,7 +11,7 @@ var fern = {
 }; 
 var olney = {
 	line: "bs",
-	order: 2,
+	order: -13,
 	id:   "olney",
 	name: "Olney",
 	sched_wk_sb: schedule(fern.sched_wk_sb,3),
@@ -23,7 +23,7 @@ var olney = {
 };
 var logan = {
 	line: "bs",
-	order: 3,
+	order: -12,
 	id:   "logan",
 	name: "Logan",
 	sched_wk_sb: schedule(olney.sched_wk_sb,2),
@@ -33,7 +33,7 @@ var logan = {
 };
 var wyoming = {
 	line: "bs",
-	order: 4,
+	order: -11,
 	id:   "wyoming",
 	name: "Wyoming",
 	sched_wk_sb: schedule(logan.sched_wk_sb,2),
@@ -43,7 +43,7 @@ var wyoming = {
 };
 var hunt_park = {
 	line: "bs",
-	order: 5,
+	order: -10,
 	id:   "hunt_park",
 	name: "Hunting Park",
 	sched_wk_sb: schedule(wyoming.sched_wk_sb,2),
@@ -53,7 +53,7 @@ var hunt_park = {
 };
 var erie = {
 	line: "bs",
-	order: 6,
+	order: -9,
 	id:   "erie",
 	name: "Erie",
 	sched_wk_sb: schedule(hunt_park.sched_wk_sb,2),
@@ -63,7 +63,7 @@ var erie = {
 };
 var allegh = {
 	line: "bs",
-	order: 7,
+	order: -8,
 	id:   "allegh",
 	name: "Allegheny",
 	sched_wk_sb: schedule(erie.sched_wk_sb,1),
@@ -73,7 +73,7 @@ var allegh = {
 };
 var nphilly = {
 	line: "bs",
-	order: 8,
+	order: -7,
 	id:   "nphilly",
 	name: "North Philly",
 	sched_wk_sb: schedule(allegh.sched_wk_sb,2),
@@ -83,7 +83,7 @@ var nphilly = {
 };
 var susque = {
 	line: "bs",
-	order: 9,
+	order: -6,
 	id:   "susque",
 	name: "Susquehanna-Dauphin",
 	sched_wk_sb: schedule(nphilly.sched_wk_sb,2),
@@ -93,7 +93,7 @@ var susque = {
 };
 var cecil = {
 	line: "bs",
-	order: 10,
+	order: -5,
 	id:   "cecil",
 	name: "Cecil B Moore",
 	sched_wk_sb: schedule(susque.sched_wk_sb,1),
@@ -103,7 +103,7 @@ var cecil = {
 };
 var girard = {
 	line: "bs",
-	order: 11,
+	order: -4,
 	id:   "girard",
 	name: "Girard",
 	sched_wk_sb: schedule(cecil.sched_wk_sb,1),
@@ -113,7 +113,7 @@ var girard = {
 };
 var fairmount = {
 	line: "bs",
-	order: 12,
+	order: -3,
 	id:   "fairmount",
 	name: "Fairmount",
 	sched_wk_sb: schedule(girard.sched_wk_sb,2),
@@ -123,7 +123,7 @@ var fairmount = {
 };
 var spring = {
 	line: "bs",
-	order: 13,
+	order: -2,
 	id:   "spring",
 	name: "Spring Garden",
 	sched_wk_sb: schedule(fairmount.sched_wk_sb,2),
@@ -133,7 +133,7 @@ var spring = {
 };
 var race = {
 	line: "bs",
-	order: 14,
+	order: -1,
 	id:   "race",
 	name: "Race-Vine",
 	sched_wk_sb: schedule(spring.sched_wk_sb,1),
@@ -143,7 +143,7 @@ var race = {
 };
 var city_hall = {
 	line: "bs",
-	order: 15,
+	order: 0,
 	id:   "city_hall",
 	name: "City Hall",
 	sched_wk_sb: schedule(race.sched_wk_sb,2),
@@ -153,7 +153,7 @@ var city_hall = {
 };
 var walnut = {
 	line: "bs",
-	order: 16,
+	order: 1,
 	id:   "walnut",
 	name: "Walnut-Locust",
 	sched_wk_sb: schedule(city_hall.sched_wk_sb,1),
@@ -163,7 +163,7 @@ var walnut = {
 };
 var lombard = {
 	line: "bs",
-	order: 17,
+	order: 2,
 	id:   "lombard",
 	name: "Lombard-South",
 	sched_wk_sb: schedule(walnut.sched_wk_sb,1),
@@ -173,7 +173,7 @@ var lombard = {
 };
 var ellsworth = {
 	line: "bs",
-	order: 18,
+	order: 3,
 	id:   "ellsworth",
 	name: "Ellsworth-Federal",
 	sched_wk_sb: schedule(lombard.sched_wk_sb,1),
@@ -183,7 +183,7 @@ var ellsworth = {
 };
 var tasker = {
 	line: "bs",
-	order: 19,
+	order: 4,
 	id:   "tasker",
 	name: "Tasker-Morris",
 	sched_wk_sb: schedule(ellsworth.sched_wk_sb,2),
@@ -193,7 +193,7 @@ var tasker = {
 };
 var snyder = {
 	line: "bs",
-	order: 20,
+	order: 5,
 	id:   "snyder",
 	name: "Snyder",
 	sched_wk_sb: schedule(tasker.sched_wk_sb,2),
@@ -203,7 +203,7 @@ var snyder = {
 };
 var oregon = {
 	line: "bs",
-	order: 21,
+	order: 6,
 	id:   "oregon",
 	name: "Oregon",
 	sched_wk_sb: schedule(snyder.sched_wk_sb,1),
@@ -213,7 +213,7 @@ var oregon = {
 };
 var att = {
 	line: "bs",
-	order: 22,
+	order: 7,
 	id:   "att",
 	name: "AT&T",
 	sched_wk_sb: schedule(oregon.sched_wk_sb,3),
@@ -224,7 +224,7 @@ var att = {
 //Market Frankford Line
 var frank = {
 	line: "mf",
-	order: 1,
+	order: -17,
 	id:   "frank",
 	name: "Frankford",
 	sched_wk_sb: [5.0,5.14,5.27,5.39,5.41,5.5,6.0,6.09,6.17,6.24,6.3,6.35,6.4,6.44,6.48,6.52,6.56,7.0,7.08,7.16,7.24,7.32,7.4,7.48,7.56,8.04,8.12,8.20,8.28,8.36,8.44,8.52,9,9.04,9.08,9.12,9.17,9.23,9.29,9.35,9.41,9.47,9.53,9.59,10.05,10.11,10.17,10.23,10.29,10.35,10.41,10.47,10.53,10.59,11.05,11.11,11.17,11.23,11.29,11.35,11.41,11.47,11.53,11.59,12.05,12.11,12.17,12.23,12.29,12.35,12.41,12.47,12.53,12.59,13.05,13.11,13.17,13.23,13.29,13.35,13.40,13.45,13.50,13.56,14.0,14.04,14.09,14.14,14.19,14.24,14.29,14.34,14.39,14.44,14.49,14.54,14.59,15.04,15.09,15.14,15.19,15.24,15.29,15.32,15.36,15.40,15.44,15.48,15.52,15.56,16.00,16.04,16.08,16.12,16.16,16.20,16.24,16.28,16.32,16.36,16.40,16.44,16.48,16.52,16.56,17.00,17.04,17.08,17.12,17.16,17.20,17.24,17.28,17.32,17.36,17.40,17.45,17.50,17.55,18.00,18.05,18.11,18.18,18.26,18.35,18.45,18.55,19.05,19.15,19.25,19.35,19.45,19.55,20.05,20.15,20.25,20.35,20.45,20.56,21.07,21.19,21.31,21.43,21.55,22.07,22.19,22.31,22.43,22.55,23.08,23.21,23.36,23.51,24.01],
@@ -236,7 +236,7 @@ var frank = {
 };
 var marg = {
 	line: "mf",
-	order: 2,
+	order: -16,
 	id:   "marg",
 	name: "Margaret-Orthodox",
 	sched_wk_sb: schedule(frank.sched_wk_sb,2),
@@ -246,7 +246,7 @@ var marg = {
 };
 var church = {
 	line: "mf",
-	order: 3,
+	order: -15,
 	id:   "church",
 	name: "Church",
 	sched_wk_sb: schedule(marg.sched_wk_sb,1),
@@ -256,7 +256,7 @@ var church = {
 };
 var eriet = {
 	line: "mf",
-	order: 4,
+	order: -14,
 	id:   "eriet",
 	name: "Erie-Torresdale",
 	sched_wk_sb: schedule(church.sched_wk_sb,2),
@@ -266,7 +266,7 @@ var eriet = {
 };
 var tioga = {
 	line: "mf",
-	order: 5,
+	order: -13,
 	id:   "tioga",
 	name: "Tioga",
 	sched_wk_sb: schedule(eriet.sched_wk_sb,1),
@@ -276,7 +276,7 @@ var tioga = {
 };
 var alleghmf = {
 	line: "mf",
-	order: 6,
+	order: -12,
 	id:   "alleghmf",
 	name: "Allegheny (MF)",
 	sched_wk_sb: schedule(tioga.sched_wk_sb,1),
@@ -286,7 +286,7 @@ var alleghmf = {
 };
 var somer = {
 	line: "mf",
-	order: 7,
+	order: -11,
 	id:   "somer",
 	name: "Somerset",
 	sched_wk_sb: schedule(alleghmf.sched_wk_sb,2),
@@ -296,7 +296,7 @@ var somer = {
 };
 var hunt = {
 	line: "mf",
-	order: 8,
+	order: -10,
 	id:   "hunt",
 	name: "Huntingdon",
 	sched_wk_sb: schedule(somer.sched_wk_sb,1),
@@ -306,7 +306,7 @@ var hunt = {
 };
 var york = {
 	line: "mf",
-	order: 9,
+	order: -9,
 	id:   "york",
 	name: "York-Dauphin",
 	sched_wk_sb: schedule(hunt.sched_wk_sb,1),
@@ -316,7 +316,7 @@ var york = {
 };
 var berks = {
 	line: "mf",
-	order: 10,
+	order: -8,
 	id:   "berks",
 	name: "Berks",
 	sched_wk_sb: schedule(york.sched_wk_sb,2),
@@ -326,7 +326,7 @@ var berks = {
 };
 var girardmf = {
 	line: "mf",
-	order: 11,
+	order: -7,
 	id:   "girardmf",
 	name: "Girard (MF)",
 	sched_wk_sb: schedule(berks.sched_wk_sb,2),
@@ -336,7 +336,7 @@ var girardmf = {
 };
 var springmf = {
 	line: "mf",
-	order: 12,
+	order: -6,
 	id:   "springmf",
 	name: "Spring Garden (MF)",
 	sched_wk_sb: schedule(girardmf.sched_wk_sb,2),
@@ -346,7 +346,7 @@ var springmf = {
 };
 var second = {
 	line: "mf",
-	order: 13,
+	order: -5,
 	id:   "second",
 	name: "2nd St",
 	sched_wk_sb: schedule(springmf.sched_wk_sb,2),
@@ -356,7 +356,7 @@ var second = {
 };
 var fifth = {
 	line: "mf",
-	order: 14,
+	order: -4,
 	id:   "fifth",
 	name: "5th St",
 	sched_wk_sb: schedule(second.sched_wk_sb,1),
@@ -366,7 +366,7 @@ var fifth = {
 };
 var eight = {
 	line: "mf",
-	order: 15,
+	order: -3,
 	id:   "eight",
 	name: "8th St",
 	sched_wk_sb: schedule(fifth.sched_wk_sb,1),
@@ -376,7 +376,7 @@ var eight = {
 };
 var elev = {
 	line: "mf",
-	order: 16,
+	order: -2,
 	id:   "elev",
 	name: "11th St",
 	sched_wk_sb: schedule(eight.sched_wk_sb,1),
@@ -386,7 +386,7 @@ var elev = {
 };
 var thirteen = {
 	line: "mf",
-	order: 17,
+	order: -1,
 	id:   "thirteen",
 	name: "13th St",
 	sched_wk_sb: schedule(elev.sched_wk_sb,1),
@@ -396,7 +396,7 @@ var thirteen = {
 };
 var fif = {
 	line: "mf",
-	order: 18,
+	order: 0,
 	id:   "fif",
 	name: "15th St",
 	sched_wk_sb: schedule(thirteen.sched_wk_sb,1),
@@ -406,7 +406,7 @@ var fif = {
 };
 var thirty = {
 	line: "mf",
-	order: 19,
+	order: 1,
 	id:   "thirty",
 	name: "30th St",
 	sched_wk_sb: schedule(fif.sched_wk_sb,2),
@@ -416,7 +416,7 @@ var thirty = {
 };
 var thirtyfour = {
 	line: "mf",
-	order: 20,
+	order: 2,
 	id:   "thirtyfour",
 	name: "34th St",
 	sched_wk_sb: schedule(thirty.sched_wk_sb,1),
@@ -426,7 +426,7 @@ var thirtyfour = {
 };
 var fourty = {
 	line: "mf",
-	order: 21,
+	order: 3,
 	id:   "forty",
 	name: "40th St",
 	sched_wk_sb: schedule(thirtyfour.sched_wk_sb,2),
@@ -436,7 +436,7 @@ var fourty = {
 };
 var fourtysix = {
 	line: "mf",
-	order: 22,
+	order: 4,
 	id:   "fourtysix",
 	name: "46th St",
 	sched_wk_sb: schedule(fourty.sched_wk_sb,2),
@@ -446,7 +446,7 @@ var fourtysix = {
 };
 var fiftytwo = {
 	line: "mf",
-	order: 23,
+	order: 5,
 	id:   "fiftytwo",
 	name: "52nd St",
 	sched_wk_sb: schedule(fourtysix.sched_wk_sb,1),
@@ -456,7 +456,7 @@ var fiftytwo = {
 };
 var fiftysix = {
 	line: "mf",
-	order: 24,
+	order: 6,
 	id:   "fiftytwo",
 	name: "52nd St",
 	sched_wk_sb: schedule(fiftytwo.sched_wk_sb,1),
@@ -466,7 +466,7 @@ var fiftysix = {
 };
 var sixty = {
 	line: "mf",
-	order: 25,
+	order: 7,
 	id:   "sixty",
 	name: "60th St",
 	sched_wk_sb: schedule(fiftysix.sched_wk_sb,2),
@@ -476,7 +476,7 @@ var sixty = {
 };
 var sixtythree = {
 	line: "mf",
-	order: 26,
+	order: 8,
 	id:   "sixtythree",
 	name: "63rd St",
 	sched_wk_sb: schedule(sixty.sched_wk_sb,1),
@@ -486,7 +486,7 @@ var sixtythree = {
 };
 var milb = {
 	line: "mf",
-	order: 27,
+	order: 9,
 	id:   "milb",
 	name: "Milbourne",
 	sched_wk_sb: schedule(sixtythree.sched_wk_sb,2),
@@ -496,13 +496,13 @@ var milb = {
 };
 var sixtynine = {
 	line: "mf",
-	order: 28,
+	order: 10,
 	id:   "sixtynine",
 	name: "69th St",
 	sched_wk_sb: schedule(milb.sched_wk_sb,4),
-	sched_sat: schedule(milb.sched_wk_sb,4),
-	sched_sun: schedule(milb.sched_wk_sb,4),
-	sched_wk_nb: schedule(milb.sched_wk_nb,-4),
+	sched_sat_sb: schedule(milb.sched_wk_sb,4),
+	sched_sun_sb: schedule(milb.sched_wk_sb,4),
+	sched_wk_nb: schedule(milb.sched_wk_nb,-1),
 };
 
 //-----------------------------------------------------------
@@ -760,165 +760,49 @@ function route3(start_station,end_station,day,time){
 		var transfer_station2 = city_hall;
 	};//Setting appropriate transfer stations
 	
-	if(start_station.order < transfer_station.order){//Iniital northbound trip
-		if(day === "wk"){
-			for(i=0; i < start_station.sched_wk_nb.length; i++){
-				if(start_station.sched_wk_nb[i] > time){
-					var leave_time1 = start_station.sched_wk_nb[i];
-					var leave_time2 = start_station.sched_wk_nb[i+1];
-					var leave_time3 = start_station.sched_wk_nb[i+2];
-					var transfer_time1a = transfer_station.sched_wk_nb[i];
-					var transfer_time2a = transfer_station.sched_wk_nb[i+1];
-					var transfer_time3a = transfer_station.sched_wk_nb[i+2];
-					break;
-				};	
-			};
-			
-			if(transfer_station2.order > end_station.order){
-				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
-					if(transfer_station2.sched_wk_nb[i] > time){
-						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						var arrive_time1 = end_station.sched_wk_nb[i];
-						var arrive_time2 = end_station.sched_wk_nb[i+1];
-						var arrive_time3 = end_station.sched_wk_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
-					if(transfer_station2.sched_wk_sb[i] > time){
-						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						var arrive_time1 = end_station.sched_wk_sb[i];
-						var arrive_time2 = end_station.sched_wk_sb[i+1];
-						var arrive_time3 = end_station.sched_wk_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-		}
-		else if (day ==="sat"){
-			for(i=0; i < start_station.sched_sat_nb.length; i++){
-				if(start_station.sched_sat_nb[i] > time){
-					var leave_time1 = start_station.sched_sat_nb[i];
-					var leave_time2 = start_station.sched_sat_nb[i+1];
-					var leave_time3 = start_station.sched_sat_nb[i+2];
-					var transfer_time1 = transfer_station.sched_sat_nb[i];
-					var transfer_time2 = transfer_station.sched_sat_nb[i+1];
-					var transfer_time3 = transfer_station.sched_sat_nb[i+2];
-					break;
-				};
-			};
-			
-			if(transfer_station2.order < end_station.order){
-				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
-					if(transfer_station2.sched_sat_nb[i] > time){
-						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						var arrive_time1 = end_station.sched_sat_nb[i];
-						var arrive_time2 = end_station.sched_sat_nb[i+1];
-						var arrive_time3 = end_station.sched_sat_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_sat_sb.length; i++){
-					if(transfer_station2.sched_sat_sb[i] > time){
-						var transfer_time1b = transfer_station2.sched_sat_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_sat_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						var arrive_time1 = end_station.sched_sat_sb[i];
-						var arrive_time2 = end_station.sched_sat_sb[i+1];
-						var arrive_time3 = end_station.sched_sat_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-			
-		}
-		else{
-			for(i=0; i < start_station.sched_sun_nb.length; i++){
-				if(start_station.sched_sun_nb[i] > time){
-					var leave_time1 = start_station.sched_sun_nb[i];
-					var leave_time2 = start_station.sched_sun_nb[i+1];
-					var leave_time3 = start_station.sched_sun_nb[i+2];
-					var transfer_time1 = transfer_station.sched_sun_nb[i];
-					var transfer_time2 = transfer_station.sched_sun_nb[i+1];
-					var transfer_time3 = transfer_station.sched_sun_nb[i+2];
-					break;
-				};
-			};
-			if(transfer_station2.order < end_station.order){
-				for(i=0; i < transfer_station2.sched_sun_nb.length; i++){
-					if(transfer_station2.sched_sun_nb[i] > time){
-						var transfer_time1b = transfer_station2.sched_sun_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_sun_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_nb[i+2];						var arrive_time1 = end_station.sched_sun_nb[i];
-						var arrive_time2 = end_station.sched_sun_nb[i+1];
-						var arrive_time3 = end_station.sched_sun_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
-					if(transfer_station2.sched_sun_sb[i] > time){
-						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						var arrive_time1 = end_station.sched_sun_sb[i];
-						var arrive_time2 = end_station.sched_sun_sb[i+1];
-						var arrive_time3 = end_station.sched_sun_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-		};
-	}
-	else{//Initial southbound trip
+	if(start_station.order < 0){//Iniital southbound trip
 		if(day === "wk"){
 			for(i=0; i < start_station.sched_wk_sb.length; i++){
 				if(start_station.sched_wk_sb[i] > time){
 					var leave_time1 = start_station.sched_wk_sb[i];
 					var leave_time2 = start_station.sched_wk_sb[i+1];
 					var leave_time3 = start_station.sched_wk_sb[i+2];
-					var transfer_time1 = transfer_station.sched_wk_sb[i];
-					var transfer_time2 = transfer_station.sched_wk_sb[i+1];
-					var transfer_time3 = transfer_station.sched_wk_sb[i+2];
+					var transfer_time1a = transfer_station.sched_wk_sb[i];
+					var transfer_time2a = transfer_station.sched_wk_sb[i+1];
+					var transfer_time3a = transfer_station.sched_wk_sb[i+2];
 					break;
-				};
+				};	
 			};
-			if(transfer_station2.order < end_station.order){
-				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
-					if(transfer_station2.sched_wk_nb[i] > time){
-						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						var arrive_time1 = end_station.sched_wk_nb[i];
-						var arrive_time2 = end_station.sched_wk_nb[i+1];
-						var arrive_time3 = end_station.sched_wk_nb[i+2];
+			
+			if(0 < end_station.order){
+				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
+					if(transfer_station2.sched_wk_nb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						
+						var arrive_time1 = end_station.sched_wk_sb[i];
+						var arrive_time2 = end_station.sched_wk_sb[i+1];
+						var arrive_time3 = end_station.sched_wk_sb[i+2];
 						break;
 					};
 				};//End of transfer for
 			}//End of transfer if
 			
 			else{
-				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
-					if(transfer_station2.sched_wk_sb[i] > time){
-						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						var arrive_time1 = end_station.sched_wk_sb[i];
-						var arrive_time2 = end_station.sched_wk_sb[i+1];
-						var arrive_time3 = end_station.sched_wk_sb[i+2];
+				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
+					if(transfer_station2.sched_wk_nb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						
+						var arrive_time1 = end_station.sched_wk_nb[i];
+						var arrive_time2 = end_station.sched_wk_nb[i+1];
+						var arrive_time3 = end_station.sched_wk_nb[i+2];
 						break;
 					};
 				};//End of transfer for
 			}; //end of transfer if
 		}
-		else if (day === "sat"){
+		else if (day ==="sat"){
 			for(i=0; i < start_station.sched_sat_sb.length; i++){
 				if(start_station.sched_sat_sb[i] > time){
 					var leave_time1 = start_station.sched_sat_sb[i];
@@ -931,27 +815,157 @@ function route3(start_station,end_station,day,time){
 				};
 			};
 			
-			if(transfer_station2.order < end_station.order){
-				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
-					if(transfer_station2.sched_sat_nb[i] > time){
-						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						var arrive_time1 = end_station.sched_sat_nb[i];
-						var arrive_time2 = end_station.sched_sat_nb[i+1];
-						var arrive_time3 = end_station.sched_sat_nb[i+2];
+			if(0 < end_station.order){
+				for(i=0; i < transfer_station2.sched_sat_sb.length; i++){
+					if(transfer_station2.sched_sat_sb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_sat_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_sat_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						
+						var arrive_time1 = end_station.sched_sat_sb[i];
+						var arrive_time2 = end_station.sched_sat_sb[i+1];
+						var arrive_time3 = end_station.sched_sat_sb[i+2];
 						break;
 					};
 				};//End of transfer for
 			}//End of transfer if
 			
 			else{
+				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
+					if(transfer_station2.sched_sat_nb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						
+						var arrive_time1 = end_station.sched_sat_nb[i];
+						var arrive_time2 = end_station.sched_sat_nb[i+1];
+						var arrive_time3 = end_station.sched_sat_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
+			
+		}
+		else{
+			for(i=0; i < start_station.sched_sun_sb.length; i++){
+				if(start_station.sched_sun_nb[i] > time){
+					var leave_time1 = start_station.sched_sun_nb[i];
+					var leave_time2 = start_station.sched_sun_nb[i+1];
+					var leave_time3 = start_station.sched_sun_nb[i+2];
+					var transfer_time1 = transfer_station.sched_sun_nb[i];
+					var transfer_time2 = transfer_station.sched_sun_nb[i+1];
+					var transfer_time3 = transfer_station.sched_sun_nb[i+2];
+					break;
+				};
+			};
+			if(0 < end_station.order){
+				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
+					if(transfer_station2.sched_sun_sb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						
+						var arrive_time1 = end_station.sched_sun_sb[i];
+						var arrive_time2 = end_station.sched_sun_sb[i+1];
+						var arrive_time3 = end_station.sched_sun_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
+			else{
+				for(i=0; i < transfer_station2.sched_sun_nb.length; i++){
+					if(transfer_station2.sched_sun_nb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_sun_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_sun_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_sun_nb[i+2];						
+						var arrive_time1 = end_station.sched_sun_nb[i];
+						var arrive_time2 = end_station.sched_sun_nb[i+1];
+						var arrive_time3 = end_station.sched_sun_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
+		};
+	}
+	
+	
+	
+	
+	else{//Initial northbound trip
+		if(day === "wk"){
+			for(i=0; i < start_station.sched_wk_nb.length; i++){
+				if(start_station.sched_wk_nb[i] > time){
+					var leave_time1 = start_station.sched_wk_nb[i];
+					var leave_time2 = start_station.sched_wk_nb[i+1];
+					var leave_time3 = start_station.sched_wk_nb[i+2];
+					var transfer_time1a = transfer_station.sched_wk_nb[i];
+					var transfer_time2a = transfer_station.sched_wk_nb[i+1];
+					var transfer_time3a = transfer_station.sched_wk_nb[i+2];
+					break;
+				};
+			};
+			if(0 < end_station.order){
+				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
+					if(transfer_station2.sched_wk_sb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						
+						var arrive_time1 = end_station.sched_wk_sb[i];
+						var arrive_time2 = end_station.sched_wk_sb[i+1];
+						var arrive_time3 = end_station.sched_wk_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
+			else{
+				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
+					if(transfer_station2.sched_wk_nb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						
+						var arrive_time1 = end_station.sched_wk_nb[i];
+						var arrive_time2 = end_station.sched_wk_nb[i+1];
+						var arrive_time3 = end_station.sched_wk_nb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}; //end of transfer if
+		}
+		else if (day === "sat"){
+			for(i=0; i < start_station.sched_sat_nb.length; i++){
+				if(start_station.sched_sat_nb[i] > time){
+					var leave_time1 = start_station.sched_sat_nb[i];
+					var leave_time2 = start_station.sched_sat_nb[i+1];
+					var leave_time3 = start_station.sched_sat_nb[i+2];
+					var transfer_time1 = transfer_station.sched_sat_nb[i];
+					var transfer_time2 = transfer_station.sched_sat_nb[i+1];
+					var transfer_time3 = transfer_station.sched_sat_nb[i+2];
+					break;
+				};
+			};
+			
+			if(0 < end_station.order){
 				for(i=0; i < transfer_station2.sched_sat_sb.length; i++){
-					if(transfer_station2.sched_sat_sb[i] > time){
+					if(transfer_station2.sched_sat_sb[i] > transfer_time1a){
 						var transfer_time1b = transfer_station2.sched_sat_sb[i]; 
 						var transfer_time2b = transfer_station2.sched_sat_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						var arrive_time1 = end_station.sched_sat_sb[i];
+						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						
+						var arrive_time1 = end_station.sched_sat_sb[i];
 						var arrive_time2 = end_station.sched_sat_sb[i+1];
 						var arrive_time3 = end_station.sched_sat_sb[i+2];
+						break;
+					};
+				};//End of transfer for
+			}//End of transfer if
+			
+			else{
+				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
+					if(transfer_station2.sched_sat_nb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						
+						var arrive_time1 = end_station.sched_sat_nb[i];
+						var arrive_time2 = end_station.sched_sat_nb[i+1];
+						var arrive_time3 = end_station.sched_sat_nb[i+2];
 						break;
 					};
 				};//End of transfer for
@@ -970,12 +984,13 @@ function route3(start_station,end_station,day,time){
 				};
 			};
 			
-			if(transfer_station2.order < end_station.order){
+			if(0 < end_station.order){
 				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
-					if(transfer_station2.sched_sun_sb[i] > time){
+					if(transfer_station2.sched_sun_sb[i] > transfer_time1a){
 						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
 						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						var arrive_time1 = end_station.sched_sun_sb[i];
+						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						
+						var arrive_time1 = end_station.sched_sun_sb[i];
 						var arrive_time2 = end_station.sched_sun_sb[i+1];
 						var arrive_time3 = end_station.sched_sun_sb[i+2];
 						break;
@@ -984,20 +999,21 @@ function route3(start_station,end_station,day,time){
 			}//End of transfer if
 			
 			else{
-				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
-					if(transfer_station2.sched_sun_sb[i] > time){
-						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						var arrive_time1 = end_station.sched_sun_sb[i];
-						var arrive_time2 = end_station.sched_sun_sb[i+1];
-						var arrive_time3 = end_station.sched_sun_sb[i+2];
+				for(i=0; i < transfer_station2.sched_sun_nb.length; i++){
+					if(transfer_station2.sched_sun_nb[i] > transfer_time1a){
+						var transfer_time1b = transfer_station2.sched_sun_nb[i]; 
+						var transfer_time2b = transfer_station2.sched_sun_nb[i+1];
+						var transfer_time3b = transfer_station2.sched_sun_nb[i+2];						
+						var arrive_time1 = end_station.sched_sun_nb[i];
+						var arrive_time2 = end_station.sched_sun_nb[i+1];
+						var arrive_time3 = end_station.sched_sun_nb[i+2];
 						break;
 					};
 				};//End of transfer for
 			}; //end of transfer if
 		};
 	};
-				render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,arrive_time1,arrive_time2,arrive_time3);	
+				render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,transfer_time1b,transfer_time2b,transfer_time3b,arrive_time1,arrive_time2,arrive_time3);	
 	
 };
 
@@ -1028,7 +1044,7 @@ function render2(start_station,end_station,leave_time1,leave_time2,leave_time3,a
 
 //-----------------------------------------------------------
 
-function render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,arrive_time1,arrive_time2,arrive_time3){
+function render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,transfer_time1b,transfer_time2b,transfer_time3b,arrive_time1,arrive_time2,arrive_time3){
 
 	$('.start_station').empty();
 	$('.start_station').append(start_station.name);
@@ -1039,15 +1055,15 @@ function render3(start_station,end_station,transfer_station,leave_time1,leave_ti
 	$('.start1').empty();
 	$('.start1').append(timeformat(leave_time1));
 	$('.transfer1').remove();
-	$('.start1').after('<td class="transfer1">'+timeformat(transfer_time1a)+'</td>');
+	$('.start1').after('<td class="transfer1">'+transferWindow(transfer_time1a,transfer_time1b)+' Mins </td>');
 	$('.start2').empty();	
 	$('.start2').append(timeformat(leave_time2));
 	$('.transfer2').remove();
-	$('.start2').after('<td class="transfer2">'+timeformat(transfer_time2a)+'</td>');
+	$('.start2').after('<td class="transfer2">'+transferWindow(transfer_time2a,transfer_time2b)+' Mins </td>');
 	$('.start3').empty();
 	$('.start3').append(timeformat(leave_time3));
 	$('.transfer3').remove();
-	$('.start3').after('<td class="transfer3">'+timeformat(transfer_time3a)+'</td>');
+	$('.start3').after('<td class="transfer3">'+transferWindow(transfer_time3a,transfer_time3b)+' Mins </td>');
 	$('.end1').empty();
 	$('.end1').append(timeformat(arrive_time1));
 	$('.end2').empty();
@@ -1055,6 +1071,10 @@ function render3(start_station,end_station,transfer_station,leave_time1,leave_ti
 	$('.end3').empty();
 	$('.end3').append(timeformat(arrive_time3));
 	$('.table').fadeIn("slow");
+	
+	console.log("Transfer window: "+transferWindow(transfer_time1a,transfer_time1b));
+	console.log("Transfer A: "+transfer_time1a);
+	console.log("Transfer B: "+transfer_time1b);
 };
 
 //-----------------------------------------------------------
@@ -1062,6 +1082,13 @@ function render3(start_station,end_station,transfer_station,leave_time1,leave_ti
 function round(num){//rounding function necessary because javascript has issues adding doubles to each other.
    	return ((Math.round(num *100))/100);
 };
+
+//-----------------------------------------------------------
+
+function transferWindow(transfer_time_a,transfer_time_b){
+	return round((transfer_time_b - transfer_time_a)*100);
+	
+}
 
 //-----------------------------------------------------------
 
@@ -1103,6 +1130,8 @@ $('.line1').ready(function(){
 		
 		$('#start_dest').empty();
 		
+		$('#start_dest').append('<option value="" disabled="disabled" selected="selected">--Starting Station--</option>');
+		
 		for (i=0; i<stations.length; i++){
   			if(linevalue1 == stations[i].line){
   				$('#start_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
@@ -1110,6 +1139,7 @@ $('.line1').ready(function(){
   		}
 	});
 });
+
 //-----------------------------------------------------------
 
 $('.line2').ready(function(){
@@ -1128,7 +1158,7 @@ $('.line2').ready(function(){
 		;
 		
 		$('#end_dest').empty();
-		
+		$('#end_dest').append('<option value="" disabled="disabled" selected="selected">--Ending Station--</option>');
 		for (i=0; i<stations.length; i++){
   			if(linevalue2 == stations[i].line){
   				$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
@@ -1145,7 +1175,7 @@ $('#start_dest').change(function(){//Function sees start destination and removes
 		
 	$('#end_dest').empty();
 	
-	$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>Ending Station</option>");
+	$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>--Ending Station--</option>");
 	
 	
 	var lineval2 = $('.line2');
