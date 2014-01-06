@@ -642,12 +642,15 @@ function routeInit(start,end,time,day){ //Using form to get times
 		};
 	};
 	
-	if(start_station.line != end_station.line){
+	/*
+if(start_station.line != end_station.line){
 		route3(start_station,end_station,day,time);
 	}
 	else{
 		route2(start_station,end_station,day,time);
 	};
+*/
+	route2(start_station,end_station,day,time);
 };
 
 //-----------------------------------------------------------
@@ -1044,6 +1047,7 @@ function render2(start_station,end_station,leave_time1,leave_time2,leave_time3,a
 
 //-----------------------------------------------------------
 
+/*
 function render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,transfer_time1b,transfer_time2b,transfer_time3b,arrive_time1,arrive_time2,arrive_time3){
 
 	$('.start_station').empty();
@@ -1076,6 +1080,7 @@ function render3(start_station,end_station,transfer_station,leave_time1,leave_ti
 	console.log("Transfer A: "+transfer_time1a);
 	console.log("Transfer B: "+transfer_time1b);
 };
+*/
 
 //-----------------------------------------------------------
 
@@ -1087,8 +1092,7 @@ function round(num){//rounding function necessary because javascript has issues 
 
 function transferWindow(transfer_time_a,transfer_time_b){
 	return round((transfer_time_b - transfer_time_a)*100);
-	
-}
+};
 
 //-----------------------------------------------------------
 
@@ -1113,7 +1117,7 @@ $('#timepicker').timepicker();//Following code is used to set time picker to cur
 
 //-----------------------------------------------------------
 
-$('.line1').ready(function(){
+$('.line1').ready(function(){//Function that populates starting station list
 	$(".line1").change(function(){
 		
 		console.log("It Changed!");
@@ -1129,39 +1133,14 @@ $('.line1').ready(function(){
 		;
 		
 		$('#start_dest').empty();
+		$('#end_dest').empty();
 		
 		$('#start_dest').append('<option value="" disabled="disabled" selected="selected">--Starting Station--</option>');
+		$('#end_dest').append('<option value="" disabled="disabled" selected="selected">--Ending Station--</option>');
 		
 		for (i=0; i<stations.length; i++){
   			if(linevalue1 == stations[i].line){
   				$('#start_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
-  			}
-  		}
-	});
-});
-
-//-----------------------------------------------------------
-
-$('.line2').ready(function(){
-	$(".line2").change(function(){
-		
-		console.log("Line2 Changed!");
-		
-		var lineval2 = $('.line2');
-		
-		if(lineval2.is(":checked")) {
-			var linevalue2 = "mf";
-		}
-		else{
-			var linevalue2 = "bs";
-		}
-		;
-		
-		$('#end_dest').empty();
-		$('#end_dest').append('<option value="" disabled="disabled" selected="selected">--Ending Station--</option>');
-		for (i=0; i<stations.length; i++){
-  			if(linevalue2 == stations[i].line){
-  				$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
   			}
   		}
 	});
@@ -1178,18 +1157,15 @@ $('#start_dest').change(function(){//Function sees start destination and removes
 	$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>--Ending Station--</option>");
 	
 	
-	var lineval2 = $('.line2');
-		
-		if(lineval2.is(":checked")) {
-			var linevalue2 = "mf";
-		}
-		else{
-			var linevalue2 = "bs";
-		};
-
+	if($('.line1').is(":checked")) {
+		var linevalue1 = "mf";
+	}
+	else{
+		var linevalue1 = "bs";
+	};
 
 	for (i=0; i<stations.length; i++){
-  		if(selection != stations[i].id && linevalue2 == stations[i].line){
+  		if(selection != stations[i].id && linevalue1 == stations[i].line){
   			$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
   		}
   	}
@@ -1204,15 +1180,6 @@ $('.line1').switchButton({//initializes and configures subway line slider UI
   height: 15,
   button_width: 25
 });
-
-$('.line2').switchButton({//initializes and configures subway line slider UI
-  on_label: 'MF',
-  off_label: 'BSL',
-  width: 40,
-  height: 15,
-  button_width: 25
-});
-
 
 
 
