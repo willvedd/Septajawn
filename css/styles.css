@@ -1,52 +1,56 @@
-/* line 7, styles.scss */
+/* line 8, styles.scss */
 h1 {
   color: #0055a0;
 }
 
 /* line 12, styles.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 16, styles.scss */
 body {
   background-image: url(../img/navy_blue.png);
   background-repeat: repeat;
 }
 
-/* line 18, styles.scss */
-.navbar {
-  background-color: #222222;
-}
-
-/* line 21, styles.scss */
+/* line 22, styles.scss */
 .times {
   display: none;
-  color: #e4e4e4;
+  margin-top: 40px;
+  background-color: #e4e4e4;
+  color: #222222;
 }
-/* line 25, styles.scss */
+/* line 28, styles.scss */
 .times td {
   text-align: center;
+  width: 50%;
+  border-color: #a0a0a0;
 }
-/* line 27, styles.scss */
+/* line 32, styles.scss */
 .times td .station {
   font-size: 2rem;
 }
 
-/* line 36, styles.scss */
+/* line 40, styles.scss */
 .switch-button-label {
   float: left;
   font-size: 12pt;
   cursor: pointer;
 }
 
-/* line 42, styles.scss */
+/* line 46, styles.scss */
 .switch-button-label.off {
   color: #adadad;
   opacity: .5;
 }
 
-/* line 47, styles.scss */
+/* line 51, styles.scss */
 .switch-button-label.on {
   color: #f15d30;
 }
 
-/* line 51, styles.scss */
+/* line 55, styles.scss */
 .switch-button-background {
   float: left;
   position: relative;
@@ -59,7 +63,7 @@ body {
   cursor: pointer;
 }
 
-/* line 67, styles.scss */
+/* line 71, styles.scss */
 .switch-button-button {
   position: absolute;
   left: -1px;
@@ -69,4 +73,71 @@ body {
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
   border-radius: 8px;
+}
+
+/* line 85, styles.scss */
+.nav_bar {
+  width: 100%;
+  background-color: #0055a0;
+}
+/* line 88, styles.scss */
+.nav_bar .nav_bar_inner {
+  position: relative;
+}
+/* line 93, styles.scss */
+.nav_bar .nav_bar_inner li {
+  list-style: none;
+  display: inline;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+/* line 98, styles.scss */
+.nav_bar .nav_bar_inner li a {
+  color: #e4e4e4;
+}
+/* line 103, styles.scss */
+.nav_bar .branding {
+  color: #e4e4e4;
+  font-size: 40px!important;
+  line-height: 40px;
+}
+
+/* line 110, styles.scss */
+.wrapper {
+  position: relative;
+  top: 40%;
+  -webkit-transform: translateY(-40%);
+  -ms-transform: translateY(-40%);
+  transform: translateY(-40%);
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+}
+
+/* line 120, styles.scss */
+.platter {
+  background-color: #f15d30;
+  height: 100%;
+  width: 100%;
+}
+/* line 124, styles.scss */
+.platter select {
+  font-size: 20px;
+  height: 40px;
+}
+/* line 129, styles.scss */
+.platter #timepicker {
+  font-size: 20px;
+  height: 40px;
+}
+/* line 134, styles.scss */
+.platter .add-on {
+  width: 40px;
+  height: 40px;
+}
+/* line 139, styles.scss */
+.platter .center {
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
 }

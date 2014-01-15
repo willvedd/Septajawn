@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Philly Underground</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+	<link href="css/styles.css" rel="stylesheet">
+	<link href="css/normalize.css" rel="stylesheet">
+</head>
+<body>
+	<div class="nav_bar">
+		<div class="container">
+			<div class="nav_bar_inner">
+			    <ul class="nav_item">
+				    <li><a class="branding" href="#">PHL Subwayer</a></li>
+				    <li><a href="#">Link</a></li>
+				    <li><a href="#">Link</a></li>
+			    </ul>
+	  		</div>
+  		</div>
+	</div><!-- End navbar -->
+	<div class="span12 wrapper">
+		<div class="platter">
+			<div class="row">
+				<div class="span4">
+					<div class="center">
+					<select name="start_destination" id="start_dest" class="btn-group">
+						<option value="" disabled="disabled" selected="selected">Starting from...</option>
+						<option value="fern">Fern Rock</option>
+						<option value="olney">Olney</option>
+						<option value="logan">Logan</option>
+						<option value="wyoming">Wyoming</option>
+						<option value="hunt_park">Hunting Park</option>
+						<option value="erie">Erie</option>
+						<option value="allegh">Allegheny</option>
+						<option value="nphilly">North Philly</option>
+						<option value="susque">Susquehanna-Dauphin</option>
+						<option value="cecil">Cecil B</option>
+						<option value="girard">Girard</option>
+						<option value="fairmount">Fairmount</option>
+						<option value="spring">Spring Garden</option>
+						<option value="race">Race-Vine</option>
+						<option value="city_hall">City Hall</option>
+						<option value="walnut">Walnut-Locust</option>
+						<option value="lombard">Lombard-South</option>
+						<option value="ellsworth">Ellsworth-Federal</option>
+						<option value="tasker">Tasker-Morris</option>
+						<option value="snyder">Snyder</option>
+						<option value="oregon">Oregon</option>
+						<option value="att">AT&T</option>
+					</select>
+
+					</div>
+				</div>
+				<div class="span4">
+					<select name="end_destination" id="end_dest">
+						<option value="" disabled="disabled" selected="selected">--Ending Station--</option>
+					</select>
+				</div>
+				<div class="span4">
+					<div class="input-append bootstrap-timepicker">
+						<input id="timepicker" type="text" class="input-small">
+						<span class="add-on"><i class="icon-time"></i></span>
+					</div>
+				</div>
+			</div><!-- End row -->
+			<div class="row">
+				<div class="span4 offset4">
+					<button class="btn btn-success" onClick="submit();">Submit</button>
+				</div>
+			</div><!-- End row -->
+		</div><!-- End platter -->
+		<div class="row">
+					<div class="span8 offset2">
+						<table class="table table-bordered times">
+							<tr>
+								<td class="start_station station"></td>
+								<td class="end_station station"></td>
+							</tr>
+							<tr>
+								<td class="start1"></td>
+								<td class="end1"></td>
+							</tr>
+							<tr>
+								<td class="start2"></td>
+								<td class="end2"></td>
+							</tr>
+							<tr>
+								<td class="start3"></td>
+								<td class="end3"></td>
+							</tr>
+						</table>
+					</div>
+		</div><!-- End row -->
+	</div><!-- End span12 wrapper -->
+</body>
+<script src="https://code.jquery.com/jquery.js"></script>
+<script src="js/jqueryui.js"></script>
+<script src="js/jquery.switchButton.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/subway.js"></script>
+</html>
