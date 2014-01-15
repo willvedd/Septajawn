@@ -580,32 +580,34 @@ function parseTime(time){
 
 function timeformat(time){//formats time from a double into hh:mm
 	
-	
+	if (time == "X"){
+		return "No scheduled trains";
+	}
 	if((time >= 12) && (time < 24)){
 		var meridian = "PM";
 		
 		if (time > 12.59){
-		time = round((time) - 12.00)
+		time = round((time) - 12.00)//Formatting time from 24hr to 12hr style
 		};
 	}
 	else {
 		var meridian = "AM"
 	};
 	
-	time = time.toString();
+	time = time.toString().split("."); //Converting time variable to a string and splitting to get minutes and hours
 	
-	var mins = Math.floor(time);
-	
-	var time2 = time.split(".");
-	
-	if(time2[1] === undefined){
-		time2[1] = "00"; //Converts undefined minutes to hh:00;
+	if(time[1] === undefined){//If minutes are undefined,
+		time[1] = "00"; //Converts undefined minutes to hh:00;
 	};
-	if(time2[1].length == 1 ){
-		time2[1] = time2[1]*10; //Adds trailing zero to hh:m0 numbers that otherwise display as hh:m;
+
+	if (time[0] == 24){//If the hour is 24, set it to 12
+		time[0] = 12};
+
+	if(time[1].length == 1 ){
+		time[1] = time[1]*10; //Adds trailing zero to hh:m0 numbers that otherwise display as hh:m;
 	};
 	
-	return (time2[0]+":"+time2[1]+" "+meridian);
+	return (time[0]+":"+time[1]+" "+meridian);//returning a string of the time
 };
 
 //-----------------------------------------------------------
@@ -746,12 +748,38 @@ function route2(start_station,end_station,day,time){
 		};				
 	};
 	
+	if((leave_time1 || arrive_time1) == undefined){
+		
+		console.log("1 is undefined");
+		
+		leave_time1 = "X";
+		arrive_time1 = "X";
+	}
+	
+	if((leave_time2 || arrive_time2) == undefined){
+		
+		console.log("2 is undefined");
+		
+		leave_time2 = "X";
+		arrive_time2 = "X";
+	}
+	
+	if((leave_time3 || arrive_time3) == undefined){
+		
+		console.log("3 is undefined");
+		
+		leave_time3 = "X";
+		
+		arrive_time3 = "X";
+	}
+	
 	render2(start_station,end_station,leave_time1,leave_time2,leave_time3,arrive_time1,arrive_time2,arrive_time3);	
 	
 };
 
 //-----------------------------------------------------------
 
+/*
 function route3(start_station,end_station,day,time){
 	
 	if(start_station.line == "bs"){
@@ -1016,9 +1044,11 @@ function route3(start_station,end_station,day,time){
 			}; //end of transfer if
 		};
 	};
+						
 				render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,transfer_time1b,transfer_time2b,transfer_time3b,arrive_time1,arrive_time2,arrive_time3);	
 	
 };
+*/
 
 
 //-----------------------------------------------------------
@@ -1095,8 +1125,11 @@ function transferWindow(transfer_time_a,transfer_time_b){
 };
 
 //-----------------------------------------------------------
-
-$('#timepicker').timepicker();//Following code is used to set time picker to current time
+	\\$('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
+        time = e.time.value;
+	});
+ 
+ $('#timepicker').timepicker();//Following code is used to set time picker to current time
     var time = timepicker.value;
     var now = new Date();
     var hours = now.getHours();
@@ -1110,10 +1143,10 @@ $('#timepicker').timepicker();//Following code is used to set time picker to cur
     else{
 	    var meridian = "AM"
     };
-    $('#timepicker').timepicker('setTime', hours+":"+minutes+" "+meridian);
-    $('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
-        time = e.time.value;
-});
+ $('#timepicker').timepicker('setTime', hours+":"+minutes+" "+meridian);
+    
+
+
 
 //-----------------------------------------------------------
 
@@ -1129,8 +1162,7 @@ $('.line1').ready(function(){//Function that populates starting station list
 		}
 		else{
 			var linevalue1 = "bs";
-		}
-		;
+		};
 		
 		$('#start_dest').empty();
 		$('#end_dest').empty();
@@ -1151,24 +1183,28 @@ $('.line1').ready(function(){//Function that populates starting station list
 $('#start_dest').change(function(){//Function sees start destination and removes it as an option for end destination
 	
 	var selection = document.getElementById("start_dest").options[document.getElementById("start_dest").selectedIndex].value;
-		
-	$('#end_dest').empty();
 	
-	$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>--Ending Station--</option>");
-	
-	
-	if($('.line1').is(":checked")) {
-		var linevalue1 = "mf";
-	}
-	else{
-		var linevalue1 = "bs";
-	};
+	var selection_end = document.getElementById("end_dest").options[document.getElementById("end_dest").selectedIndex].value;
 
-	for (i=0; i<stations.length; i++){
-  		if(selection != stations[i].id && linevalue1 == stations[i].line){
-  			$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
-  		}
-  	}
+	if( (selection_end == "") || (selection==selection_end) ){//Resets drop down list if end isn't defined or if start and end are the s
+		$('#end_dest').empty();
+	
+		$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>--Ending Station--</option>");
+		
+		
+		if($('.line1').is(":checked")) {
+			var linevalue1 = "mf";
+		}
+		else{
+			var linevalue1 = "bs";
+		};
+		
+		for (i=0; i<stations.length; i++){
+			if(selection != stations[i].id && linevalue1 == stations[i].line){
+				$('#end_dest').append("<option value='"+stations[i].id+"'>"+stations[i].name+"</option>");
+			};
+		};
+	};
 });
 
 //-----------------------------------------------------------
