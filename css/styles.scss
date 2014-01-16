@@ -1,11 +1,12 @@
 
 $blue:#0055A0;
 $white: #E4E4E4;
-$red:   #E0645C;
+$septared:   #f14728;
+$septablue: #1f4fa3;
 $black:#222222;
 $orange:#F15D30;
 $gray: #A0A0A0;
-$light: #999999;
+$nav: #B9B9B9;
 
 
 @font-face {
@@ -32,7 +33,6 @@ html{
 body{
     background:none;
 }
-
 
 .times{
 	display: none;
@@ -114,7 +114,7 @@ body{
 
 .nav_bar{
     width: 100%;
-    background-color: $blue;
+    background-color: $nav;
     padding-top: 20px;
     padding-bottom: 15px;
 
@@ -134,10 +134,15 @@ body{
         }
     }
     .branding{
-        color: $white;
         font-size: 40px!important;
         line-height: 42px;
         font-family: 'machinescript',arial,sans-serif;
+        .septablue{
+            color: $septablue;
+        }
+        .septared{
+            color: $septared;
+        }
     }
 }
 
@@ -196,10 +201,11 @@ body{
         border: 0 none;
         border-radius: 2px 2px 2px 2px;
         color: #FFFFFF;
+
         cursor: pointer;
         display: inline-block;
         font-family: Arial,sans-serif;
-        font-size: 12px;
+        font-size: 1.25rem;
         font-weight: bold;
         line-height: 20px;
         margin-bottom: 20px;
@@ -211,10 +217,17 @@ body{
         -webkit-transition: all 0.3s ease 0s;
         text-align: center; /* DELETE WHEN WIDTH AUTO */
         background: none repeat scroll 0 0 $orange;
+        outline-color: transparent;
+        outline-style: none;
+
         color: $white;
             &:hover {
               background: none repeat scroll 0 0 darken($orange,20%);
               color: $white;
+            }
+            &:active{
+                margin-top: 11px;
+                margin-bottom: 19px;
             }
         }
 

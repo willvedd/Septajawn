@@ -4,17 +4,17 @@
   /* IE9 Compat Modes */
 }
 
-/* line 16, styles.scss */
+/* line 17, styles.scss */
 h1 {
   color: #0055a0;
 }
 
-/* line 21, styles.scss */
+/* line 22, styles.scss */
 html, body {
   height: 100%;
 }
 
-/* line 25, styles.scss */
+/* line 26, styles.scss */
 html {
   background: url(../img/subway_car1.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -23,7 +23,7 @@ html {
   background-size: cover;
 }
 
-/* line 32, styles.scss */
+/* line 33, styles.scss */
 body {
   background: none;
 }
@@ -103,7 +103,7 @@ body {
 /* line 115, styles.scss */
 .nav_bar {
   width: 100%;
-  background-color: #0055a0;
+  background-color: #b9b9b9;
   padding-top: 20px;
   padding-bottom: 15px;
 }
@@ -124,13 +124,20 @@ body {
 }
 /* line 136, styles.scss */
 .nav_bar .branding {
-  color: #e4e4e4;
   font-size: 40px!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
 }
+/* line 140, styles.scss */
+.nav_bar .branding .septablue {
+  color: #1f4fa3;
+}
+/* line 143, styles.scss */
+.nav_bar .branding .septared {
+  color: #f14728;
+}
 
-/* line 144, styles.scss */
+/* line 149, styles.scss */
 .wrapper {
   position: relative;
   top: 30%;
@@ -142,7 +149,7 @@ body {
   float: none;
 }
 
-/* line 154, styles.scss */
+/* line 159, styles.scss */
 .platter {
   background-image: url(../img/navy_blue.png);
   height: 100%;
@@ -150,14 +157,14 @@ body {
   border-radius: 5px;
   box-shadow: #222222 1px 5px 10px;
 }
-/* line 160, styles.scss */
+/* line 165, styles.scss */
 .platter select {
   font-size: 20px;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 167, styles.scss */
+/* line 172, styles.scss */
 .platter #timepicker {
   font-size: 20px;
   height: 40px;
@@ -165,7 +172,7 @@ body {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 174, styles.scss */
+/* line 179, styles.scss */
 .platter .add-on {
   width: 40px;
   height: 40px;
@@ -173,7 +180,7 @@ body {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 181, styles.scss */
+/* line 186, styles.scss */
 .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -187,7 +194,7 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 194, styles.scss */
+/* line 199, styles.scss */
 .platter .submit {
   width: 100%;
   border: 0 none;
@@ -196,7 +203,7 @@ body {
   cursor: pointer;
   display: inline-block;
   font-family: Arial,sans-serif;
-  font-size: 12px;
+  font-size: 1.25rem;
   font-weight: bold;
   line-height: 20px;
   margin-bottom: 20px;
@@ -209,14 +216,21 @@ body {
   text-align: center;
   /* DELETE WHEN WIDTH AUTO */
   background: none repeat scroll 0 0 #f15d30;
+  outline-color: transparent;
+  outline-style: none;
   color: #e4e4e4;
 }
-/* line 215, styles.scss */
+/* line 224, styles.scss */
 .platter .submit:hover {
   background: none repeat scroll 0 0 #af320c;
   color: #e4e4e4;
 }
-/* line 221, styles.scss */
+/* line 228, styles.scss */
+.platter .submit:active {
+  margin-top: 11px;
+  margin-bottom: 19px;
+}
+/* line 234, styles.scss */
 .platter .center {
   margin-right: auto;
   margin-left: auto;
