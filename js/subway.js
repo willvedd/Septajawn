@@ -521,7 +521,7 @@ function submit(){
         
     routeInit(start,end,parseTime(time),parseDay());
 
-    $('#start_dest, #end_dest').change(function(){
+    $('#start_dest, #end_dest , #timepicker').change(function(){
 
     	var start_sel = document.getElementById("start_dest");
 	    var start = start_sel.options[start_sel.selectedIndex].value;
@@ -530,7 +530,6 @@ function submit(){
 	        
 	    routeInit(start,end,parseTime(time),parseDay());
     });
-
 };
 
 //-----------------------------------------------------------
@@ -1149,9 +1148,8 @@ function transferWindow(transfer_time_a,transfer_time_b){
 
 $('.line1').ready(function(){//Function that populates starting station list
 	$(".line1").change(function(){
-		
-		console.log("It Changed!");
-		
+		$('.label2').toggleClass('blue');
+
 		var lineval1 = $('.line1');
 		
 		if(lineval1.is(":checked")) {
@@ -1164,8 +1162,8 @@ $('.line1').ready(function(){//Function that populates starting station list
 		$('#start_dest').empty();
 		$('#end_dest').empty();
 		
-		$('#start_dest').append('<option value="" disabled="disabled" selected="selected">--Starting Station--</option>');
-		$('#end_dest').append('<option value="" disabled="disabled" selected="selected">--Ending Station--</option>');
+		$('#start_dest').append('<option value="" disabled="disabled" selected="selected">Starting from...</option>');
+		$('#end_dest').append('<option value="" disabled="disabled" selected="selected">Ending at...</option>');
 		
 		for (i=0; i<stations.length; i++){
   			if(linevalue1 == stations[i].line){
@@ -1186,11 +1184,12 @@ $('#start_dest').change(function(){//Function sees start destination and removes
 	if( (selection_end == "") || (selection==selection_end) ){//Resets drop down list if end isn't defined or if start and end are the s
 		$('#end_dest').empty();
 	
-		$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>--Ending Station--</option>");
+		$('#end_dest').append("<option value='' disabled='disabled' selected='selected'>Ending at...</option>");
 		
 		
 		if($('.line1').is(":checked")) {
 			var linevalue1 = "mf";
+
 		}
 		else{
 			var linevalue1 = "bs";
@@ -1213,7 +1212,5 @@ $('.line1').switchButton({//initializes and configures subway line slider UI
   height: 15,
   button_width: 25
 });
-
-
 
 
