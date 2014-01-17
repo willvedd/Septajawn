@@ -518,6 +518,7 @@ function submit(){
     var start = start_sel.options[start_sel.selectedIndex].value;
     var end_sel = document.getElementById("end_dest");
     var end = end_sel.options[end_sel.selectedIndex].value;
+    
         
     routeInit(start,end,parseTime(time),parseDay());
 
@@ -1125,7 +1126,7 @@ function transferWindow(transfer_time_a,transfer_time_b){
         time = e.time.value;
 	});
  
- $('#timepicker').timepicker();//Following code is used to set time picker to current time
+	$('#timepicker').timepicker();//Following code is used to set time picker to current time
     var time = timepicker.value;
     var now = new Date();
     var hours = now.getHours();
@@ -1139,25 +1140,32 @@ function transferWindow(transfer_time_a,transfer_time_b){
     else{
 	    var meridian = "AM"
     };
- $('#timepicker').timepicker('setTime', hours+":"+minutes+" "+meridian);
-    
-
-
-
+     
 //-----------------------------------------------------------
 
 $('.line1').ready(function(){//Function that populates starting station list and other display functions
+	
+	var lineval1 = $('.line1');
+	
+	if(lineval1.is(":checked")) {
+		$('.station').addClass("mf").removeClass("bs");
+	}
+	else{
+		$('.station').addClass("bs").removeClass("mf");
+	};
+	
+	
 	$(".line1").change(function(){
 		$('.label2').toggleClass('blue');
-		$('.table').fadeOut("slow");
-
-		var lineval1 = $('.line1');
+		$('.table').fadeOut("slow");			
 		
 		if(lineval1.is(":checked")) {
 			var linevalue1 = "mf";
+			$('.station').addClass("mf").removeClass("bs");
 		}
 		else{
 			var linevalue1 = "bs";
+			$('.station').addClass("bs").removeClass("mf");
 		};
 		
 		$('#start_dest').empty();

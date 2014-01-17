@@ -35,53 +35,65 @@ body {
   background-color: #e4e4e4;
   color: #222222;
 }
-/* line 45, styles.scss */
+/* line 43, styles.scss */
+.times tr {
+  font-size: 1.1rem;
+}
+/* line 47, styles.scss */
 .times td {
   text-align: center;
   width: 50%;
-  border-color: #a0a0a0;
 }
-/* line 49, styles.scss */
-.times td .station {
-  font-size: 2rem;
+/* line 51, styles.scss */
+.times .station {
+  font-size: 1.4rem;
+  color: #e4e4e4;
+}
+/* line 55, styles.scss */
+.times .mf {
+  background-color: #0055a0 !important;
+}
+/* line 58, styles.scss */
+.times .bs {
+  background-color: #f15d30 !important;
 }
 
-/* line 54, styles.scss */
+/* line 62, styles.scss */
 .table-hide {
   display: none;
 }
 
-/* line 60, styles.scss */
+/* line 68, styles.scss */
 .switch-wrapper {
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
   width: 150px;
 }
-/* line 67, styles.scss */
+/* line 75, styles.scss */
 .switch-wrapper .switch-button-label {
   float: left;
   font-size: 1.5rem;
   cursor: pointer;
 }
-/* line 73, styles.scss */
+/* line 81, styles.scss */
 .switch-wrapper .switch-button-label.off {
   color: #adadad;
   opacity: .5;
 }
-/* line 78, styles.scss */
+/* line 86, styles.scss */
 .switch-wrapper .switch-button-label.on {
   color: #f15d30;
 }
-/* line 82, styles.scss */
+/* line 90, styles.scss */
 .switch-wrapper .blue {
   color: #0055a0 !important;
 }
-/* line 85, styles.scss */
+/* line 93, styles.scss */
 .switch-wrapper .orange {
   color: #f15d30 !important;
 }
-/* line 89, styles.scss */
+/* line 97, styles.scss */
 .switch-wrapper .switch-button-background {
   float: left;
   position: relative;
@@ -93,7 +105,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
-/* line 105, styles.scss */
+/* line 113, styles.scss */
 .switch-wrapper .switch-button-button {
   position: absolute;
   left: -1px;
@@ -105,44 +117,44 @@ body {
   border-radius: 8px;
 }
 
-/* line 120, styles.scss */
+/* line 128, styles.scss */
 .nav_bar {
   width: 100%;
   background-color: #dbdbdb;
   padding-top: 20px;
   padding-bottom: 15px;
 }
-/* line 126, styles.scss */
+/* line 134, styles.scss */
 .nav_bar .nav_bar_inner {
   position: relative;
 }
-/* line 131, styles.scss */
+/* line 136, styles.scss */
 .nav_bar .nav_bar_inner li {
   list-style: none;
   display: inline;
   padding-left: 40px;
   padding-right: 40px;
 }
-/* line 136, styles.scss */
-.nav_bar .nav_bar_inner li a {
-  color: #e4e4e4;
-}
-/* line 141, styles.scss */
+/* line 143, styles.scss */
 .nav_bar .branding {
-  font-size: 40px!important;
+  font-size: 2.5rem!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
 }
-/* line 145, styles.scss */
+/* line 147, styles.scss */
 .nav_bar .branding .septablue {
   color: #1f4fa3;
 }
-/* line 148, styles.scss */
+/* line 150, styles.scss */
 .nav_bar .branding .septared {
   color: #f14728;
 }
-
 /* line 154, styles.scss */
+.nav_bar .links {
+  color: #222222;
+}
+
+/* line 160, styles.scss */
 .wrapper {
   position: relative;
   top: 30%;
@@ -154,7 +166,7 @@ body {
   float: none;
 }
 
-/* line 164, styles.scss */
+/* line 170, styles.scss */
 .platter {
   background-image: url(../img/navy_blue.png);
   height: 100%;
@@ -162,22 +174,22 @@ body {
   border-radius: 5px;
   box-shadow: #222222 1px 5px 10px;
 }
-/* line 170, styles.scss */
+/* line 176, styles.scss */
 .platter select {
-  font-size: 20px;
+  font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 177, styles.scss */
+/* line 183, styles.scss */
 .platter #timepicker {
-  font-size: 20px;
+  font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 184, styles.scss */
+/* line 190, styles.scss */
 .platter .add-on {
   width: 40px;
   height: 40px;
@@ -185,7 +197,7 @@ body {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 191, styles.scss */
+/* line 197, styles.scss */
 .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -199,7 +211,7 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 204, styles.scss */
+/* line 210, styles.scss */
 .platter .submit {
   width: 100%;
   border: 0 none;
@@ -225,17 +237,17 @@ body {
   outline-style: none;
   color: #e4e4e4;
 }
-/* line 229, styles.scss */
+/* line 235, styles.scss */
 .platter .submit:hover {
   background: none repeat scroll 0 0 #af320c;
   color: #e4e4e4;
 }
-/* line 233, styles.scss */
+/* line 239, styles.scss */
 .platter .submit:active {
   margin-top: 11px;
   margin-bottom: 19px;
 }
-/* line 239, styles.scss */
+/* line 245, styles.scss */
 .platter .center {
   margin-right: auto;
   margin-left: auto;
