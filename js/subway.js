@@ -521,7 +521,7 @@ function submit(){
         
     routeInit(start,end,parseTime(time),parseDay());
 
-    $('#start_dest, #end_dest , #timepicker').change(function(){
+    $('#start_dest, #end_dest , #timepicker').change(function(){//After initial submission, script checks for changes and dynamically updates
 
     	var start_sel = document.getElementById("start_dest");
 	    var start = start_sel.options[start_sel.selectedIndex].value;
@@ -1146,9 +1146,10 @@ function transferWindow(transfer_time_a,transfer_time_b){
 
 //-----------------------------------------------------------
 
-$('.line1').ready(function(){//Function that populates starting station list
+$('.line1').ready(function(){//Function that populates starting station list and other display functions
 	$(".line1").change(function(){
 		$('.label2').toggleClass('blue');
+		$('.table').fadeOut("slow");
 
 		var lineval1 = $('.line1');
 		

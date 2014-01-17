@@ -35,48 +35,53 @@ body {
   background-color: #e4e4e4;
   color: #222222;
 }
-/* line 43, styles.scss */
+/* line 45, styles.scss */
 .times td {
   text-align: center;
   width: 50%;
   border-color: #a0a0a0;
 }
-/* line 47, styles.scss */
+/* line 49, styles.scss */
 .times td .station {
   font-size: 2rem;
 }
 
-/* line 55, styles.scss */
+/* line 54, styles.scss */
+.table-hide {
+  display: none;
+}
+
+/* line 60, styles.scss */
 .switch-wrapper {
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
   width: 150px;
 }
-/* line 62, styles.scss */
+/* line 67, styles.scss */
 .switch-wrapper .switch-button-label {
   float: left;
   font-size: 1.5rem;
   cursor: pointer;
 }
-/* line 68, styles.scss */
+/* line 73, styles.scss */
 .switch-wrapper .switch-button-label.off {
   color: #adadad;
   opacity: .5;
 }
-/* line 73, styles.scss */
+/* line 78, styles.scss */
 .switch-wrapper .switch-button-label.on {
   color: #f15d30;
 }
-/* line 77, styles.scss */
+/* line 82, styles.scss */
 .switch-wrapper .blue {
   color: #0055a0 !important;
 }
-/* line 80, styles.scss */
+/* line 85, styles.scss */
 .switch-wrapper .orange {
   color: #f15d30 !important;
 }
-/* line 84, styles.scss */
+/* line 89, styles.scss */
 .switch-wrapper .switch-button-background {
   float: left;
   position: relative;
@@ -88,7 +93,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
-/* line 100, styles.scss */
+/* line 105, styles.scss */
 .switch-wrapper .switch-button-button {
   position: absolute;
   left: -1px;
@@ -100,44 +105,44 @@ body {
   border-radius: 8px;
 }
 
-/* line 115, styles.scss */
+/* line 120, styles.scss */
 .nav_bar {
   width: 100%;
-  background-color: #b9b9b9;
+  background-color: #dbdbdb;
   padding-top: 20px;
   padding-bottom: 15px;
 }
-/* line 121, styles.scss */
+/* line 126, styles.scss */
 .nav_bar .nav_bar_inner {
   position: relative;
 }
-/* line 126, styles.scss */
+/* line 131, styles.scss */
 .nav_bar .nav_bar_inner li {
   list-style: none;
   display: inline;
   padding-left: 40px;
   padding-right: 40px;
 }
-/* line 131, styles.scss */
+/* line 136, styles.scss */
 .nav_bar .nav_bar_inner li a {
   color: #e4e4e4;
 }
-/* line 136, styles.scss */
+/* line 141, styles.scss */
 .nav_bar .branding {
   font-size: 40px!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
 }
-/* line 140, styles.scss */
+/* line 145, styles.scss */
 .nav_bar .branding .septablue {
   color: #1f4fa3;
 }
-/* line 143, styles.scss */
+/* line 148, styles.scss */
 .nav_bar .branding .septared {
   color: #f14728;
 }
 
-/* line 149, styles.scss */
+/* line 154, styles.scss */
 .wrapper {
   position: relative;
   top: 30%;
@@ -149,7 +154,7 @@ body {
   float: none;
 }
 
-/* line 159, styles.scss */
+/* line 164, styles.scss */
 .platter {
   background-image: url(../img/navy_blue.png);
   height: 100%;
@@ -157,14 +162,14 @@ body {
   border-radius: 5px;
   box-shadow: #222222 1px 5px 10px;
 }
-/* line 165, styles.scss */
+/* line 170, styles.scss */
 .platter select {
   font-size: 20px;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 172, styles.scss */
+/* line 177, styles.scss */
 .platter #timepicker {
   font-size: 20px;
   height: 40px;
@@ -172,7 +177,7 @@ body {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 179, styles.scss */
+/* line 184, styles.scss */
 .platter .add-on {
   width: 40px;
   height: 40px;
@@ -180,7 +185,7 @@ body {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 186, styles.scss */
+/* line 191, styles.scss */
 .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -194,7 +199,7 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 199, styles.scss */
+/* line 204, styles.scss */
 .platter .submit {
   width: 100%;
   border: 0 none;
@@ -220,17 +225,17 @@ body {
   outline-style: none;
   color: #e4e4e4;
 }
-/* line 224, styles.scss */
+/* line 229, styles.scss */
 .platter .submit:hover {
   background: none repeat scroll 0 0 #af320c;
   color: #e4e4e4;
 }
-/* line 228, styles.scss */
+/* line 233, styles.scss */
 .platter .submit:active {
   margin-top: 11px;
   margin-bottom: 19px;
 }
-/* line 234, styles.scss */
+/* line 239, styles.scss */
 .platter .center {
   margin-right: auto;
   margin-left: auto;

@@ -6,7 +6,7 @@ $septablue: #1f4fa3;
 $black:#222222;
 $orange:#F15D30;
 $gray: #A0A0A0;
-$nav: #B9B9B9;
+$nav: #DBDBDB;
 
 
 @font-face {
@@ -39,6 +39,8 @@ body{
     margin-top: 40px;
 	background-color: $white;
     color: $black;
+
+
 	
 	td{
 		text-align: center;
@@ -49,6 +51,9 @@ body{
 		}
 	}
 }
+.table-hide{
+        display: none;
+    }
 
 //Switch Button Styles
 
