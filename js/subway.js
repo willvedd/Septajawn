@@ -642,7 +642,10 @@ function parseDay(){
 //-----------------------------------------------------------
 
 function routeInit(start,end,time,day){ //Using form to get times
-	for(i=0; i < stations.length; i++){
+	
+	var len = stations.length;
+
+	for(i=0; i < len; i++){
 		if(stations[i].id == start){
 			var start_station = stations[i];
 		}
@@ -674,6 +677,9 @@ function route(start_station,end_station,day,time){
 	var cycles = 5;
 	var leave_time = new Array();
 	var arrive_time = new Array();
+	var
+
+
 	
 	if(start_station.order < end_station.order){//southbound
 		if(day === "wk"){//weekday southbound scheduling
