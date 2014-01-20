@@ -644,11 +644,9 @@ function parseDay(){
 function routeInit(start,end,time,day){ //Using form to get times
 	for(i=0; i < stations.length; i++){
 		if(stations[i].id == start){
-			console.log("Starting from: "+stations[i].name);
 			var start_station = stations[i];
 		}
 		else if(stations[i].id == end){
-			console.log("Ending at: "+stations[i].name);
 			var end_station = stations[i];
 		};
 	};
@@ -661,54 +659,52 @@ if(start_station.line != end_station.line){
 		route2(start_station,end_station,day,time);
 	};
 */
-	route2(start_station,end_station,day,time);
+	route(start_station,end_station,day,time);
 };
 
 //-----------------------------------------------------------
 
-function route2(start_station,end_station,day,time){
+function route(start_station,end_station,day,time){
 	
-	$('.transfer_station').remove();
-	$('.transfer1').remove();
-	$('.transfer2').remove();
-	$('.transfer3').remove();
+	// $('.transfer_station').remove();
+	// $('.transfer1').remove();
+	// $('.transfer2').remove();
+	// $('.transfer3').remove();
+
+	var cycles = 5;
+	var leave_time = new Array();
+	var arrive_time = new Array();
 	
 	if(start_station.order < end_station.order){//southbound
 		if(day === "wk"){//weekday southbound scheduling
 			for(i=0; i < start_station.sched_wk_sb.length; i++){
 				if(start_station.sched_wk_sb[i] > time){
-					var leave_time1 = start_station.sched_wk_sb[i];
-					var leave_time2 = start_station.sched_wk_sb[i+1];
-					var leave_time3 = start_station.sched_wk_sb[i+2];
-					var arrive_time1 = end_station.sched_wk_sb[i];
-					var arrive_time2 = end_station.sched_wk_sb[i+1];
-					var arrive_time3 = end_station.sched_wk_sb[i+2];
-					break;
+					 for(var k=0; k<cycles; k++){
+					 	leave_time[k] = start_station.sched_wk_sb[i+k];
+					 	arrive_time[k] = end_station.sched_wk_sb[i+k];
+					 };
+				break;
 				};//endif
 			};//endfor
 		}//endif
 		else if(day === "sat"){//saturday southbound scheduling
 			for(i=0; i < start_station.sched_sat_sb.length; i++){
 				if(start_station.sched_sat[i] > time){
-					var leave_time1 = start_station.sched_sat_sb[i];
-					var leave_time2 = start_station.sched_sat_sb[i+1];
-					var leave_time3 = start_station.sched_sat_sb[i+2];
-					var arrive_time1 = end_station.sched_sat_sb[i];
-					var arrive_time2 = end_station.sched_sat_sb[i+1];
-					var arrive_time3 = end_station.sched_sat_sb[i+2];
-					break;
+					for(var k=0; k<cycles; k++){
+						leave_time[k] = start_station.sched_sat_sb[i+k];
+						arrive_time[k] = end_station.sched_sat_sb[i+k];
+					}
+					break;	
 				};
 			};
 		}
 		else {//sunday southbound scheduling
 			for(i=0; i < start_station.sched_sun_sb.length; i++){
 				if(start_station.sched_sun_sb[i] > time){
-					var leave_time1 = start_station.sched_sun_sb[i];
-					var leave_time2 = start_station.sched_sun_sb[i+1];
-					var leave_time3 = start_station.sched_sun_sb[i+2];
-					var arrive_time1 = end_station.sched_sun_sb[i];
-					var arrive_time2 = end_station.sched_sun_sb[i+1];
-					var arrive_time3 = end_station.sched_sun_sb[i+2];
+					for(var k=0; k<cycles; k++){
+						leave_time[k] = start_station.sched_sun_sb[i+k];
+						arrive_time[k] = end_station.sched_sun_sb[i+k];
+					}
 					break;
 				};
 			};
@@ -718,12 +714,10 @@ function route2(start_station,end_station,day,time){
 		if(day === "wk"){//weekday northbound scheduling
 			for(i=0; i < start_station.sched_wk_nb.length; i++){
 				if(start_station.sched_wk_nb[i] > time){
-					var leave_time1 = start_station.sched_wk_nb[i];
-					var leave_time2 = start_station.sched_wk_nb[i+1];
-					var leave_time3 = start_station.sched_wk_nb[i+2];
-					var arrive_time1 = end_station.sched_wk_nb[i];
-					var arrive_time2 = end_station.sched_wk_nb[i+1];
-					var arrive_time3 = end_station.sched_wk_nb[i+2];
+					for(var k=0; k<cycles; k++){
+						leave_time[k] = start_station.sched_wk_nb[i+k];
+						arrive_time[k] = end_station.sched_wk_nb[i+k];
+					}
 					break;
 				};//endif
 			};//endfor
@@ -731,13 +725,10 @@ function route2(start_station,end_station,day,time){
 		else if(day === "sat"){//saturday northbound scheduling
 			for(i=0; i < start_station.sched_sat_nb.length; i++){
 				if(start_station.sched_sat[i] > time){
-					
-					var leave_time1 = start_station.sched_sat_nb[i];
-					var leave_time2 = start_station.sched_sat_nb[i+1];
-					var leave_time3 = start_station.sched_sat_nb[i+2];
-					var arrive_time1 = end_station.sched_sat_nb[i];
-					var arrive_time2 = end_station.sched_sat_nb[i+1];
-					var arrive_time3 = end_station.sched_sat_nb[i+2];
+					for(var k=0; k<cycles; k++){
+						leave_time[k] = start_station.sched_sat_nb[i+k];
+						arrive_time[k] = end_station.sched_sat_nb[i+k];
+					}
 					break;
 				};
 			};
@@ -745,369 +736,45 @@ function route2(start_station,end_station,day,time){
 		else {//sunday northbound scheduling
 			for(i=0; i < start_station.sched_sun_nb.length; i++){
 				if(start_station.sched_sun_nb[i] > time){
-					var leave_time1 = start_station.sched_sun_nb[i];
-					var leave_time2 = start_station.sched_sun_nb[i+1];
-					var leave_time3 = start_station.sched_sun_nb[i+2];
-					var arrive_time1 = end_station.sched_sun_nb[i];
-					var arrive_time2 = end_station.sched_sun_nb[i+1];
-					var arrive_time3 = end_station.sched_sun_nb[i+2];
+					for(var k=0; k<cycles; k++){
+						leave_time[k] = start_station.sched_sun_nb[i+k];
+						arrive_time[k] = end_station.sched_sun_nb[i+k];
+					}
 					break;
 				};
 			};
 		};				
 	};
 	
-	if((leave_time1 || arrive_time1) == undefined){
-		leave_time1 = "X";
-		arrive_time1 = "X";
-	}
-	if((leave_time2 || arrive_time2) == undefined){
-		leave_time2 = "X";
-		arrive_time2 = "X";
-	}
-	if((leave_time3 || arrive_time3) == undefined){
-		leave_time3 = "X";
-		arrive_time3 = "X";
-	}
-	
-	render2(start_station,end_station,leave_time1,leave_time2,leave_time3,arrive_time1,arrive_time2,arrive_time3);	
-	
-};
-
-//-----------------------------------------------------------
-
-/*
-function route3(start_station,end_station,day,time){
-	
-	if(start_station.line == "bs"){
-		var transfer_station = city_hall;
-		var transfer_station2 = fif;
-	}
-	else{
-		var transfer_station = fif;
-		var transfer_station2 = city_hall;
-	};//Setting appropriate transfer stations
-	
-	if(start_station.order < 0){//Iniital southbound trip
-		if(day === "wk"){
-			for(i=0; i < start_station.sched_wk_sb.length; i++){
-				if(start_station.sched_wk_sb[i] > time){
-					var leave_time1 = start_station.sched_wk_sb[i];
-					var leave_time2 = start_station.sched_wk_sb[i+1];
-					var leave_time3 = start_station.sched_wk_sb[i+2];
-					var transfer_time1a = transfer_station.sched_wk_sb[i];
-					var transfer_time2a = transfer_station.sched_wk_sb[i+1];
-					var transfer_time3a = transfer_station.sched_wk_sb[i+2];
-					break;
-				};	
-			};
-			
-			if(0 < end_station.order){
-				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
-					if(transfer_station2.sched_wk_nb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						
-						var arrive_time1 = end_station.sched_wk_sb[i];
-						var arrive_time2 = end_station.sched_wk_sb[i+1];
-						var arrive_time3 = end_station.sched_wk_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
-					if(transfer_station2.sched_wk_nb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						
-						var arrive_time1 = end_station.sched_wk_nb[i];
-						var arrive_time2 = end_station.sched_wk_nb[i+1];
-						var arrive_time3 = end_station.sched_wk_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-		}
-		else if (day ==="sat"){
-			for(i=0; i < start_station.sched_sat_sb.length; i++){
-				if(start_station.sched_sat_sb[i] > time){
-					var leave_time1 = start_station.sched_sat_sb[i];
-					var leave_time2 = start_station.sched_sat_sb[i+1];
-					var leave_time3 = start_station.sched_sat_sb[i+2];
-					var transfer_time1 = transfer_station.sched_sat_sb[i];
-					var transfer_time2 = transfer_station.sched_sat_sb[i+1];
-					var transfer_time3 = transfer_station.sched_sat_sb[i+2];
-					break;
-				};
-			};
-			
-			if(0 < end_station.order){
-				for(i=0; i < transfer_station2.sched_sat_sb.length; i++){
-					if(transfer_station2.sched_sat_sb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sat_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_sat_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						
-						var arrive_time1 = end_station.sched_sat_sb[i];
-						var arrive_time2 = end_station.sched_sat_sb[i+1];
-						var arrive_time3 = end_station.sched_sat_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
-					if(transfer_station2.sched_sat_nb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						
-						var arrive_time1 = end_station.sched_sat_nb[i];
-						var arrive_time2 = end_station.sched_sat_nb[i+1];
-						var arrive_time3 = end_station.sched_sat_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-			
-		}
-		else{
-			for(i=0; i < start_station.sched_sun_sb.length; i++){
-				if(start_station.sched_sun_nb[i] > time){
-					var leave_time1 = start_station.sched_sun_nb[i];
-					var leave_time2 = start_station.sched_sun_nb[i+1];
-					var leave_time3 = start_station.sched_sun_nb[i+2];
-					var transfer_time1 = transfer_station.sched_sun_nb[i];
-					var transfer_time2 = transfer_station.sched_sun_nb[i+1];
-					var transfer_time3 = transfer_station.sched_sun_nb[i+2];
-					break;
-				};
-			};
-			if(0 < end_station.order){
-				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
-					if(transfer_station2.sched_sun_sb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						
-						var arrive_time1 = end_station.sched_sun_sb[i];
-						var arrive_time2 = end_station.sched_sun_sb[i+1];
-						var arrive_time3 = end_station.sched_sun_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_sun_nb.length; i++){
-					if(transfer_station2.sched_sun_nb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sun_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_sun_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_nb[i+2];						
-						var arrive_time1 = end_station.sched_sun_nb[i];
-						var arrive_time2 = end_station.sched_sun_nb[i+1];
-						var arrive_time3 = end_station.sched_sun_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
+	for(var i=0; i < leave_time.length; i++){//Validates times, removes undefined values
+		if (leave_time[i] == undefined) {
+			leave_time.splice(i,(leave_time.length-i));
+			arrive_time.splice(i,(arrive_time.length-i));
 		};
-	}
-	
-	
-	
-	
-	else{//Initial northbound trip
-		if(day === "wk"){
-			for(i=0; i < start_station.sched_wk_nb.length; i++){
-				if(start_station.sched_wk_nb[i] > time){
-					var leave_time1 = start_station.sched_wk_nb[i];
-					var leave_time2 = start_station.sched_wk_nb[i+1];
-					var leave_time3 = start_station.sched_wk_nb[i+2];
-					var transfer_time1a = transfer_station.sched_wk_nb[i];
-					var transfer_time2a = transfer_station.sched_wk_nb[i+1];
-					var transfer_time3a = transfer_station.sched_wk_nb[i+2];
-					break;
-				};
-			};
-			if(0 < end_station.order){
-				for(i=0; i < transfer_station2.sched_wk_sb.length; i++){
-					if(transfer_station2.sched_wk_sb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_wk_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_sb[i+2];						
-						var arrive_time1 = end_station.sched_wk_sb[i];
-						var arrive_time2 = end_station.sched_wk_sb[i+1];
-						var arrive_time3 = end_station.sched_wk_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_wk_nb.length; i++){
-					if(transfer_station2.sched_wk_nb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_wk_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_wk_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_wk_nb[i+2];						
-						var arrive_time1 = end_station.sched_wk_nb[i];
-						var arrive_time2 = end_station.sched_wk_nb[i+1];
-						var arrive_time3 = end_station.sched_wk_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-		}
-		else if (day === "sat"){
-			for(i=0; i < start_station.sched_sat_nb.length; i++){
-				if(start_station.sched_sat_nb[i] > time){
-					var leave_time1 = start_station.sched_sat_nb[i];
-					var leave_time2 = start_station.sched_sat_nb[i+1];
-					var leave_time3 = start_station.sched_sat_nb[i+2];
-					var transfer_time1 = transfer_station.sched_sat_nb[i];
-					var transfer_time2 = transfer_station.sched_sat_nb[i+1];
-					var transfer_time3 = transfer_station.sched_sat_nb[i+2];
-					break;
-				};
-			};
-			
-			if(0 < end_station.order){
-				for(i=0; i < transfer_station2.sched_sat_sb.length; i++){
-					if(transfer_station2.sched_sat_sb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sat_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_sat_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_sb[i+2];						
-						var arrive_time1 = end_station.sched_sat_sb[i];
-						var arrive_time2 = end_station.sched_sat_sb[i+1];
-						var arrive_time3 = end_station.sched_sat_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_sat_nb.length; i++){
-					if(transfer_station2.sched_sat_nb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sat_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_sat_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_sat_nb[i+2];						
-						var arrive_time1 = end_station.sched_sat_nb[i];
-						var arrive_time2 = end_station.sched_sat_nb[i+1];
-						var arrive_time3 = end_station.sched_sat_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-		}
-		else{
-			for(i=0; i < start_station.sched_sun_nb.length; i++){
-				if(start_station.sched_sun_nb[i] > time){
-					var leave_time1 = start_station.sched_wk_nb[i];
-					var leave_time2 = start_station.sched_wk_nb[i+1];
-					var leave_time3 = start_station.sched_wk_nb[i+2];
-					var transfer_time1 = transfer_station.sched_wk_nb[i];
-					var transfer_time2 = transfer_station.sched_wk_nb[i+1];
-					var transfer_time3 = transfer_station.sched_wk_nb[i+2];
-					break;
-				};
-			};
-			
-			if(0 < end_station.order){
-				for(i=0; i < transfer_station2.sched_sun_sb.length; i++){
-					if(transfer_station2.sched_sun_sb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sun_sb[i]; 
-						var transfer_time2b = transfer_station2.sched_sun_sb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_sb[i+2];						
-						var arrive_time1 = end_station.sched_sun_sb[i];
-						var arrive_time2 = end_station.sched_sun_sb[i+1];
-						var arrive_time3 = end_station.sched_sun_sb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}//End of transfer if
-			
-			else{
-				for(i=0; i < transfer_station2.sched_sun_nb.length; i++){
-					if(transfer_station2.sched_sun_nb[i] > transfer_time1a){
-						var transfer_time1b = transfer_station2.sched_sun_nb[i]; 
-						var transfer_time2b = transfer_station2.sched_sun_nb[i+1];
-						var transfer_time3b = transfer_station2.sched_sun_nb[i+2];						
-						var arrive_time1 = end_station.sched_sun_nb[i];
-						var arrive_time2 = end_station.sched_sun_nb[i+1];
-						var arrive_time3 = end_station.sched_sun_nb[i+2];
-						break;
-					};
-				};//End of transfer for
-			}; //end of transfer if
-		};
+		break;
 	};
-						
-				render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,transfer_time1b,transfer_time2b,transfer_time3b,arrive_time1,arrive_time2,arrive_time3);	
+	
+	render(start_station,end_station,leave_time,arrive_time,cycles);	
 	
 };
-*/
-
 
 //-----------------------------------------------------------
 
-function render2(start_station,end_station,leave_time1,leave_time2,leave_time3,arrive_time1,arrive_time2,arrive_time3){
-	
-	$('.start_station').empty();
-	$('.start_station').append(start_station.name);
-	$('.end_station').empty();
-	$('.end_station').append(end_station.name);
-	$('.start1').empty();
-	$('.start1').append(timeformat(leave_time1));
-	$('.start2').empty();	
-	$('.start2').append(timeformat(leave_time2));
-	$('.start3').empty();
-	$('.start3').append(timeformat(leave_time3));
-	$('.end1').empty();
-	$('.end1').append(timeformat(arrive_time1));
-	$('.end2').empty();
-	$('.end2').append(timeformat(arrive_time2));
-	$('.end3').empty();
-	$('.end3').append(timeformat(arrive_time3));
+function render(start_station,end_station,leave_time,arrive_time,cycles){
+	$('.times_row').remove();//Prevents empty/ghosted <tr> from being left in the markup
+	$('.start_station').empty().append(start_station.name);
+	$('.end_station').empty().append(end_station.name);
+	$('.times_row').empty();
+
+	for(var i=0; i<cycles; i++){
+		$(".times").find('tbody').append($('<tr class="times_row">').append($('<td class="start'+i+'">')));
+		$(".times tr:last").append($('<td class="end'+i+'">'));
+		$('.start'+i).empty().append(timeformat(leave_time[i]));
+		$('.end'+i).empty().append(timeformat(arrive_time[i]));
+	}
+
 	$('.table').fadeIn("slow");
 };
-
-
-//-----------------------------------------------------------
-
-/*
-function render3(start_station,end_station,transfer_station,leave_time1,leave_time2,leave_time3,transfer_time1a,transfer_time2a,transfer_time3a,transfer_time1b,transfer_time2b,transfer_time3b,arrive_time1,arrive_time2,arrive_time3){
-
-	$('.start_station').empty();
-	$('.start_station').append(start_station.name);
-	$('.transfer_station').remove();
-	$('.start_station').after('<td class="transfer_station">'+transfer_station.name+' (Transfer) </td>');
-	$('.end_station').empty();
-	$('.end_station').append(end_station.name);
-	$('.start1').empty();
-	$('.start1').append(timeformat(leave_time1));
-	$('.transfer1').remove();
-	$('.start1').after('<td class="transfer1">'+transferWindow(transfer_time1a,transfer_time1b)+' Mins </td>');
-	$('.start2').empty();	
-	$('.start2').append(timeformat(leave_time2));
-	$('.transfer2').remove();
-	$('.start2').after('<td class="transfer2">'+transferWindow(transfer_time2a,transfer_time2b)+' Mins </td>');
-	$('.start3').empty();
-	$('.start3').append(timeformat(leave_time3));
-	$('.transfer3').remove();
-	$('.start3').after('<td class="transfer3">'+transferWindow(transfer_time3a,transfer_time3b)+' Mins </td>');
-	$('.end1').empty();
-	$('.end1').append(timeformat(arrive_time1));
-	$('.end2').empty();
-	$('.end2').append(timeformat(arrive_time2));
-	$('.end3').empty();
-	$('.end3').append(timeformat(arrive_time3));
-	$('.table').fadeIn("slow");
-	
-	console.log("Transfer window: "+transferWindow(transfer_time1a,transfer_time1b));
-	console.log("Transfer A: "+transfer_time1a);
-	console.log("Transfer B: "+transfer_time1b);
-};
-*/
 
 //-----------------------------------------------------------
 
@@ -1122,24 +789,26 @@ function transferWindow(transfer_time_a,transfer_time_b){
 };
 
 //-----------------------------------------------------------
-	$('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
-        time = e.time.value;
-	});
- 
-	$('#timepicker').timepicker();//Following code is used to set time picker to current time
-    var time = timepicker.value;
-    var now = new Date();
-    var hours = now.getHours();
-    var minutes = now.getMinutes(); 
-    if(hours > 11){
-	    var meridian = "PM";
-	    if(hours != 12){
-	    	var hours = hours - 12;
-	    };
-    }
-    else{
-	    var meridian = "AM"
-    };
+$('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
+	time = e.time.value;
+});
+
+var time = timepicker.value;
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes(); 
+if(hours > 11){
+        var meridian = "PM";
+        if(hours != 12){
+                var hours = hours - 12;
+        };
+}
+else{
+        var meridian = "AM"
+};
+
+$('#timepicker').timepicker('setTime', hours+":"+minutes+" "+meridian);
+    
      
 //-----------------------------------------------------------
 
@@ -1154,18 +823,24 @@ $('.line1').ready(function(){//Function that populates starting station list and
 		$('.station').addClass("bs").removeClass("mf");
 	};
 	
-	
 	$(".line1").change(function(){
 		$('.label2').toggleClass('blue');
 		$('.table').fadeOut("slow");			
 		
 		if(lineval1.is(":checked")) {
+			
 			var linevalue1 = "mf";
-			$('.station').addClass("mf").removeClass("bs");
+			setTimeout(color_delay,500);//This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
+			function color_delay(){
+				$('.station').addClass("mf").removeClass("bs")
+			}
 		}
 		else{
 			var linevalue1 = "bs";
-			$('.station').addClass("bs").removeClass("mf");
+			setTimeout(color_delay2,500);//This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
+			function color_delay2(){
+				$('.station').addClass("bs").removeClass("mf")
+			}
 		};
 		
 		$('#start_dest').empty();

@@ -7,6 +7,7 @@ $black:#222222;
 $orange:#F15D30;
 $gray: #A0A0A0;
 $nav: #DBDBDB;
+$green: #59A75C;
 
 
 @font-face {
@@ -227,18 +228,17 @@ body{
         -moz-transition: all 0.3s ease 0s;
         -webkit-transition: all 0.3s ease 0s;
         text-align: center; /* DELETE WHEN WIDTH AUTO */
-        background: none repeat scroll 0 0 $orange;
+        background: none repeat scroll 0 0 $green;
         outline-color: transparent;
         outline-style: none;
 
         color: $white;
             &:hover {
-              background: none repeat scroll 0 0 darken($orange,20%);
+              background: none repeat scroll 0 0 darken($green,10%);
               color: $white;
             }
             &:active{
-                margin-top: 11px;
-                margin-bottom: 19px;
+                background-color: darken($green, 15%);
             }
         }
 
