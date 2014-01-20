@@ -677,7 +677,6 @@ function route(start_station,end_station,day,time){
 	var cycles = 5;
 	var leave_time = new Array();
 	var arrive_time = new Array();
-	var
 
 
 	
