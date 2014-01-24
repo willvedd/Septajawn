@@ -609,7 +609,6 @@ var stations = [fern,olney,logan,wyoming,hunt_park,erie,allegh,nphilly,susque,ce
 
 
 function submit(){
-
     var start_sel = document.getElementById("start_dest");
     var start = start_sel.options[start_sel.selectedIndex].value;
     var end_sel = document.getElementById("end_dest");
@@ -628,6 +627,10 @@ function submit(){
 	    routeInit(start,end,parseTime(time),parseDay());
     });
 };
+
+$('#end_dest').change(function(){
+	submit();
+});
 
 //-----------------------------------------------------------
 
