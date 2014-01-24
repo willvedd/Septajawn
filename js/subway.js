@@ -628,9 +628,9 @@ function submit(){
     });
 };
 
-$('#end_dest').change(function(){
-	submit();
-});
+// $('#end_dest').change(function(){//This snippet can be used if submit button used. UX decision, keep submit button or ditch it?
+// 	submit();
+// });
 
 //-----------------------------------------------------------
 
@@ -994,7 +994,7 @@ $('#start_dest').change(function(){//Function sees start destination and removes
 //-----------------------------------------------------------
 
 $('.line1').switchButton({//initializes and configures subway line slider UI
-  on_label: 'MF',
+  on_label: 'MFL',
   off_label: 'BSL',
   width: 40,
   height: 15,
