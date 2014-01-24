@@ -116,8 +116,8 @@ var cecil = {
 	sched_sat_sb: schedule(susque.sched_sat_sb,1),
 	sched_sun_sb: schedule(susque.sched_sun_sb,1),
 	sched_wk_nb: schedule(susque.sched_wk_nb,-2),
-	sched_wk_nb: schedule(susque.sched_sat_nb,-2),
-	sched_wk_nb: schedule(susque.sched_sun_nb,-2),
+	sched_sat_nb: schedule(susque.sched_sat_nb,-2),
+	sched_sun_nb: schedule(susque.sched_sun_nb,-2),
 };
 var girard = {
 	line: "bs",

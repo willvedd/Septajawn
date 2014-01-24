@@ -164,9 +164,10 @@ body {
   margin-left: auto;
   margin-right: auto;
   float: none;
+  max-width: 940px;
 }
 
-/* line 171, styles.scss */
+/* line 172, styles.scss */
 .platter {
   background-image: url(../img/navy_blue.png);
   height: 100%;
@@ -174,14 +175,14 @@ body {
   border-radius: 5px;
   box-shadow: #222222 1px 5px 10px;
 }
-/* line 177, styles.scss */
+/* line 178, styles.scss */
 .platter select {
   font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 184, styles.scss */
+/* line 185, styles.scss */
 .platter #timepicker {
   font-size: 1.1rem;
   height: 40px;
@@ -189,7 +190,7 @@ body {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 191, styles.scss */
+/* line 192, styles.scss */
 .platter .add-on {
   width: 40px;
   height: 40px;
@@ -197,7 +198,7 @@ body {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 198, styles.scss */
+/* line 199, styles.scss */
 .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -211,7 +212,7 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 211, styles.scss */
+/* line 212, styles.scss */
 .platter .submit {
   width: 100%;
   border: 0 none;
@@ -237,16 +238,16 @@ body {
   outline-style: none;
   color: #e4e4e4;
 }
-/* line 236, styles.scss */
+/* line 237, styles.scss */
 .platter .submit:hover {
   background: none repeat scroll 0 0 #478649;
   color: #e4e4e4;
 }
-/* line 240, styles.scss */
+/* line 241, styles.scss */
 .platter .submit:active {
   background-color: #3e7540;
 }
-/* line 245, styles.scss */
+/* line 246, styles.scss */
 .platter .center {
   margin-right: auto;
   margin-left: auto;
