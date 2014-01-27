@@ -1,4 +1,7 @@
 //Broad Street Line
+window.performance.mark('mark_start_schedule'); 
+	
+
 var fern = {
 	line: "bs",
 	order: -14,
@@ -601,6 +604,14 @@ var sixtynine = {
 	sched_sun_nb: schedule(milb.sched_sun_nb,-1),
 };
 
+window.performance.mark('mark_end_schedule');
+	performance.measure("Schedule", "mark_start_schedule", "mark_end_schedule");
+	perfMeasures = performance.getEntriesByType("measure");
+	for (i = 0; i < perfMeasures.length; i++) {
+	    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
+	};
+
+
 //-----------------------------------------------------------
 
 var stations = [fern,olney,logan,wyoming,hunt_park,erie,allegh,nphilly,susque,cecil,girard,fairmount,spring,race,city_hall,walnut,lombard,ellsworth,tasker,snyder,oregon,att,frank,marg,church,eriet,tioga,alleghmf,somer,hunt,york,berks,girardmf,springmf,second,fifth,eight,elev,thirteen,fif,thirty,thirtyfour,fourty,fourtysix,fiftytwo,fiftysix,sixty,sixtythree,milb,sixtynine];//Setting array of stations
@@ -614,8 +625,16 @@ function submit(){
     var end_sel = document.getElementById("end_dest");
     var end = end_sel.options[end_sel.selectedIndex].value;
     
-        
+    window.performance.mark('mark_start_init');    
     routeInit(start,end,parseTime(time),parseDay());
+    
+	window.performance.mark('mark_end_init');
+	performance.measure("routeInit", "mark_start_init", "mark_end_init");
+		
+	
+	
+
+
 
     $('#start_dest, #end_dest , #timepicker').change(function(){//After initial submission, script checks for changes and dynamically updates
 
@@ -623,18 +642,23 @@ function submit(){
 	    var start = start_sel.options[start_sel.selectedIndex].value;
 	    var end_sel = document.getElementById("end_dest");
 	    var end = end_sel.options[end_sel.selectedIndex].value;
-	        
-	    routeInit(start,end,parseTime(time),parseDay());
+	    
+	    if((start_sel!=undefined)&&(end_sel!=undefined)){
+	    	routeInit(start,end,parseTime(time),parseDay());//Prevents console errors from undefined select variables
+	    }    
     });
 };
 
-// $('#end_dest').change(function(){//This snippet can be used if submit button used. UX decision, keep submit button or ditch it?
+// $('#end_dest').change(function(){//This snippet can be used if submit button isn't used. UX decision, keep submit button or ditch it?
 // 	submit();
 // });
 
 //-----------------------------------------------------------
 
 function schedule(prev_station,diff){//sets schedules for all stations except fern rock
+	
+	
+
 	var schedule = new Array();
 	
 	if(diff>0){	//for southbound and westbound schedules, positive difference
@@ -661,6 +685,7 @@ function schedule(prev_station,diff){//sets schedules for all stations except fe
 			schedule[i] = round(schedule[i]);
 		};
 	}
+
 	return schedule;
 };
 
@@ -721,6 +746,10 @@ function timeformat(time){//formats time from a double into hh:mm
 //-----------------------------------------------------------
 
 function parseDay(){
+	
+window.performance.mark('mark_start_parseday');
+
+
 	var day = Date().split(" "); //Gets day of the week
 	
 	console.log(day[0]);
@@ -736,6 +765,11 @@ function parseDay(){
 	else{
 		return "wk";
 	}
+
+	window.performance.mark('mark_end_parseday');
+	performance.measure("Parse_Day", "mark_start_parseday", "mark_end_parseday");
+
+
 };
 
 //-----------------------------------------------------------
@@ -762,12 +796,16 @@ if(start_station.line != end_station.line){
 	};
 */
 	route(start_station,end_station,day,time);
+
+
 };
 
 //-----------------------------------------------------------
 
 function route(start_station,end_station,day,time){
 	
+	window.performance.mark('mark_start_route');
+
 	// $('.transfer_station').remove();
 	// $('.transfer1').remove();
 	// $('.transfer2').remove();
@@ -777,8 +815,6 @@ function route(start_station,end_station,day,time){
 	var leave_time = new Array();
 	var arrive_time = new Array();
 
-
-	
 	if(start_station.order < end_station.order){//southbound
 		if(day === "wk"){//weekday southbound scheduling
 			for(i=0; i < start_station.sched_wk_sb.length; i++){
@@ -858,26 +894,54 @@ function route(start_station,end_station,day,time){
 		break;
 	};
 	
+	window.performance.mark('mark_end_route');
+	performance.measure("Route", "mark_start_route", "mark_end_route");
+	
+	
 	render(start_station,end_station,leave_time,arrive_time,cycles);	
 	
+
+	
+
+	
+
 };
 
 //-----------------------------------------------------------
 
 function render(start_station,end_station,leave_time,arrive_time,cycles){
+	window.performance.mark('mark_start_render');
+	window.performance.mark('mark_start_emptytable');
+
 	$('.times_row').remove();//Prevents empty/ghosted <tr> from being left in the markup
 	$('.start_station').empty().append(start_station.name);
 	$('.end_station').empty().append(end_station.name);
 	$('.times_row').empty();
+	window.performance.mark('mark_end_emptytable');
 
+	window.performance.mark('mark_start_populatetable');
 	for(var i=0; i<cycles; i++){
 		$(".times").find('tbody').append($('<tr class="times_row">').append($('<td class="start'+i+'">')));
 		$(".times tr:last").append($('<td class="end'+i+'">'));
 		$('.start'+i).empty().append(timeformat(leave_time[i]));
 		$('.end'+i).empty().append(timeformat(arrive_time[i]));
 	}
+	window.performance.mark('mark_end_populatetable');
 
+	window.performance.mark('mark_start_fadeIn');
 	$('.table').fadeIn("slow");
+	window.performance.mark('mark_end_fadeIn');
+	window.performance.mark('mark_end_render');
+	
+	performance.measure("Empty_Table", "mark_start_emptytable", "mark_end_emptytable");
+	performance.measure("Populate_Table", "mark_start_populatetable", "mark_end_populatetable");
+	performance.measure("FadeIn", "mark_start_fadeIn", "mark_end_fadeIn");
+	performance.measure("Render", "mark_start_render", "mark_end_render");
+	perfMeasures = performance.getEntriesByType("measure");
+	for (i = 0; i < perfMeasures.length; i++) {
+	    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
+	};
+
 };
 
 //-----------------------------------------------------------
@@ -918,6 +982,8 @@ $('#timepicker').timepicker('setTime', hours+":"+minutes+" "+meridian);
 
 $('.line1').ready(function(){//Function that populates starting station list and other display functions
 	
+	window.performance.mark('mark_start_lineswitch');
+
 	var lineval1 = $('.line1');
 	
 	if(lineval1.is(":checked")) {
@@ -959,6 +1025,9 @@ $('.line1').ready(function(){//Function that populates starting station list and
   			}
   		}
 	});
+
+	window.performance.mark('mark_end_lineswitch');
+	performance.measure("Line_Switch", "mark_start_lineswitch", "mark_end_lineswitch");
 });
 
 //-----------------------------------------------------------
@@ -1000,5 +1069,7 @@ $('.line1').switchButton({//initializes and configures subway line slider UI
   height: 15,
   button_width: 25
 });
+//-----------------------------------------------------------
+
 
 
