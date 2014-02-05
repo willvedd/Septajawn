@@ -168,46 +168,46 @@ body{
     margin-right:auto;
     float: none;
     max-width: 940px
-}
-.platter{
-    background-image: url(../img/navy_blue.png);
-    height: 100%;
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: $black 1px 5px 10px;
-    select{
-        font-size: 1.1rem;
-        height: 40px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+    .platter{
+        background-image: url(../img/navy_blue.png);
+        height: 100%;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: $black 1px 5px 10px;
+        select{
+            font-size: 1.1rem;
+            height: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
 
+        }
+        #timepicker{
+            font-size: 1.1rem;
+            height: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 0 10px;
+        }
+        .add-on{
+            width: 40px;
+            height: 40px;
+            margin-top: 20px;
+            margin-bottom: 20px;  
+            padding: 0;
+        }
+        .clk{
+            vertical-align: text-top;
+            background-image: url("../img/clk.png");
+            background-repeat: no-repeat;
+            display: inline-block;
+            height: 24px!important;
+            width: 25px!important;
+            position: relative;
+            top: 45%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
     }
-    #timepicker{
-        font-size: 1.1rem;
-        height: 40px;
-        margin-top: 20px;
-        margin-bottom: 20px;
-        padding: 0 10px;
-    }
-    .add-on{
-        width: 40px;
-        height: 40px;
-        margin-top: 20px;
-        margin-bottom: 20px;  
-        padding: 0;
-    }
-    .clk{
-        vertical-align: text-top;
-        background-image: url("../img/clk.png");
-        background-repeat: no-repeat;
-        display: inline-block;
-        height: 24px!important;
-        width: 25px!important;
-        position: relative;
-        top: 45%;
-        -webkit-transform: translateY(-50%);
-        -ms-transform: translateY(-50%);
-        transform: translateY(-50%);
 }
     .submit{
         width: 100%;

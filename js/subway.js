@@ -630,11 +630,6 @@ function submit(){
     
 	window.performance.mark('mark_end_init');
 	performance.measure("routeInit", "mark_start_init", "mark_end_init");
-		
-	
-	
-
-
 
     $('#start_dest, #end_dest , #timepicker').change(function(){//After initial submission, script checks for changes and dynamically updates
 
@@ -656,8 +651,6 @@ function submit(){
 //-----------------------------------------------------------
 
 function schedule(prev_station,diff){//sets schedules for all stations except fern rock
-	
-	
 
 	var schedule = new Array();
 	
@@ -685,7 +678,6 @@ function schedule(prev_station,diff){//sets schedules for all stations except fe
 			schedule[i] = round(schedule[i]);
 		};
 	}
-
 	return schedule;
 };
 
@@ -899,11 +891,6 @@ function route(start_station,end_station,day,time){
 	
 	
 	render(start_station,end_station,leave_time,arrive_time,cycles);	
-	
-
-	
-
-	
 
 };
 
@@ -941,7 +928,6 @@ function render(start_station,end_station,leave_time,arrive_time,cycles){
 	for (i = 0; i < perfMeasures.length; i++) {
 	    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
 	};
-
 };
 
 //-----------------------------------------------------------
@@ -955,28 +941,6 @@ function round(num){//rounding function necessary because javascript has issues 
 function transferWindow(transfer_time_a,transfer_time_b){
 	return round((transfer_time_b - transfer_time_a)*100);
 };
-
-//-----------------------------------------------------------
-$('#timepicker').timepicker().on('changeTime.timepicker', function(e) {
-	time = e.time.value;
-});
-
-var time = timepicker.value;
-var now = new Date();
-var hours = now.getHours();
-var minutes = now.getMinutes(); 
-if(hours > 11){
-        var meridian = "PM";
-        if(hours != 12){
-                var hours = hours - 12;
-        };
-}
-else{
-        var meridian = "AM"
-};
-
-$('#timepicker').timepicker('setTime', hours+":"+minutes+" "+meridian);
-    
      
 //-----------------------------------------------------------
 
@@ -1071,5 +1035,19 @@ $('.line1').switchButton({//initializes and configures subway line slider UI
 });
 //-----------------------------------------------------------
 
+$(function(){
+    $('#time_select').mobiscroll().time({
+        theme: 'ios7',
+        display: 'bottom',
+        mode: 'scroller',
+        setText: false,
+        cancelText: false,
+        headerText: false
+    });    
+    $('#show').click(function(){
+        $('#demo').mobiscroll('show'); 
+        return false;
+    });
+});
 
 
