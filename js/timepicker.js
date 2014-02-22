@@ -261,10 +261,10 @@
             if (!isNaN(c.getTime())) {
                 for (var d, e, f = "", g = 0; g < b.length; g++) switch (e = b.charAt(g)) {
                     case "a":
-                        f += c.getHours() > 11 ? "pm" : "am";
+                        f += c.getHours() > 11 ? " pm" : " am";
                         break;
                     case "A":
-                        f += c.getHours() > 11 ? "PM" : "AM";
+                        f += c.getHours() > 11 ? " PM" : " AM";
                         break;
                     case "g":
                         d = c.getHours() % 12, f += 0 === d ? "12" : d;

@@ -13,6 +13,8 @@ var fern = {
     sched_wk_nb: [5.26, 5.42, 5.59, 6.16, 6.31, 6.47, 7.02, 7.15, 7.22, 7.31, 7.40, 7.49, 7.56, 8.03, 8.10, 8.17, 8.24, 8.31, 8.38, 8.45, 8.52, 8.59, 9.06, 9.13, 9.20, 9.27, 9.35, 9.44, 9.52, 10.01, 10.09, 10.17, 10.25, 10.33, 10.41, 10.49, 10.57, 11.05, 11.13, 11.21, 11.29, 11.37, 11.45, 11.53, 12.01, 12.09, 12.17, 12.25, 12.33, 12.41, 12.49, 12.57, 13.05, 13.13, 13.21, 13.29, 13.37, 13.45, 13.53, 14.01, 14.09, 14.17, 14.25, 14.33, 14.41, 14.49, 14.57, 15.04, 15.13, 15.21, 15.29, 15.37, 15.45, 15.51, 15.59, 16.07, 16.16, 16.23, 16.31, 16.39, 16.46, 16.53, 17.00, 17.07, 17.14, 17.21, 17.28, 17.35, 17.42, 17.49, 17.56, 18.03, 18.10, 18.17, 18.24, 18.31, 18.38, 18.46, 18.55, 19.05, 19.15, 19.25, 19.35, 19.45, 19.55, 20.05, 20.15, 20.25, 20.35, 20.45, 20.55, 21.06, 21.17, 21.29, 21.41, 21.53, 22.05, 22.17, 22.29, 22.41, 22.53, 23.05, 23.17, 23.29, 23.41, 23.53, 24.05, 24.14],
     sched_sat_nb: [5.42, 5.59, 6.16, 6.31, 6.46, 7.02, 7.16, 7.29, 7.43, 7.54, 8.06, 8.16, 8.30, 8.46, 8.56, 9.06, 9.16, 9.26, 9.36, 9.46, 9.56, 10.06, 10.16, 10.26, 10.36, 10.46, 10.56, 11.06, 11.16, 11.26, 11.36, 11.46, 11.56, 12.06, 12.16, 12.26, 12.36, 12.46, 12.56, 13.06, 13.16, 13.26, 13.36, 13.46, 13.56, 14.06, 14.16, 14.26, 14.36, 14.46, 14.56, 15.06, 15.16, 15.26, 15.36, 15.46, 15.56, 16.06, 16.16, 16.26, 16.36, 16.46, 16.56, 17.06, 17.16, 17.26, 17.36, 17.46, 17.56, 18.06, 18.16, 18.26, 18.36, 18.46, 18.56, 19.06, 19.16, 19.26, 19.36, 19.46, 19.56, 20.06, 20.16, 20.26, 20.36, 20.46, 20.56, 21.06, 21.16, 21.28, 21.40, 21.52, 22.04, 22.16, 22.28, 22.40, 22.52, 23.04, 23.16, 23.28, 23.40, 23.52, 24.04, 24.16, 24.28, 24.40, 24.55],
     sched_sun_nb: [5.26, 5.42, 5.59, 6.16, 6.36, 6.56, 7.16, 7.31, 7.46, 8.01, 8.16, 8.29, 8.41, 8.53, 9.05, 9.17, 9.29, 9.41, 9.53, 10.05, 10.17, 10.28, 10.38, 10.48, 10.58, 11.08, 11.18, 11.28, 11.38, 11.48, 11.58, 12.08, 12.18, 12.28, 12.38, 12.48, 12.58, 13.08, 13.18, 13.28, 13.38, 13.48, 13.58, 14.08, 14.18, 14.28, 14.38, 14.48, 14.58, 15.08, 15.18, 15.28, 15.38, 15.48, 15.58, 16.08, 16.18, 16.28, 16.38, 16.48, 16.58, 17.08, 17.18, 17.28, 17.38, 17.48, 17.58, 18.08, 18.18, 18.28, 18.38, 18.48, 18.58, 19.08, 19.18, 19.28, 19.38, 19.48, 19.58, 20.08, 20.18, 20.28, 20.40, 20.52, 21.04, 21.16, 21.28, 21.40, 21.52, 22.04, 22.16, 22.28, 22.40, 22.52, 23.04, 23.16, 23.28, 23.40, 23.52, 24.04, 24.16, 24.28, 24.40, 24.55],
+    close_wk: 8,
+    close_end: 10,
 };
 var olney = {
     line: "bs",
@@ -25,6 +27,7 @@ var olney = {
     sched_wk_nb: schedule(fern.sched_wk_nb, -3),
     sched_sat_nb: schedule(fern.sched_sat_nb, -3),
     sched_sun_nb: schedule(fern.sched_sun_nb, -3),
+
 };
 var logan = {
     line: "bs",
@@ -37,6 +40,7 @@ var logan = {
     sched_wk_nb: schedule(olney.sched_wk_nb, -2),
     sched_sat_nb: schedule(olney.sched_sat_nb, -2),
     sched_sun_nb: schedule(olney.sched_sun_nb, -2),
+
 };
 var wyoming = {
     line: "bs",
@@ -145,6 +149,8 @@ var fairmount = {
     sched_wk_nb: schedule(girard.sched_wk_nb, -2),
     sched_sat_nb: schedule(girard.sched_sat_nb, -2),
     sched_sun_nb: schedule(girard.sched_sun_nb, -2),
+    close_wk: 20,
+    close_end: 22,
 };
 var spring = {
     line: "bs",
@@ -619,9 +625,6 @@ var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, s
 //-----------------------------------------------------------
 
 
-$('#timepicker').timepicker({
-    'scrollDefaultNow': true
-});
 
 function submit() {
     var start_sel = document.getElementById("start_dest");
@@ -629,15 +632,16 @@ function submit() {
     var end_sel = document.getElementById("end_dest");
     var end = end_sel.options[end_sel.selectedIndex].value;
 
-    var time = $('#timepicker').val();
 
-    console.log("Time: " + time);
+    var now = new Date();
+    var hours = now.getHours();
+    var minutes = now.getMinutes(); 
+    
+    var time = hours+"."+minutes;//setting time 
 
-    routeInit(start, end, parseTime(time), parseDay());
+    routeInit(start, end, time, parseDay());
 
-    performance.measure("routeInit", "mark_start_init", "mark_end_init");
-
-    $('#start_dest, #end_dest , #timepicker').change(function() { //After initial submission, script checks for changes and dynamically updates
+    $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
 
         var start_sel = document.getElementById("start_dest");
         var start = start_sel.options[start_sel.selectedIndex].value;
@@ -645,7 +649,7 @@ function submit() {
         var end = end_sel.options[end_sel.selectedIndex].value;
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
-            routeInit(start, end, parseTime(time), parseDay()); //Prevents console errors from undefined select variables
+            routeInit(start, end, time, parseDay()); //Prevents console errors from undefined select variables
         }
     });
 };
@@ -686,24 +690,6 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
     return schedule;
 };
 
-//-----------------------------------------------------------
-
-function parseTime(time) {
-
-    var parseOne = time.split(":"); //Splitting hour value from string
-    var parseTwo = parseOne[1].split(" "); //Splitting minutes, meridan values
-
-    var hrs = parseInt(parseOne[0]); // Setting hours variable,convert hrs to int
-    var min = parseInt(parseTwo[0]); // Setting mins variable, convert mins to int
-    var mer = parseTwo[1]; // Setting meridian variable
-
-    if ((mer === "pm") && (hrs != 12)) { //  Converting 24hr format
-        hrs = hrs + 12;
-    } else if ((mer === "pm") && (hrs === 12)) { //Midnight to hour 24 to make it easier to handle
-        hrs = 24;
-    };
-    return (hrs + (min / 100)); // Finally set time variable
-};
 
 //-----------------------------------------------------------
 
@@ -744,8 +730,6 @@ function timeformat(time) { //formats time from a double into hh:mm
 function parseDay() {
 
     window.performance.mark('mark_start_parseday');
-
-
     var day = Date().split(" "); //Gets day of the week
 
     console.log(day[0]);
@@ -795,7 +779,7 @@ if(start_station.line != end_station.line){
 
 //-----------------------------------------------------------
 
-function route(start_station, end_station, day, time) {
+function route(start_station, end_station, day, time) {//Logic that determines schedling depending on direction and day
 
     window.performance.mark('mark_start_route');
 
@@ -804,74 +788,52 @@ function route(start_station, end_station, day, time) {
     // $('.transfer2').remove();
     // $('.transfer3').remove();
 
-    var cycles = 5;
     var leave_time = new Array();
     var arrive_time = new Array();
 
     if (start_station.order < end_station.order) { //southbound
         if (day === "wk") { //weekday southbound scheduling
-            for (i = 0; i < start_station.sched_wk_sb.length; i++) {
-                if (start_station.sched_wk_sb[i] > time) {
-                    for (var k = 0; k < cycles; k++) {
-                        leave_time[k] = start_station.sched_wk_sb[i + k];
-                        arrive_time[k] = end_station.sched_wk_sb[i + k];
-                    };
-                    break;
-                }; //endif
+            var cycles = start_station.sched_wk_sb.length;
+            for (i = 0; i < cycles; i++) {
+                leave_time[i] = start_station.sched_wk_sb[i];
+                arrive_time[i] = end_station.sched_wk_sb[i];
             }; //endfor
         } //endif
         else if (day === "sat") { //saturday southbound scheduling
-            for (i = 0; i < start_station.sched_sat_sb.length; i++) {
-                if (start_station.sched_sat[i] > time) {
-                    for (var k = 0; k < cycles; k++) {
-                        leave_time[k] = start_station.sched_sat_sb[i + k];
-                        arrive_time[k] = end_station.sched_sat_sb[i + k];
-                    }
-                    break;
+            var cycles = start_station.sched_sat_sb.length;
+            for (i = 0; i < cycles; i++) {
+                leave_time[i] = start_station.sched_sat_sb[i];
+                arrive_time[i] = end_station.sched_sat_sb[i];
                 };
-            };
-        } else { //sunday southbound scheduling
-            for (i = 0; i < start_station.sched_sun_sb.length; i++) {
-                if (start_station.sched_sun_sb[i] > time) {
-                    for (var k = 0; k < cycles; k++) {
-                        leave_time[k] = start_station.sched_sun_sb[i + k];
-                        arrive_time[k] = end_station.sched_sun_sb[i + k];
-                    }
-                    break;
-                };
-            };
         }
-    } else { //northbound
+        else { //sunday southbound scheduling
+            var cycles = start_station.sched_sun_sb.length;
+            for (i = 0; i < cycles; i++) {
+                leave_time[i] = start_station.sched_sun_sb[i];
+                arrive_time[i] = end_station.sched_sun_sb[i];
+            };
+        };
+    }
+    else { //northbound
         if (day === "wk") { //weekday northbound scheduling
-            for (i = 0; i < start_station.sched_wk_nb.length; i++) {
-                if (start_station.sched_wk_nb[i] > time) {
-                    for (var k = 0; k < cycles; k++) {
-                        leave_time[k] = start_station.sched_wk_nb[i + k];
-                        arrive_time[k] = end_station.sched_wk_nb[i + k];
-                    }
-                    break;
-                }; //endif
+            var cycles = start_station.sched_wk_nb.length
+            for (i = 0; i < cycles; i++) {
+                leave_time[i] = start_station.sched_wk_nb[i];
+                arrive_time[i] = end_station.sched_wk_nb[i];
             }; //endfor
         } //endif
         else if (day === "sat") { //saturday northbound scheduling
-            for (i = 0; i < start_station.sched_sat_nb.length; i++) {
-                if (start_station.sched_sat[i] > time) {
-                    for (var k = 0; k < cycles; k++) {
-                        leave_time[k] = start_station.sched_sat_nb[i + k];
-                        arrive_time[k] = end_station.sched_sat_nb[i + k];
-                    }
-                    break;
-                };
+            var cycles = start_station.sched_sat_nb.length;
+            for (i = 0; i < cycles; i++) {
+                leave_time[i] = start_station.sched_sat_nb[i];
+                arrive_time[i] = end_station.sched_sat_nb[i];
             };
-        } else { //sunday northbound scheduling
-            for (i = 0; i < start_station.sched_sun_nb.length; i++) {
-                if (start_station.sched_sun_nb[i] > time) {
-                    for (var k = 0; k < cycles; k++) {
-                        leave_time[k] = start_station.sched_sun_nb[i + k];
-                        arrive_time[k] = end_station.sched_sun_nb[i + k];
-                    }
-                    break;
-                };
+        }
+        else { //sunday northbound scheduling
+            var cycles = start_station.sched_sun_nb.length;
+            for (i = 0; i < cycles; i++) {
+                leave_time[i] = start_station.sched_sun_nb[i];
+                arrive_time[i] = end_station.sched_sun_nb[i];
             };
         };
     };
@@ -895,37 +857,20 @@ function route(start_station, end_station, day, time) {
 //-----------------------------------------------------------
 
 function render(start_station, end_station, leave_time, arrive_time, cycles) {
-    window.performance.mark('mark_start_render');
-    window.performance.mark('mark_start_emptytable');
 
     $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup
     $('.start_station').empty().append(start_station.name);
     $('.end_station').empty().append(end_station.name);
     $('.times_row').empty();
-    window.performance.mark('mark_end_emptytable');
 
-    window.performance.mark('mark_start_populatetable');
     for (var i = 0; i < cycles; i++) {
         $(".times").find('tbody').append($('<tr class="times_row">').append($('<td class="start' + i + '">')));
         $(".times tr:last").append($('<td class="end' + i + '">'));
         $('.start' + i).empty().append(timeformat(leave_time[i]));
         $('.end' + i).empty().append(timeformat(arrive_time[i]));
     }
-    window.performance.mark('mark_end_populatetable');
 
-    window.performance.mark('mark_start_fadeIn');
     $('.table').fadeIn("slow");
-    window.performance.mark('mark_end_fadeIn');
-    window.performance.mark('mark_end_render');
-
-    performance.measure("Empty_Table", "mark_start_emptytable", "mark_end_emptytable");
-    performance.measure("Populate_Table", "mark_start_populatetable", "mark_end_populatetable");
-    performance.measure("FadeIn", "mark_start_fadeIn", "mark_end_fadeIn");
-    performance.measure("Render", "mark_start_render", "mark_end_render");
-    perfMeasures = performance.getEntriesByType("measure");
-    for (i = 0; i < perfMeasures.length; i++) {
-        console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-    };
 };
 
 //-----------------------------------------------------------
@@ -1029,23 +974,3 @@ $('.line1').switchButton({ //initializes and configures subway line slider UI
     button_width: 25
 });
 //-----------------------------------------------------------
-
-
-
-//-----------------------------------------------------------
-
-/* ----mobiscroll function
-$(function(){
-    $('#time_select').mobiscroll().time({
-        theme: 'ios7',
-        display: 'bottom',
-        mode: 'scroller',
-        setText: false,
-        cancelText: false,
-        headerText: false
-    });    
-    $('#show').click(function(){
-        $('#demo').mobiscroll('show'); 
-        return false;
-    });
-});*/
