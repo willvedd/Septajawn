@@ -149,8 +149,8 @@ var fairmount = {
     sched_wk_nb: schedule(girard.sched_wk_nb, -2),
     sched_sat_nb: schedule(girard.sched_sat_nb, -2),
     sched_sun_nb: schedule(girard.sched_sun_nb, -2),
-    close_wk: 20,
-    close_end: 22,
+    close_wk: 22.3,
+    close_end: 20.3,
 };
 var spring = {
     line: "bs",
@@ -693,11 +693,23 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
 
 //-----------------------------------------------------------
 
-function timeformat(time) { //formats time from a double into hh:mm
+function timeformat(time,start_station,day) { //formats time from a double into hh:mm for rendering purposes only
 
     if (time == "X") {
         return "No scheduled trains";
     }
+    if (time == "c"){//returns closure string 
+        if(day == "wk"){
+            return start_station.name+" CLOSED @ "+timeformat(start_station.close_wk);
+        }
+        else{
+            return start_station.name+" CLOSED @ "+timeformat(start_station.close_end);
+        }
+    }
+    if (time == "c2"){
+        return "n/a";
+    }
+
     if ((time >= 12) && (time < 24)) {
         var meridian = "PM";
 
@@ -707,6 +719,7 @@ function timeformat(time) { //formats time from a double into hh:mm
     } else {
         var meridian = "AM"
     };
+    console.log("Time: "+time);
 
     time = time.toString().split("."); //Converting time variable to a string and splitting to get minutes and hours
 
@@ -778,7 +791,7 @@ if(start_station.line != end_station.line){
 
 //-----------------------------------------------------------
 
-function route(start_station, end_station, day, time) {//Logic that determines schedling depending on direction and day
+function route(start_station, end_station, day, time) {//Logic that generates requested times depending on direction and day
 
     window.performance.mark('mark_start_route');
 
@@ -789,14 +802,18 @@ function route(start_station, end_station, day, time) {//Logic that determines s
 
     var leave_time = new Array();
     var arrive_time = new Array();
+    var i=0;
 
     if (start_station.order < end_station.order) { //southbound
         if (day === "wk") { //weekday southbound scheduling
             var cycles = start_station.sched_wk_sb.length;
-            for (i = 0; i < cycles; i++) {
+            while (start_station.sched_wk_sb[i] < start_station.close_wk) {
                 leave_time[i] = start_station.sched_wk_sb[i];
                 arrive_time[i] = end_station.sched_wk_sb[i];
+                i++;
             }; //endfor
+            leave_time[i] = timeformat("c",start_station,day);
+            arrive_time[i] = timeformat("c2",start_station,day);
         } //endif
         else if (day === "sat") { //saturday southbound scheduling
             var cycles = start_station.sched_sat_sb.length;
@@ -862,9 +879,13 @@ function render(start_station, end_station, leave_time, arrive_time, cycles) {
     $('.end_station').empty().append(end_station.name);
     $('.times_row').empty();
 
-    for (var i = 0; i < cycles; i++) {
+    for (var i = 0; i < leave_time.length; i++) {
         $(".times").find('tbody').append($('<tr class="times_row">').append($('<td class="start' + i + '">')));
         $(".times tr:last").append($('<td class="end' + i + '">'));
+        if(arrive_time[i] == "n/a"){
+            $('.start' + i).empty().append(leave_time[i]);
+            break;
+        };
         $('.start' + i).empty().append(timeformat(leave_time[i]));
         $('.end' + i).empty().append(timeformat(arrive_time[i]));
     }
