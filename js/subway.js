@@ -653,6 +653,9 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
 //-----------------------------------------------------------
 
 function submit() {
+
+    window.performance.mark('mark_start_process');
+
     var start_sel = document.getElementById("start_dest");
     var start = start_sel.options[start_sel.selectedIndex].value;
     var end_sel = document.getElementById("end_dest");
@@ -710,6 +713,7 @@ function route(start_station, end_station, day, time) {//Logic that generates re
     var leave_time = new Array();
     var arrive_time = new Array();
     var i=0;
+    var pointer;
     var flag;
 
     if (start_station.order < end_station.order) { //southbound
@@ -724,7 +728,11 @@ function route(start_station, end_station, day, time) {//Logic that generates re
                     leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
                     arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
                     break;//need to stop the while loop
-                }
+                };
+                if(start_station.sched_wk_sb[i]<time){//compares schedule to current time, indicates which one is closest
+                    pointer = i;
+                };
+
                 i++;
 
                 flag = "d"//setting a flag to the rendering function that no more trains are coming
@@ -819,18 +827,24 @@ function route(start_station, end_station, day, time) {//Logic that generates re
         };
     };
 
+    console.log("Pointer: "+pointer);
 
     window.performance.mark('mark_end_route');
     performance.measure("Route", "mark_start_route", "mark_end_route");
+    perfMeasures = performance.getEntriesByType("measure");
+    for (i = 0; i < perfMeasures.length; i++) {
+    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
+    };
 
-
-    render(start_station, end_station, leave_time, arrive_time, flag);
+    render(start_station, end_station, leave_time, arrive_time, flag, pointer);
 
 };
 
 //-----------------------------------------------------------
 
-function render(start_station, end_station, leave_time, arrive_time, flag) {
+function render(start_station, end_station, leave_time, arrive_time, flag, pointer) {
+
+     window.performance.mark('mark_start_render');
 
     $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
     $('.start_station').empty().append(start_station.name); // station name in first row
@@ -859,7 +873,30 @@ function render(start_station, end_station, leave_time, arrive_time, flag) {
     }
 
     $('.table').fadeIn("slow");//fading the table in to soften the UX
+
+    $('html, body').animate({
+        scrollTop: $(".start"+pointer).offset().top
+    }, 2000);
+
+
+    window.performance.mark('mark_end_render');
+    performance.measure("Render", "mark_start_render", "mark_end_render");
+    perfMeasures = performance.getEntriesByType("measure");
+    for (i = 0; i < perfMeasures.length; i++) {
+    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
+    };
+
+    window.performance.mark('mark_end_process');
+    performance.measure("Process", "mark_start_process", "mark_end_process");
+    perfMeasures = performance.getEntriesByType("measure");
+    for (i = 0; i < perfMeasures.length; i++) {
+    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
+    };
+
+
 };
+
+    
 
 //-----------------------------------------------------------
 
@@ -897,7 +934,6 @@ function timeformat(time,start_station,day) { //formats time from a double into 
 
 function parseDay() {//returns "wk","sat","sun" depending on day of week
 
-    window.performance.mark('mark_start_parseday');
     var day = Date().split(" "); //Gets raw day of the week
 
     console.log(day[0]);
@@ -912,8 +948,6 @@ function parseDay() {//returns "wk","sat","sun" depending on day of week
         return "wk";
     }
 
-    window.performance.mark('mark_end_parseday');
-    performance.measure("Parse_Day", "mark_start_parseday", "mark_end_parseday");
 };
 
 //-----------------------------------------------------------
@@ -925,8 +959,6 @@ function round(num) { //rounding function necessary because javascript has issue
 //-----------------------------------------------------------
 
 $('.line1').ready(function() { //Function that populates starting station list and other display functions
-
-    window.performance.mark('mark_start_lineswitch');
 
     var lineval1 = $('.line1');
 
@@ -968,8 +1000,7 @@ $('.line1').ready(function() { //Function that populates starting station list a
         }
     });
 
-    window.performance.mark('mark_end_lineswitch');
-    performance.measure("Line_Switch", "mark_start_lineswitch", "mark_end_lineswitch");
+
 });
 
 //-----------------------------------------------------------
