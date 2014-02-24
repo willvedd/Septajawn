@@ -13,8 +13,6 @@ var fern = {
     sched_wk_nb: [5.26, 5.42, 5.59, 6.16, 6.31, 6.47, 7.02, 7.15, 7.22, 7.31, 7.40, 7.49, 7.56, 8.03, 8.10, 8.17, 8.24, 8.31, 8.38, 8.45, 8.52, 8.59, 9.06, 9.13, 9.20, 9.27, 9.35, 9.44, 9.52, 10.01, 10.09, 10.17, 10.25, 10.33, 10.41, 10.49, 10.57, 11.05, 11.13, 11.21, 11.29, 11.37, 11.45, 11.53, 12.01, 12.09, 12.17, 12.25, 12.33, 12.41, 12.49, 12.57, 13.05, 13.13, 13.21, 13.29, 13.37, 13.45, 13.53, 14.01, 14.09, 14.17, 14.25, 14.33, 14.41, 14.49, 14.57, 15.04, 15.13, 15.21, 15.29, 15.37, 15.45, 15.51, 15.59, 16.07, 16.16, 16.23, 16.31, 16.39, 16.46, 16.53, 17.00, 17.07, 17.14, 17.21, 17.28, 17.35, 17.42, 17.49, 17.56, 18.03, 18.10, 18.17, 18.24, 18.31, 18.38, 18.46, 18.55, 19.05, 19.15, 19.25, 19.35, 19.45, 19.55, 20.05, 20.15, 20.25, 20.35, 20.45, 20.55, 21.06, 21.17, 21.29, 21.41, 21.53, 22.05, 22.17, 22.29, 22.41, 22.53, 23.05, 23.17, 23.29, 23.41, 23.53, 24.05, 24.14],
     sched_sat_nb: [5.42, 5.59, 6.16, 6.31, 6.46, 7.02, 7.16, 7.29, 7.43, 7.54, 8.06, 8.16, 8.30, 8.46, 8.56, 9.06, 9.16, 9.26, 9.36, 9.46, 9.56, 10.06, 10.16, 10.26, 10.36, 10.46, 10.56, 11.06, 11.16, 11.26, 11.36, 11.46, 11.56, 12.06, 12.16, 12.26, 12.36, 12.46, 12.56, 13.06, 13.16, 13.26, 13.36, 13.46, 13.56, 14.06, 14.16, 14.26, 14.36, 14.46, 14.56, 15.06, 15.16, 15.26, 15.36, 15.46, 15.56, 16.06, 16.16, 16.26, 16.36, 16.46, 16.56, 17.06, 17.16, 17.26, 17.36, 17.46, 17.56, 18.06, 18.16, 18.26, 18.36, 18.46, 18.56, 19.06, 19.16, 19.26, 19.36, 19.46, 19.56, 20.06, 20.16, 20.26, 20.36, 20.46, 20.56, 21.06, 21.16, 21.28, 21.40, 21.52, 22.04, 22.16, 22.28, 22.40, 22.52, 23.04, 23.16, 23.28, 23.40, 23.52, 24.04, 24.16, 24.28, 24.40, 24.55],
     sched_sun_nb: [5.26, 5.42, 5.59, 6.16, 6.36, 6.56, 7.16, 7.31, 7.46, 8.01, 8.16, 8.29, 8.41, 8.53, 9.05, 9.17, 9.29, 9.41, 9.53, 10.05, 10.17, 10.28, 10.38, 10.48, 10.58, 11.08, 11.18, 11.28, 11.38, 11.48, 11.58, 12.08, 12.18, 12.28, 12.38, 12.48, 12.58, 13.08, 13.18, 13.28, 13.38, 13.48, 13.58, 14.08, 14.18, 14.28, 14.38, 14.48, 14.58, 15.08, 15.18, 15.28, 15.38, 15.48, 15.58, 16.08, 16.18, 16.28, 16.38, 16.48, 16.58, 17.08, 17.18, 17.28, 17.38, 17.48, 17.58, 18.08, 18.18, 18.28, 18.38, 18.48, 18.58, 19.08, 19.18, 19.28, 19.38, 19.48, 19.58, 20.08, 20.18, 20.28, 20.40, 20.52, 21.04, 21.16, 21.28, 21.40, 21.52, 22.04, 22.16, 22.28, 22.40, 22.52, 23.04, 23.16, 23.28, 23.40, 23.52, 24.04, 24.16, 24.28, 24.40, 24.55],
-    close_wk: 8,
-    close_end: 10,
 };
 var olney = {
     line: "bs",
@@ -27,7 +25,6 @@ var olney = {
     sched_wk_nb: schedule(fern.sched_wk_nb, -3),
     sched_sat_nb: schedule(fern.sched_sat_nb, -3),
     sched_sun_nb: schedule(fern.sched_sun_nb, -3),
-
 };
 var logan = {
     line: "bs",
@@ -40,7 +37,6 @@ var logan = {
     sched_wk_nb: schedule(olney.sched_wk_nb, -2),
     sched_sat_nb: schedule(olney.sched_sat_nb, -2),
     sched_sun_nb: schedule(olney.sched_sun_nb, -2),
-
 };
 var wyoming = {
     line: "bs",
@@ -714,115 +710,161 @@ function route(start_station, end_station, day, time) {//Logic that generates re
     var leave_time = new Array();
     var arrive_time = new Array();
     var i=0;
+    var flag;
 
     if (start_station.order < end_station.order) { //southbound
         if (day === "wk") { //weekday southbound scheduling
-            var cycles = start_station.sched_wk_sb.length;
-            while (start_station.sched_wk_sb[i] < start_station.close_wk) {
-                leave_time[i] = start_station.sched_wk_sb[i];
-                arrive_time[i] = end_station.sched_wk_sb[i];
+            while (i< start_station.sched_wk_sb.length) {
+                leave_time[i] = start_station.sched_wk_sb[i];//setting leave times from the start station object
+                arrive_time[i] = end_station.sched_wk_sb[i];//setting arrive times from the end station object
+
+                if((start_station.close_wk != undefined)&&(start_station.sched_wk_sb[i] > start_station.close_wk))//logic to see if station closed
+                {
+                    flag = "c";//setting a flag to the rendering function that it closed
+                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    break;//need to stop the while loop
+                }
                 i++;
-            }; //endfor
-            leave_time[i] = timeformat("c",start_station,day);
-            arrive_time[i] = timeformat("c2",start_station,day);
-        } //endif
+
+                flag = "d"//setting a flag to the rendering function that no more trains are coming
+            };
+        } 
         else if (day === "sat") { //saturday southbound scheduling
-            var cycles = start_station.sched_sat_sb.length;
-            for (i = 0; i < cycles; i++) {
-                leave_time[i] = start_station.sched_sat_sb[i];
-                arrive_time[i] = end_station.sched_sat_sb[i];
-                };
+            while (i< start_station.sched_sat_sb.length) {
+                leave_time[i] = start_station.sched_sat_sb[i];//setting leave times from the start station object
+                arrive_time[i] = end_station.sched_sat_sb[i];//setting arrive times from the end station object
+
+                if((start_station.close_end != undefined)&&(start_station.sched_sat_sb[i] > start_station.close_end))//logic to see if station closed
+                {
+                    flag = "c";//setting a flag to the rendering function that it closed
+                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    break;//need to stop the while loop
+                }
+                i++;
+
+                flag = "d"//setting a flag to the rendering function that no more trains are coming
+            };
         }
         else { //sunday southbound scheduling
-            var cycles = start_station.sched_sun_sb.length;
-            for (i = 0; i < cycles; i++) {
-                leave_time[i] = start_station.sched_sun_sb[i];
-                arrive_time[i] = end_station.sched_sun_sb[i];
+            while (i< start_station.sched_sun_sb.length) {
+                leave_time[i] = start_station.sched_sun_sb[i];//setting leave times from the start station object
+                arrive_time[i] = end_station.sched_sun_sb[i];//setting arrive times from the end station object
+
+                if((start_station.close_end != undefined)&&(start_station.sched_sun_sb[i] > start_station.close_end))//logic to see if station closed
+                {
+                    flag = "c";//setting a flag to the rendering function that it closed
+                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    break;//need to stop the while loop
+                }
+                i++;
+
+                flag = "d"//setting a flag to the rendering function that no more trains are coming
             };
         };
     }
     else { //northbound
         if (day === "wk") { //weekday northbound scheduling
-            var cycles = start_station.sched_wk_nb.length
-            for (i = 0; i < cycles; i++) {
-                leave_time[i] = start_station.sched_wk_nb[i];
-                arrive_time[i] = end_station.sched_wk_nb[i];
-            }; //endfor
-        } //endif
+            while (i< start_station.sched_wk_nb.length) {      
+                leave_time[i] = start_station.sched_wk_nb[i];//setting leave times from the start station object
+                arrive_time[i] = end_station.sched_wk_nb[i];//setting arrive times from the end station object
+
+                if((start_station.close_wk != undefined)&&(start_station.sched_wk_nb[i] > start_station.close_wk))//logic to see if station closed
+                {
+                    flag = "c";//setting a flag to the rendering function that it closed
+                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    break;//need to stop the while loop
+                }
+                i++;
+
+                flag = "d"//setting a flag to the rendering function that no more trains are coming
+            };
+        } 
         else if (day === "sat") { //saturday northbound scheduling
-            var cycles = start_station.sched_sat_nb.length;
-            for (i = 0; i < cycles; i++) {
-                leave_time[i] = start_station.sched_sat_nb[i];
-                arrive_time[i] = end_station.sched_sat_nb[i];
+             while (i< start_station.sched_sat_nb.length) {
+                leave_time[i] = start_station.sched_sat_nb[i];//setting leave times from the start station object
+                arrive_time[i] = end_station.sched_sat_nb[i];//setting arrive times from the end station object
+
+                if((start_station.close_end != undefined)&&(start_station.sched_sat_nb[i] > start_station.close_end))//logic to see if station closed
+                {
+                    flag = "c";//setting a flag to the rendering function that it closed
+                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    break;//need to stop the while loop
+                }
+                i++;
+
+                flag = "d"//setting a flag to the rendering function that no more trains are coming
             };
         }
         else { //sunday northbound scheduling
-            var cycles = start_station.sched_sun_nb.length;
-            for (i = 0; i < cycles; i++) {
-                leave_time[i] = start_station.sched_sun_nb[i];
-                arrive_time[i] = end_station.sched_sun_nb[i];
+             while (i< start_station.sched_sun_nb.length) {
+                leave_time[i] = start_station.sched_sun_nb[i];//setting leave times from the start station object
+                arrive_time[i] = end_station.sched_sun_nb[i];//setting arrive times from the end station object
+
+                if((start_station.close_end != undefined)&&(start_station.sched_sun_nb[i] > start_station.close_end))//logic to see if station closed
+                {
+                    flag = "c";//setting a flag to the rendering function that it closed
+                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                    break;//need to stop the while loop
+                }
+                i++;
+
+                flag = "d"//setting a flag to the rendering function that no more trains are coming
             };
         };
     };
 
-    for (var i = 0; i < leave_time.length; i++) { //Validates times, removes undefined values
-        if (leave_time[i] == undefined) {
-            leave_time.splice(i, (leave_time.length - i));
-            arrive_time.splice(i, (arrive_time.length - i));
-        };
-        break;
-    };
 
     window.performance.mark('mark_end_route');
     performance.measure("Route", "mark_start_route", "mark_end_route");
 
 
-    render(start_station, end_station, leave_time, arrive_time, cycles);
+    render(start_station, end_station, leave_time, arrive_time, flag);
 
 };
 
 //-----------------------------------------------------------
 
-function render(start_station, end_station, leave_time, arrive_time, cycles) {
+function render(start_station, end_station, leave_time, arrive_time, flag) {
 
-    $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup
-    $('.start_station').empty().append(start_station.name);
-    $('.end_station').empty().append(end_station.name);
-    $('.times_row').empty();
+    $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
+    $('.start_station').empty().append(start_station.name); // station name in first row
+    $('.end_station').empty().append(end_station.name); // station name in first row
+    $('.times_row').empty(); //empty the times for unique and consecutive executions
 
-    for (var i = 0; i < leave_time.length; i++) {
+    for (var i = 0; i < leave_time.length; i++) {//function that populates times into table
         $(".times").find('tbody').append($('<tr class="times_row">').append($('<td class="start' + i + '">')));
         $(".times tr:last").append($('<td class="end' + i + '">'));
-        if(arrive_time[i] == "n/a"){
-            $('.start' + i).empty().append(leave_time[i]);
-            break;
-        };
         $('.start' + i).empty().append(timeformat(leave_time[i]));
         $('.end' + i).empty().append(timeformat(arrive_time[i]));
     }
 
-    $('.table').fadeIn("slow");
+    $(".times").find('tbody').append($('<tr class="message_row">').append($('<td class="start' + i + '">'))); // Setting last row for flagged message
+
+    if(flag == "c"){//the "c" flag or closure indicator
+        if(parseDay() == "wk"){//checks if weekday or weekend
+            $('.start' + i).empty().append(start_station.name+" CLOSED @ "+timeformat(start_station.close_wk));
+        }
+        else{
+            $('.start' + i).empty().append(start_station.name+" CLOSED @ "+timeformat(start_station.close_end));
+        }
+    }
+    else{//the "d" flag or the done indicator
+        $('.start' + i).empty().append("No more trains running");
+    }
+
+    $('.table').fadeIn("slow");//fading the table in to soften the UX
 };
 
 //-----------------------------------------------------------
 
 
 function timeformat(time,start_station,day) { //formats time from a double into hh:mm for rendering purposes only
-
-    if (time == "X") {
-        return "No scheduled trains";
-    }
-    if (time == "c"){//returns closure string 
-        if(day == "wk"){
-            return start_station.name+" CLOSED @ "+timeformat(start_station.close_wk);
-        }
-        else{
-            return start_station.name+" CLOSED @ "+timeformat(start_station.close_end);
-        }
-    }
-    if (time == "c2"){
-        return "n/a";
-    }
 
     if ((time >= 12) && (time < 24)) {
         var meridian = "PM";
@@ -833,7 +875,6 @@ function timeformat(time,start_station,day) { //formats time from a double into 
     } else {
         var meridian = "AM"
     };
-    console.log("Time: "+time);
 
     time = time.toString().split("."); //Converting time variable to a string and splitting to get minutes and hours
 
@@ -854,10 +895,10 @@ function timeformat(time,start_station,day) { //formats time from a double into 
 
 //-----------------------------------------------------------
 
-function parseDay() {
+function parseDay() {//returns "wk","sat","sun" depending on day of week
 
     window.performance.mark('mark_start_parseday');
-    var day = Date().split(" "); //Gets day of the week
+    var day = Date().split(" "); //Gets raw day of the week
 
     console.log(day[0]);
 
@@ -873,8 +914,6 @@ function parseDay() {
 
     window.performance.mark('mark_end_parseday');
     performance.measure("Parse_Day", "mark_start_parseday", "mark_end_parseday");
-
-
 };
 
 //-----------------------------------------------------------
