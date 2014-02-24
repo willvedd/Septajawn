@@ -736,10 +736,10 @@ function parseDay() {
 
     if (day[0] == "Sat") {
         //return "sat";
-        return "wk";
+        return "sat";
     } else if (day[0] == "Sun") {
         //return "sun";
-        return "wk";
+        return "sun";
     } else {
         return "wk";
     }
@@ -773,7 +773,6 @@ if(start_station.line != end_station.line){
 	};
 */
     route(start_station, end_station, day, time);
-
 
 };
 
