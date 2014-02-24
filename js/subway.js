@@ -624,7 +624,37 @@ var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, s
 
 //-----------------------------------------------------------
 
+function schedule(prev_station, diff) { //sets schedules for all stations except fern rock
 
+    var schedule = new Array();
+
+    if (diff > 0) { //for southbound and westbound schedules, positive difference
+        for (i = 0; i < prev_station.length; i++) {
+
+            schedule[i] = prev_station[i] + (diff / 100);
+
+            if ((schedule[i] - Math.floor(schedule[i])) > .59) {
+                var minutes = schedule[i] - Math.floor(schedule[i]) - .60;
+                schedule[i] = Math.floor(schedule[i]) + 1 + minutes;
+            }
+            schedule[i] = round(schedule[i]);
+        };
+    } else { //for northbound and eastbound schedules, negative difference
+        for (i = 0; i < prev_station.length; i++) {
+
+            schedule[i] = prev_station[i] + (diff / 100);
+
+            if ((schedule[i] - Math.floor(schedule[i])) > .59) {
+                var minutes = Math.ceil(schedule[i]) - schedule[i];
+                schedule[i] = Math.floor(schedule[i]) + (.6 - minutes);
+            }
+            schedule[i] = round(schedule[i]);
+        };
+    }
+    return schedule;
+};
+
+//-----------------------------------------------------------
 
 function submit() {
     var start_sel = document.getElementById("start_dest");
@@ -660,116 +690,10 @@ function submit() {
 
 //-----------------------------------------------------------
 
-function schedule(prev_station, diff) { //sets schedules for all stations except fern rock
-
-    var schedule = new Array();
-
-    if (diff > 0) { //for southbound and westbound schedules, positive difference
-        for (i = 0; i < prev_station.length; i++) {
-
-            schedule[i] = prev_station[i] + (diff / 100);
-
-            if ((schedule[i] - Math.floor(schedule[i])) > .59) {
-                var minutes = schedule[i] - Math.floor(schedule[i]) - .60;
-                schedule[i] = Math.floor(schedule[i]) + 1 + minutes;
-            }
-            schedule[i] = round(schedule[i]);
-        };
-    } else { //for northbound and eastbound schedules, negative difference
-        for (i = 0; i < prev_station.length; i++) {
-
-            schedule[i] = prev_station[i] + (diff / 100);
-
-            if ((schedule[i] - Math.floor(schedule[i])) > .59) {
-                var minutes = Math.ceil(schedule[i]) - schedule[i];
-                schedule[i] = Math.floor(schedule[i]) + (.6 - minutes);
-            }
-            schedule[i] = round(schedule[i]);
-        };
-    }
-    return schedule;
-};
-
-
-//-----------------------------------------------------------
-
-function timeformat(time,start_station,day) { //formats time from a double into hh:mm for rendering purposes only
-
-    if (time == "X") {
-        return "No scheduled trains";
-    }
-    if (time == "c"){//returns closure string 
-        if(day == "wk"){
-            return start_station.name+" CLOSED @ "+timeformat(start_station.close_wk);
-        }
-        else{
-            return start_station.name+" CLOSED @ "+timeformat(start_station.close_end);
-        }
-    }
-    if (time == "c2"){
-        return "n/a";
-    }
-
-    if ((time >= 12) && (time < 24)) {
-        var meridian = "PM";
-
-        if (time > 12.59) {
-            time = round((time) - 12.00) //Formatting time from 24hr to 12hr style
-        };
-    } else {
-        var meridian = "AM"
-    };
-    console.log("Time: "+time);
-
-    time = time.toString().split("."); //Converting time variable to a string and splitting to get minutes and hours
-
-    if (time[1] === undefined) { //If minutes are undefined,
-        time[1] = "00"; //Converts undefined minutes to hh:00;
-    };
-
-    if (time[0] == 24) { //If the hour is 24, set it to 12
-        time[0] = 12
-    };
-
-    if (time[1].length == 1) {
-        time[1] = time[1] * 10; //Adds trailing zero to hh:m0 numbers that otherwise display as hh:m;
-    };
-
-    return (time[0] + ":" + time[1] + " " + meridian); //returning a string of the time
-};
-
-//-----------------------------------------------------------
-
-function parseDay() {
-
-    window.performance.mark('mark_start_parseday');
-    var day = Date().split(" "); //Gets day of the week
-
-    console.log(day[0]);
-
-    if (day[0] == "Sat") {
-        //return "sat";
-        return "sat";
-    } else if (day[0] == "Sun") {
-        //return "sun";
-        return "sun";
-    } else {
-        return "wk";
-    }
-
-    window.performance.mark('mark_end_parseday');
-    performance.measure("Parse_Day", "mark_start_parseday", "mark_end_parseday");
-
-
-};
-
-//-----------------------------------------------------------
-
 function routeInit(start, end, time, day) { //Using form to get times
 
-    var len = stations.length;
 
-    for (i = 0; i < len; i++) {
+    for (i = 0; i < stations.length; i++) {
         if (stations[i].id == start) {
             var start_station = stations[i];
         } else if (stations[i].id == end) {
@@ -777,14 +701,6 @@ function routeInit(start, end, time, day) { //Using form to get times
         };
     };
 
-    /*
-if(start_station.line != end_station.line){
-		route3(start_station,end_station,day,time);
-	}
-	else{
-		route2(start_station,end_station,day,time);
-	};
-*/
     route(start_station, end_station, day, time);
 
 };
@@ -794,11 +710,6 @@ if(start_station.line != end_station.line){
 function route(start_station, end_station, day, time) {//Logic that generates requested times depending on direction and day
 
     window.performance.mark('mark_start_route');
-
-    // $('.transfer_station').remove();
-    // $('.transfer1').remove();
-    // $('.transfer2').remove();
-    // $('.transfer3').remove();
 
     var leave_time = new Array();
     var arrive_time = new Array();
@@ -895,14 +806,81 @@ function render(start_station, end_station, leave_time, arrive_time, cycles) {
 
 //-----------------------------------------------------------
 
-function round(num) { //rounding function necessary because javascript has issues adding doubles to each other.
-    return ((Math.round(num * 100)) / 100);
+
+function timeformat(time,start_station,day) { //formats time from a double into hh:mm for rendering purposes only
+
+    if (time == "X") {
+        return "No scheduled trains";
+    }
+    if (time == "c"){//returns closure string 
+        if(day == "wk"){
+            return start_station.name+" CLOSED @ "+timeformat(start_station.close_wk);
+        }
+        else{
+            return start_station.name+" CLOSED @ "+timeformat(start_station.close_end);
+        }
+    }
+    if (time == "c2"){
+        return "n/a";
+    }
+
+    if ((time >= 12) && (time < 24)) {
+        var meridian = "PM";
+
+        if (time > 12.59) {
+            time = round((time) - 12.00) //Formatting time from 24hr to 12hr style
+        };
+    } else {
+        var meridian = "AM"
+    };
+    console.log("Time: "+time);
+
+    time = time.toString().split("."); //Converting time variable to a string and splitting to get minutes and hours
+
+    if (time[1] === undefined) { //If minutes are undefined,
+        time[1] = "00"; //Converts undefined minutes to hh:00;
+    };
+
+    if (time[0] == 24) { //If the hour is 24, set it to 12
+        time[0] = 12
+    };
+
+    if (time[1].length == 1) {
+        time[1] = time[1] * 10; //Adds trailing zero to hh:m0 numbers that otherwise display as hh:m;
+    };
+
+    return (time[0] + ":" + time[1] + " " + meridian); //returning a string of the time
 };
 
 //-----------------------------------------------------------
 
-function transferWindow(transfer_time_a, transfer_time_b) {
-    return round((transfer_time_b - transfer_time_a) * 100);
+function parseDay() {
+
+    window.performance.mark('mark_start_parseday');
+    var day = Date().split(" "); //Gets day of the week
+
+    console.log(day[0]);
+
+    if (day[0] == "Sat") {
+        //return "sat";
+        return "sat";
+    } else if (day[0] == "Sun") {
+        //return "sun";
+        return "sun";
+    } else {
+        return "wk";
+    }
+
+    window.performance.mark('mark_end_parseday');
+    performance.measure("Parse_Day", "mark_start_parseday", "mark_end_parseday");
+
+
+};
+
+//-----------------------------------------------------------
+
+function round(num) { //rounding function necessary because javascript has issues adding doubles to each other.
+    return ((Math.round(num * 100)) / 100);
 };
 
 //-----------------------------------------------------------
