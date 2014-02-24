@@ -35,6 +35,12 @@ body{
     background:none;
 }
 
+
+.table-wrap{
+    max-height: 400px;
+    overflow: scroll;
+}
+
 .times{
 	display: none;
     margin-top: 40px;
@@ -167,7 +173,7 @@ body{
     margin-left:auto;
     margin-right:auto;
     float: none;
-    max-width: 940px
+    max-width: 940px;
     .platter{
         background-image: url(../img/navy_blue.png);
         height: 100%;

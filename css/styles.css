@@ -28,72 +28,78 @@ body {
   background: none;
 }
 
-/* line 38, styles.scss */
+/* line 39, styles.scss */
+.table-wrap {
+  max-height: 400px;
+  overflow: scroll;
+}
+
+/* line 44, styles.scss */
 .times {
   display: none;
   margin-top: 40px;
   background-color: #e4e4e4;
   color: #222222;
 }
-/* line 44, styles.scss */
+/* line 50, styles.scss */
 .times tr {
   font-size: 1.1rem;
 }
-/* line 48, styles.scss */
+/* line 54, styles.scss */
 .times td {
   text-align: center;
   width: 50%;
 }
-/* line 52, styles.scss */
+/* line 58, styles.scss */
 .times .station {
   font-size: 1.4rem;
   color: #e4e4e4;
 }
-/* line 56, styles.scss */
+/* line 62, styles.scss */
 .times .mf {
   background-color: #0055a0 !important;
 }
-/* line 59, styles.scss */
+/* line 65, styles.scss */
 .times .bs {
   background-color: #f15d30 !important;
 }
 
-/* line 63, styles.scss */
+/* line 69, styles.scss */
 .table-hide {
   display: none;
 }
 
-/* line 69, styles.scss */
+/* line 75, styles.scss */
 .switch-wrapper {
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
   width: 160px;
 }
-/* line 76, styles.scss */
+/* line 82, styles.scss */
 .switch-wrapper .switch-button-label {
   float: left;
   font-size: 1.5rem;
   cursor: pointer;
 }
-/* line 82, styles.scss */
+/* line 88, styles.scss */
 .switch-wrapper .switch-button-label.off {
   color: #adadad;
   opacity: .5;
 }
-/* line 87, styles.scss */
+/* line 93, styles.scss */
 .switch-wrapper .switch-button-label.on {
   color: #f15d30;
 }
-/* line 91, styles.scss */
+/* line 97, styles.scss */
 .switch-wrapper .blue {
   color: #0055a0 !important;
 }
-/* line 94, styles.scss */
+/* line 100, styles.scss */
 .switch-wrapper .orange {
   color: #f15d30 !important;
 }
-/* line 98, styles.scss */
+/* line 104, styles.scss */
 .switch-wrapper .switch-button-background {
   float: left;
   position: relative;
@@ -105,7 +111,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
-/* line 114, styles.scss */
+/* line 120, styles.scss */
 .switch-wrapper .switch-button-button {
   position: absolute;
   left: -1px;
@@ -117,44 +123,44 @@ body {
   border-radius: 8px;
 }
 
-/* line 129, styles.scss */
+/* line 135, styles.scss */
 .nav_bar {
   width: 100%;
   background-color: #dbdbdb;
   padding-top: 20px;
   padding-bottom: 15px;
 }
-/* line 135, styles.scss */
+/* line 141, styles.scss */
 .nav_bar .nav_bar_inner {
   position: relative;
 }
-/* line 137, styles.scss */
+/* line 143, styles.scss */
 .nav_bar .nav_bar_inner li {
   list-style: none;
   display: inline;
   padding-left: 40px;
   padding-right: 40px;
 }
-/* line 144, styles.scss */
+/* line 150, styles.scss */
 .nav_bar .branding {
   font-size: 2.5rem!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
 }
-/* line 148, styles.scss */
+/* line 154, styles.scss */
 .nav_bar .branding .septablue {
   color: #1f4fa3;
 }
-/* line 151, styles.scss */
+/* line 157, styles.scss */
 .nav_bar .branding .septared {
   color: #f14728;
 }
-/* line 155, styles.scss */
+/* line 161, styles.scss */
 .nav_bar .links {
   color: #222222;
 }
 
-/* line 161, styles.scss */
+/* line 167, styles.scss */
 .wrapper {
   position: relative;
   top: 30%;
@@ -166,40 +172,39 @@ body {
   float: none;
   max-width: 940px;
 }
-
-/* line 172, styles.scss */
-.platter {
+/* line 177, styles.scss */
+.wrapper .platter {
   background-image: url(../img/navy_blue.png);
   height: 100%;
   width: 100%;
   border-radius: 5px;
   box-shadow: #222222 1px 5px 10px;
 }
-/* line 178, styles.scss */
-.platter select {
+/* line 183, styles.scss */
+.wrapper .platter select {
   font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 185, styles.scss */
-.platter #timepicker {
+/* line 190, styles.scss */
+.wrapper .platter #timepicker {
   font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 192, styles.scss */
-.platter .add-on {
+/* line 197, styles.scss */
+.wrapper .platter .add-on {
   width: 40px;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 199, styles.scss */
-.platter .clk {
+/* line 204, styles.scss */
+.wrapper .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
   background-repeat: no-repeat;
@@ -212,8 +217,8 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 212, styles.scss */
-.platter .submit {
+/* line 218, styles.scss */
+.wrapper .submit {
   width: 100%;
   border: 0 none;
   border-radius: 2px 2px 2px 2px;
@@ -238,17 +243,17 @@ body {
   outline-style: none;
   color: #e4e4e4;
 }
-/* line 237, styles.scss */
-.platter .submit:hover {
+/* line 243, styles.scss */
+.wrapper .submit:hover {
   background: none repeat scroll 0 0 #478649;
   color: #e4e4e4;
 }
-/* line 241, styles.scss */
-.platter .submit:active {
+/* line 247, styles.scss */
+.wrapper .submit:active {
   background-color: #3e7540;
 }
-/* line 246, styles.scss */
-.platter .center {
+/* line 252, styles.scss */
+.wrapper .center {
   margin-right: auto;
   margin-left: auto;
   text-align: center;

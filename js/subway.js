@@ -652,6 +652,12 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
 
 //-----------------------------------------------------------
 
+$('.submit').click(function(){
+    submit();
+});
+
+
+
 function submit() {
 
     window.performance.mark('mark_start_process');
@@ -660,7 +666,6 @@ function submit() {
     var start = start_sel.options[start_sel.selectedIndex].value;
     var end_sel = document.getElementById("end_dest");
     var end = end_sel.options[end_sel.selectedIndex].value;
-
 
     var now = new Date();
     var hours = now.getHours();
@@ -681,6 +686,40 @@ function submit() {
             routeInit(start, end, time, parseDay()); //Prevents console errors from undefined select variables
         }
     });
+    $('#wk').click(function(){//dynamically modifies the results based on the day buttons
+        var start_sel = document.getElementById("start_dest");
+        var start = start_sel.options[start_sel.selectedIndex].value;
+        var end_sel = document.getElementById("end_dest");
+        var end = end_sel.options[end_sel.selectedIndex].value;
+
+        if ((start_sel != undefined) && (end_sel != undefined)) {
+            routeInit(start, end, time, "wk"); //Prevents console errors from undefined select variables
+        }
+    });
+    $('#sat').click(function(){//dynamically modifies the results based on the day buttons
+        var start_sel = document.getElementById("start_dest");
+        var start = start_sel.options[start_sel.selectedIndex].value;
+        var end_sel = document.getElementById("end_dest");
+        var end = end_sel.options[end_sel.selectedIndex].value;
+
+        if ((start_sel != undefined) && (end_sel != undefined)) {
+            routeInit(start, end, time, "sat"); //Prevents console errors from undefined select variables
+        }
+    });
+    $('#sun').click(function(){//dynamically modifies the results based on the day buttons
+        var start_sel = document.getElementById("start_dest");
+        var start = start_sel.options[start_sel.selectedIndex].value;
+        var end_sel = document.getElementById("end_dest");
+        var end = end_sel.options[end_sel.selectedIndex].value;
+
+        if ((start_sel != undefined) && (end_sel != undefined)) {
+            routeInit(start, end, time, "sun");  //Prevents console errors from undefined select variables
+        }
+    });  
+    $('#rst').click(function(){
+        $('#start_dest').prop('selectedIndex',0);//resets station drop down box
+        $('#end_dest').prop('selectedIndex',0);//resets station drop down box
+    });  
 };
 
 // $('#end_dest').change(function(){//This snippet can be used if submit button isn't used. UX decision, keep submit button or ditch it?
@@ -690,7 +729,6 @@ function submit() {
 //-----------------------------------------------------------
 
 function routeInit(start, end, time, day) { //Using form to get times
-
 
     for (i = 0; i < stations.length; i++) {
         if (stations[i].id == start) {
@@ -850,6 +888,7 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
     $('.start_station').empty().append(start_station.name); // station name in first row
     $('.end_station').empty().append(end_station.name); // station name in first row
     $('.times_row').empty(); //empty the times for unique and consecutive executions
+    $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
 
     for (var i = 0; i < leave_time.length; i++) {//function that populates times into table
         $(".times").find('tbody').append($('<tr class="times_row">').append($('<td class="start' + i + '">')));
@@ -874,9 +913,18 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
 
     $('.table').fadeIn("slow");//fading the table in to soften the UX
 
-    $('html, body').animate({
+     window.performance.mark('mark_start_scroll');
+
+    $('.table-wrap').animate({//sets animation for automatic scrolling to time pointer
         scrollTop: $(".start"+pointer).offset().top
-    }, 2000);
+    }, 500);
+
+    window.performance.mark('mark_end_scroll');
+    performance.measure("Scroll", "mark_start_scroll", "mark_end_scroll");
+    perfMeasures = performance.getEntriesByType("measure");
+    for (i = 0; i < perfMeasures.length; i++) {
+    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
+    };
 
 
     window.performance.mark('mark_end_render');
@@ -896,7 +944,6 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
 
 };
 
-    
 
 //-----------------------------------------------------------
 
@@ -999,8 +1046,6 @@ $('.line1').ready(function() { //Function that populates starting station list a
             }
         }
     });
-
-
 });
 
 //-----------------------------------------------------------
