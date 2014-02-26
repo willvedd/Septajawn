@@ -123,44 +123,27 @@ body {
   border-radius: 8px;
 }
 
-/* line 135, styles.scss */
-.nav_bar {
-  width: 100%;
-  background-color: #dbdbdb;
-  padding-top: 20px;
-  padding-bottom: 15px;
-}
-/* line 141, styles.scss */
-.nav_bar .nav_bar_inner {
-  position: relative;
-}
-/* line 143, styles.scss */
-.nav_bar .nav_bar_inner li {
-  list-style: none;
-  display: inline;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-/* line 150, styles.scss */
-.nav_bar .branding {
+/* line 137, styles.scss */
+.branding {
   font-size: 2.5rem!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
 }
-/* line 154, styles.scss */
-.nav_bar .branding .septablue {
+/* line 141, styles.scss */
+.branding .septablue {
   color: #1f4fa3;
 }
-/* line 157, styles.scss */
-.nav_bar .branding .septared {
+/* line 144, styles.scss */
+.branding .septared {
   color: #f14728;
 }
-/* line 161, styles.scss */
-.nav_bar .links {
+
+/* line 148, styles.scss */
+.links {
   color: #222222;
 }
 
-/* line 167, styles.scss */
+/* line 153, styles.scss */
 .wrapper {
   position: relative;
   top: 30%;
@@ -172,7 +155,7 @@ body {
   float: none;
   max-width: 940px;
 }
-/* line 177, styles.scss */
+/* line 163, styles.scss */
 .wrapper .platter {
   background-image: url(../img/navy_blue.png);
   height: 100%;
@@ -180,14 +163,14 @@ body {
   border-radius: 5px;
   box-shadow: #222222 1px 5px 10px;
 }
-/* line 183, styles.scss */
+/* line 169, styles.scss */
 .wrapper .platter select {
   font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 190, styles.scss */
+/* line 176, styles.scss */
 .wrapper .platter #timepicker {
   font-size: 1.1rem;
   height: 40px;
@@ -195,7 +178,7 @@ body {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 197, styles.scss */
+/* line 183, styles.scss */
 .wrapper .platter .add-on {
   width: 40px;
   height: 40px;
@@ -203,7 +186,7 @@ body {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 204, styles.scss */
+/* line 190, styles.scss */
 .wrapper .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -217,7 +200,7 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 218, styles.scss */
+/* line 204, styles.scss */
 .wrapper .submit {
   width: 100%;
   border: 0 none;
@@ -243,28 +226,28 @@ body {
   outline-style: none;
   color: #e4e4e4;
 }
-/* line 243, styles.scss */
+/* line 229, styles.scss */
 .wrapper .submit:hover {
   background: none repeat scroll 0 0 #478649;
   color: #e4e4e4;
 }
-/* line 247, styles.scss */
+/* line 233, styles.scss */
 .wrapper .submit:active {
   background-color: #3e7540;
 }
-/* line 252, styles.scss */
+/* line 238, styles.scss */
 .wrapper .center {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
 }
 
-/* line 259, styles.scss */
+/* line 245, styles.scss */
 button.active {
   color: #f14728;
 }
 
-/* line 262, styles.scss */
+/* line 248, styles.scss */
 button.hide {
   display: none !important;
 }

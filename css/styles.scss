@@ -132,36 +132,22 @@ body{
     }
 }
 
-.nav_bar{
-    width: 100%;
-    background-color: $nav;
-    padding-top: 20px;
-    padding-bottom: 15px;
 
-    .nav_bar_inner{
-        position: relative;
-        li{
-            list-style: none;
-            display: inline;
-            padding-left: 40px;
-            padding-right:40px;
-        }
+
+.branding{
+    font-size: 2.5rem!important;
+    line-height: 42px;
+    font-family: 'machinescript',arial,sans-serif;
+    .septablue{
+        color: $septablue;
     }
-    .branding{
-        font-size: 2.5rem!important;
-        line-height: 42px;
-        font-family: 'machinescript',arial,sans-serif;
-        .septablue{
-            color: $septablue;
-        }
-        .septared{
-            color: $septared;
-        }
+    .septared{
+        color: $septared;
     }
-    .links{
-	    color: $black;
-	    
-    }
+}
+.links{
+    color: $black;
+    
 }
 
 .wrapper{
@@ -262,4 +248,3 @@ button.active{
 button.hide{
     display: none !important;
 }
-

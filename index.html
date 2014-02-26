@@ -9,17 +9,24 @@
 	<link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<div class="nav_bar">
-		<div class="container">
-			<div class="nav_bar_inner">
-			    <ul class="nav_item">
-				    <li class="branding">Septajawn</li>
-				    <li><a class="links" href="#">About</a></li>
-				    <li><a class="links "href="#">Fork this</a></li>
-			    </ul>
-	  		</div>
-  		</div>
-	</div><!-- End navbar -->
+	<nav class="top-bar" data-topbar>
+	  <ul class="title-area">
+	    <li class="name branding">Septajawn</li>
+	    </li>
+	    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+	  </ul>
+
+	  <section class="top-bar-section">
+	    <!-- Right Nav Section -->
+	    <ul class="right">
+	      <li><a href="#">About</a></li>
+	      <li><a href="#">Source</a></li>
+	      <li><a href="#">This site sucks</a></li>
+	    </ul>
+
+	    <!-- Left Nav Section -->
+	  </section>
+	</nav>
 	<div class="wrapper">
 		<div class="platter">
 			<div class="row">
@@ -94,9 +101,14 @@
 	</div><!-- End span12 wrapper -->
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
+<script src="js/foundation.js"></script>
+<script src="js/foundation.topbar.js"></script>
 <script src="js/jqueryui.js"></script>
 <script src="js/formalize.js"></script>
 <script src="js/switchButton.js"></script>
 <script src="js/subway.js"></script>
+<script>
+$(document).foundation();
+</script>
 
 </html>
