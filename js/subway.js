@@ -739,6 +739,8 @@ function submit() {
         $('.end_station').empty();
         $('.times_row').empty(); //empty the times for unique and consecutive executions
         $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
+
+        window.day = parseDay();
     });  
 };
 
@@ -761,8 +763,9 @@ function routeInit(start, end, time, day) { //Using form to get times
     };
 
     route(start_station, end_station, day, time);
-
 };
+
+
 
 //-----------------------------------------------------------
 
@@ -776,114 +779,44 @@ function route(start_station, end_station, day, time) {//Logic that generates re
     var pointer;
     var flag;
 
+    function subroute(start,end,close){//Magic all happens here...great comment right?
+        while (i< start.length) {
+            leave_time[i] = start[i];//setting leave times from the start station object
+            arrive_time[i] = end[i];//setting arrive times from the end station object
+
+            if((close != undefined)&&(start[i] > close))//logic to see if station closed
+            {
+                flag = "c";//setting a flag to the rendering function that it closed
+                leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
+                break;//need to stop the while loop
+            }
+            i++;
+
+            flag = "d"//setting a flag to the rendering function that no more trains are coming
+        };
+    };
+
     if (start_station.order < end_station.order) { //southbound
         if (day === "wk") { //weekday southbound scheduling
-            while (i< start_station.sched_wk_sb.length) {
-                leave_time[i] = start_station.sched_wk_sb[i];//setting leave times from the start station object
-                arrive_time[i] = end_station.sched_wk_sb[i];//setting arrive times from the end station object
-
-                if((start_station.close_wk != undefined)&&(start_station.sched_wk_sb[i] > start_station.close_wk))//logic to see if station closed
-                {
-                    flag = "c";//setting a flag to the rendering function that it closed
-                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    break;//need to stop the while loop
-                };
-                if(start_station.sched_wk_sb[i]<time){//compares schedule to current time, indicates which one is closest
-                    pointer = i;
-                };
-
-                i++;
-
-                flag = "d"//setting a flag to the rendering function that no more trains are coming
-            };
+            subroute( start_station.sched_wk_sb , end_station.sched_wk_sb , start_station.close_wk );
         } 
         else if (day === "sat") { //saturday southbound scheduling
-            while (i< start_station.sched_sat_sb.length) {
-                leave_time[i] = start_station.sched_sat_sb[i];//setting leave times from the start station object
-                arrive_time[i] = end_station.sched_sat_sb[i];//setting arrive times from the end station object
-
-                if((start_station.close_end != undefined)&&(start_station.sched_sat_sb[i] > start_station.close_end))//logic to see if station closed
-                {
-                    flag = "c";//setting a flag to the rendering function that it closed
-                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    break;//need to stop the while loop
-                }
-                i++;
-
-                flag = "d"//setting a flag to the rendering function that no more trains are coming
-            };
+            subroute( start_station.sched_sat_sb , end_station.sched_sat_sb , start_station.close_end );
         }
         else { //sunday southbound scheduling
-            while (i< start_station.sched_sun_sb.length) {
-                leave_time[i] = start_station.sched_sun_sb[i];//setting leave times from the start station object
-                arrive_time[i] = end_station.sched_sun_sb[i];//setting arrive times from the end station object
-
-                if((start_station.close_end != undefined)&&(start_station.sched_sun_sb[i] > start_station.close_end))//logic to see if station closed
-                {
-                    flag = "c";//setting a flag to the rendering function that it closed
-                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    break;//need to stop the while loop
-                }
-                i++;
-
-                flag = "d"//setting a flag to the rendering function that no more trains are coming
-            };
+            subroute( start_station.sched_sun_sb , end_station.sched_sun_sb , start_station.close_end );
         };
     }
     else { //northbound
         if (day === "wk") { //weekday northbound scheduling
-            while (i< start_station.sched_wk_nb.length) {      
-                leave_time[i] = start_station.sched_wk_nb[i];//setting leave times from the start station object
-                arrive_time[i] = end_station.sched_wk_nb[i];//setting arrive times from the end station object
-
-                if((start_station.close_wk != undefined)&&(start_station.sched_wk_nb[i] > start_station.close_wk))//logic to see if station closed
-                {
-                    flag = "c";//setting a flag to the rendering function that it closed
-                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    break;//need to stop the while loop
-                }
-                i++;
-
-                flag = "d"//setting a flag to the rendering function that no more trains are coming
-            };
+            subroute( start_station.sched_wk_nb , end_station.sched_wk_nb , start_station.close_wk );
         } 
         else if (day === "sat") { //saturday northbound scheduling
-             while (i< start_station.sched_sat_nb.length) {
-                leave_time[i] = start_station.sched_sat_nb[i];//setting leave times from the start station object
-                arrive_time[i] = end_station.sched_sat_nb[i];//setting arrive times from the end station object
-
-                if((start_station.close_end != undefined)&&(start_station.sched_sat_nb[i] > start_station.close_end))//logic to see if station closed
-                {
-                    flag = "c";//setting a flag to the rendering function that it closed
-                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    break;//need to stop the while loop
-                }
-                i++;
-
-                flag = "d"//setting a flag to the rendering function that no more trains are coming
-            };
+             subroute( start_station.sched_sat_nb , end_station.sched_sat_nb , start_station.close_end );
         }
         else { //sunday northbound scheduling
-             while (i< start_station.sched_sun_nb.length) {
-                leave_time[i] = start_station.sched_sun_nb[i];//setting leave times from the start station object
-                arrive_time[i] = end_station.sched_sun_nb[i];//setting arrive times from the end station object
-
-                if((start_station.close_end != undefined)&&(start_station.sched_sun_nb[i] > start_station.close_end))//logic to see if station closed
-                {
-                    flag = "c";//setting a flag to the rendering function that it closed
-                    leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
-                    break;//need to stop the while loop
-                }
-                i++;
-
-                flag = "d"//setting a flag to the rendering function that no more trains are coming
-            };
+             subroute( start_station.sched_sun_nb , end_station.sched_sun_nb , start_station.close_end );
         };
     };
 
