@@ -255,3 +255,11 @@ body{
         text-align: center;
     }
 }
+
+button.active{
+    color: $septared;
+}
+button.hide{
+    display: none !important;
+}
+

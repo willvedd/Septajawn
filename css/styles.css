@@ -258,3 +258,13 @@ body {
   margin-left: auto;
   text-align: center;
 }
+
+/* line 259, styles.scss */
+button.active {
+  color: #f14728;
+}
+
+/* line 262, styles.scss */
+button.hide {
+  display: none !important;
+}

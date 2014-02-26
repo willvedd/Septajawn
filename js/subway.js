@@ -652,16 +652,19 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
 
 //-----------------------------------------------------------
 
+window.day = parseDay();//setting global variable for day. Needs to be global for day toolbar
+
 $('.submit').click(function(){
     submit();
+    $(this).addClass("hide");//hides the submit button, allow more dynamic selections
 });
-
-
 
 function submit() {
 
     window.performance.mark('mark_start_process');
 
+    console.log("Submit executed");
+    
     var start_sel = document.getElementById("start_dest");
     var start = start_sel.options[start_sel.selectedIndex].value;
     var end_sel = document.getElementById("end_dest");
@@ -673,7 +676,7 @@ function submit() {
     
     var time = hours+"."+minutes;//setting time 
 
-    routeInit(start, end, time, parseDay());
+    routeInit(start, end, time, day);
 
     $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
 
@@ -683,42 +686,59 @@ function submit() {
         var end = end_sel.options[end_sel.selectedIndex].value;
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
-            routeInit(start, end, time, parseDay()); //Prevents console errors from undefined select variables
+            routeInit(start, end, time, day); //Prevents console errors from undefined select variables
         }
     });
     $('#wk').click(function(){//dynamically modifies the results based on the day buttons
+
         var start_sel = document.getElementById("start_dest");
         var start = start_sel.options[start_sel.selectedIndex].value;
         var end_sel = document.getElementById("end_dest");
         var end = end_sel.options[end_sel.selectedIndex].value;
+        
+        window.day = "wk";
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
             routeInit(start, end, time, "wk"); //Prevents console errors from undefined select variables
         }
     });
     $('#sat').click(function(){//dynamically modifies the results based on the day buttons
+
         var start_sel = document.getElementById("start_dest");
         var start = start_sel.options[start_sel.selectedIndex].value;
         var end_sel = document.getElementById("end_dest");
         var end = end_sel.options[end_sel.selectedIndex].value;
+           
+
+        window.day = "sat";
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
-            routeInit(start, end, time, "sat"); //Prevents console errors from undefined select variables
+            routeInit(start, end, time, day); //Prevents console errors from undefined select variables
         }
+
     });
     $('#sun').click(function(){//dynamically modifies the results based on the day buttons
+    
         var start_sel = document.getElementById("start_dest");
         var start = start_sel.options[start_sel.selectedIndex].value;
         var end_sel = document.getElementById("end_dest");
         var end = end_sel.options[end_sel.selectedIndex].value;
+        
+        window.day = "sun";
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
             routeInit(start, end, time, "sun");  //Prevents console errors from undefined select variables
         }
     });  
-    $('#rst').click(function(){
+    $('#rst').click(function(){//Resets the form and removes any previous results
+        $(".submit").removeClass("hide");//Unhides the submit button
         $('#start_dest').prop('selectedIndex',0);//resets station drop down box
         $('#end_dest').prop('selectedIndex',0);//resets station drop down box
+        $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
+        $('.start_station').empty();
+        $('.end_station').empty();
+        $('.times_row').empty(); //empty the times for unique and consecutive executions
+        $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
     });  
 };
 
@@ -729,6 +749,8 @@ function submit() {
 //-----------------------------------------------------------
 
 function routeInit(start, end, time, day) { //Using form to get times
+
+    console.log("Routeinit executed");
 
     for (i = 0; i < stations.length; i++) {
         if (stations[i].id == start) {
@@ -746,7 +768,7 @@ function routeInit(start, end, time, day) { //Using form to get times
 
 function route(start_station, end_station, day, time) {//Logic that generates requested times depending on direction and day
 
-    window.performance.mark('mark_start_route');
+    console.log("Route executed");
 
     var leave_time = new Array();
     var arrive_time = new Array();
@@ -867,28 +889,26 @@ function route(start_station, end_station, day, time) {//Logic that generates re
 
     console.log("Pointer: "+pointer);
 
-    window.performance.mark('mark_end_route');
-    performance.measure("Route", "mark_start_route", "mark_end_route");
-    perfMeasures = performance.getEntriesByType("measure");
-    for (i = 0; i < perfMeasures.length; i++) {
-    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-    };
-
-    render(start_station, end_station, leave_time, arrive_time, flag, pointer);
+    render(start_station, end_station, leave_time, arrive_time, flag, pointer, window.day);
 
 };
 
 //-----------------------------------------------------------
 
-function render(start_station, end_station, leave_time, arrive_time, flag, pointer) {
+function render(start_station, end_station, leave_time, arrive_time, flag, pointer, day) {
 
-     window.performance.mark('mark_start_render');
+    console.log("Render executed");
 
-    $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
-    $('.start_station').empty().append(start_station.name); // station name in first row
-    $('.end_station').empty().append(end_station.name); // station name in first row
-    $('.times_row').empty(); //empty the times for unique and consecutive executions
-    $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
+    function render_clear(){
+        $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
+        $('.start_station').empty().append(start_station.name); // station name in first row
+        $('.end_station').empty().append(end_station.name); // station name in first row
+        $('.times_row').empty(); //empty the times for unique and consecutive executions
+        $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
+        console.log("clearing")
+    };
+
+    render_clear();
 
     for (var i = 0; i < leave_time.length; i++) {//function that populates times into table
         $(".times").find('tbody').append($('<tr class="times_row">').append($('<td class="start' + i + '">')));
@@ -900,7 +920,7 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
     $(".times").find('tbody').append($('<tr class="message_row">').append($('<td class="start' + i + '">'))); // Setting last row for flagged message
 
     if(flag == "c"){//the "c" flag or closure indicator
-        if(parseDay() == "wk"){//checks if weekday or weekend
+        if(day == "wk"){//checks if weekday or weekend
             $('.start' + i).empty().append(start_station.name+" CLOSED @ "+timeformat(start_station.close_wk));
         }
         else{
@@ -911,28 +931,28 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
         $('.start' + i).empty().append("No more trains running");
     }
 
+    if (day == "wk"){
+        $("#wk").addClass("active");
+        $("#sat").removeClass("active");
+        $("#sun").removeClass("active");
+    }
+    else if(day == "sat"){
+        $("#wk").removeClass("active");
+        $("#sat").addClass("active");
+        $("#sun").removeClass("active");
+    }
+    else{
+        $("#wk").removeClass("active");
+        $("#sat").removeClass("active");
+        $("#sun").addClass("active");
+    };
+
     $('.table').fadeIn("slow");//fading the table in to soften the UX
 
-     window.performance.mark('mark_start_scroll');
-
-    $('.table-wrap').animate({//sets animation for automatic scrolling to time pointer
-        scrollTop: $(".start"+pointer).offset().top
-    }, 500);
-
-    window.performance.mark('mark_end_scroll');
-    performance.measure("Scroll", "mark_start_scroll", "mark_end_scroll");
-    perfMeasures = performance.getEntriesByType("measure");
-    for (i = 0; i < perfMeasures.length; i++) {
-    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-    };
-
-
-    window.performance.mark('mark_end_render');
-    performance.measure("Render", "mark_start_render", "mark_end_render");
-    perfMeasures = performance.getEntriesByType("measure");
-    for (i = 0; i < perfMeasures.length; i++) {
-    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-    };
+     
+    /*$('.table-wrap').animate({//sets animation for automatic scrolling to time pointer
+       scrollTop: $(".start"+pointer).offset().top
+    }, 500);*/ //autoscrolling still needs work
 
     window.performance.mark('mark_end_process');
     performance.measure("Process", "mark_start_process", "mark_end_process");
@@ -944,9 +964,11 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
 
 };
 
-
 //-----------------------------------------------------------
 
+
+
+//-----------------------------------------------------------
 
 function timeformat(time,start_station,day) { //formats time from a double into hh:mm for rendering purposes only
 
@@ -980,6 +1002,8 @@ function timeformat(time,start_station,day) { //formats time from a double into 
 //-----------------------------------------------------------
 
 function parseDay() {//returns "wk","sat","sun" depending on day of week
+
+    console.log("Parseday executed");
 
     var day = Date().split(" "); //Gets raw day of the week
 
