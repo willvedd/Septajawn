@@ -1,5 +1,5 @@
 //Broad Street Line
-window.performance.mark('mark_start_schedule');
+//window.performance.mark('mark_start_schedule');
 
 
 var fern = {
@@ -606,12 +606,12 @@ var sixtynine = {
     sched_sun_nb: schedule(milb.sched_sun_nb, -1),
 };
 
-window.performance.mark('mark_end_schedule');
+/*window.performance.mark('mark_end_schedule');
 performance.measure("Schedule", "mark_start_schedule", "mark_end_schedule");
 perfMeasures = performance.getEntriesByType("measure");
 for (i = 0; i < perfMeasures.length; i++) {
     console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-};
+};*/
 
 
 //-----------------------------------------------------------
@@ -661,7 +661,7 @@ $('.submit').click(function(){
 
 function submit() {
 
-    window.performance.mark('mark_start_process');
+    //window.performance.mark('mark_start_process');
 
     console.log("Submit executed");
     
@@ -887,12 +887,12 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
        scrollTop: $(".start"+pointer).offset().top
     }, 500);*/ //autoscrolling still needs work
 
-    window.performance.mark('mark_end_process');
+    /*window.performance.mark('mark_end_process');
     performance.measure("Process", "mark_start_process", "mark_end_process");
     perfMeasures = performance.getEntriesByType("measure");
     for (i = 0; i < perfMeasures.length; i++) {
     console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-    };
+    };*/
 
 
 };
