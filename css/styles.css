@@ -10,17 +10,17 @@
   /* IE9 Compat Modes */
 }
 
-/* line 35, styles.scss */
+/* line 32, styles.scss */
 h1 {
   color: white;
 }
 
-/* line 40, styles.scss */
+/* line 37, styles.scss */
 html, body {
   height: 100%;
 }
 
-/* line 44, styles.scss */
+/* line 41, styles.scss */
 html {
   background-color: #2a363b;
   -webkit-background-size: cover;
@@ -29,12 +29,12 @@ html {
   background-size: cover;
 }
 
-/* line 52, styles.scss */
+/* line 49, styles.scss */
 body {
   background: none;
 }
 
-/* line 56, styles.scss */
+/* line 53, styles.scss */
 .center {
   margin-right: auto;
   margin-left: auto;
@@ -44,24 +44,24 @@ body {
 /*==============================================*/
 /*=============== Nav/header ===================*/
 /*==============================================*/
-/* line 66, styles.scss */
+/* line 63, styles.scss */
 nav {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #222b2f;
 }
-/* line 70, styles.scss */
+/* line 67, styles.scss */
 nav .branding {
   font-size: 2.5rem!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
   color: white;
 }
-/* line 76, styles.scss */
+/* line 73, styles.scss */
 nav a {
   color: white;
 }
-/* line 79, styles.scss */
+/* line 76, styles.scss */
 nav .wrapper {
   position: relative;
   top: 30%;
@@ -77,19 +77,19 @@ nav .wrapper {
 /*==============================================*/
 /*================= Picker =====================*/
 /*==============================================*/
-/* line 96, styles.scss */
+/* line 93, styles.scss */
 .platter {
   height: 100%;
   width: 100%;
 }
-/* line 99, styles.scss */
+/* line 96, styles.scss */
 .platter select {
   font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 106, styles.scss */
+/* line 103, styles.scss */
 .platter #timepicker {
   font-size: 1.1rem;
   height: 40px;
@@ -97,7 +97,7 @@ nav .wrapper {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 113, styles.scss */
+/* line 110, styles.scss */
 .platter .add-on {
   width: 40px;
   height: 40px;
@@ -105,7 +105,7 @@ nav .wrapper {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 120, styles.scss */
+/* line 117, styles.scss */
 .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -123,12 +123,12 @@ nav .wrapper {
 /*==============================================*/
 /*================ Buttons =====================*/
 /*==============================================*/
-/* line 139, styles.scss */
+/* line 136, styles.scss */
 button.hide {
   display: none !important;
 }
 
-/* line 143, styles.scss */
+/* line 140, styles.scss */
 button.submit {
   width: 100%;
   border: 0 none;
@@ -153,40 +153,40 @@ button.submit {
   outline-color: transparent;
   outline-style: none;
 }
-/* line 167, styles.scss */
+/* line 164, styles.scss */
 button.submit:hover {
   background: none repeat scroll 0 0 #286e3c;
   color: white;
 }
-/* line 171, styles.scss */
+/* line 168, styles.scss */
 button.submit:active {
   background-color: #215b32;
 }
 
-/* line 176, styles.scss */
+/* line 173, styles.scss */
 button.toolbar {
   color: white;
   border: none;
   width: 20%;
 }
-/* line 180, styles.scss */
+/* line 177, styles.scss */
 button.toolbar .day {
   background-color: #929090;
 }
-/* line 183, styles.scss */
+/* line 180, styles.scss */
 button.toolbar.active {
   background-color: #616060 !important;
 }
-/* line 186, styles.scss */
+/* line 183, styles.scss */
 button.toolbar:hover {
   background-color: #6c6a6a;
 }
-/* line 189, styles.scss */
+/* line 186, styles.scss */
 button.toolbar#rst {
   background-color: #a05553 !important;
   margin-left: 5%;
 }
-/* line 193, styles.scss */
+/* line 190, styles.scss */
 button.toolbar#rst:hover {
   background-color: #6e3a39 !important;
 }
@@ -194,7 +194,7 @@ button.toolbar#rst:hover {
 /*==============================================*/
 /*=========== Results Table (mine) =============*/
 /*==============================================*/
-/* line 203, styles.scss */
+/* line 200, styles.scss */
 .table-wrap {
   max-height: 400px;
   overflow: scroll;
@@ -203,68 +203,74 @@ button.toolbar#rst:hover {
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 210, styles.scss */
+/* line 207, styles.scss */
 .times {
   display: none;
   margin-top: 40px;
   background-color: white;
-  color: #222222;
+  color: black;
 }
-/* line 216, styles.scss */
+/* line 213, styles.scss */
 .times tr {
   font-size: 1.1rem;
 }
-/* line 220, styles.scss */
+/* line 217, styles.scss */
 .times td {
   text-align: center;
   width: 50%;
 }
-/* line 224, styles.scss */
+/* line 221, styles.scss */
 .times .station {
   font-size: 1.4rem;
   color: white;
 }
-/* line 228, styles.scss */
+/* line 225, styles.scss */
 .times .mf {
   background-color: #0055a0 !important;
 }
-/* line 231, styles.scss */
+/* line 228, styles.scss */
 .times .bs {
   background-color: #f76225 !important;
+}
+
+/* line 232, styles.scss */
+.warn {
+  color: #a1504d !important;
+  font-weight: bold;
 }
 
 /*==============================================*/
 /*========= Results Table (bootstrap) ==========*/
 /*==============================================*/
-/* line 239, styles.scss */
+/* line 240, styles.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 244, styles.scss */
+/* line 245, styles.scss */
 .table-hide {
   display: none;
 }
 
-/* line 247, styles.scss */
+/* line 248, styles.scss */
 table {
   max-width: 100%;
   background-color: transparent;
 }
 
-/* line 251, styles.scss */
+/* line 252, styles.scss */
 th {
   text-align: left;
 }
 
-/* line 254, styles.scss */
+/* line 255, styles.scss */
 .table {
   width: 100%;
   margin-bottom: 20px;
 }
 
-/* line 263, styles.scss */
+/* line 264, styles.scss */
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -276,13 +282,13 @@ th {
   vertical-align: top;
 }
 
-/* line 268, styles.scss */
+/* line 269, styles.scss */
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #dddddd;
 }
 
-/* line 277, styles.scss */
+/* line 278, styles.scss */
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
 .table > thead:first-child > tr:first-child > th,
@@ -292,17 +298,17 @@ th {
   border-top: 0;
 }
 
-/* line 280, styles.scss */
+/* line 281, styles.scss */
 .table > tbody + tbody {
   border-top: 2px solid #dddddd;
 }
 
-/* line 283, styles.scss */
+/* line 284, styles.scss */
 .table .table {
   background-color: #f9f9f9;
 }
 
-/* line 291, styles.scss */
+/* line 292, styles.scss */
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
 .table-condensed > tfoot > tr > th,
@@ -312,26 +318,26 @@ th {
   padding: 5px;
 }
 
-/* line 296, styles.scss */
+/* line 297, styles.scss */
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #e4e4e4;
 }
 
-/* line 300, styles.scss */
+/* line 301, styles.scss */
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
   background-color: #f5f5f5;
 }
 
-/* line 303, styles.scss */
+/* line 304, styles.scss */
 table col[class*="col-"] {
   position: static;
   float: none;
   display: table-column;
 }
 
-/* line 309, styles.scss */
+/* line 310, styles.scss */
 table td[class*="col-"],
 table th[class*="col-"] {
   position: static;
@@ -339,7 +345,7 @@ table th[class*="col-"] {
   display: table-cell;
 }
 
-/* line 325, styles.scss */
+/* line 326, styles.scss */
 .table > thead > tr > td.active,
 .table > tbody > tr > td.active,
 .table > tfoot > tr > td.active,
@@ -355,7 +361,7 @@ table th[class*="col-"] {
   background-color: #f5f5f5;
 }
 
-/* line 331, styles.scss */
+/* line 332, styles.scss */
 .table-hover > tbody > tr > td.active:hover,
 .table-hover > tbody > tr > th.active:hover,
 .table-hover > tbody > tr.active:hover > td,
@@ -363,7 +369,7 @@ table th[class*="col-"] {
   background-color: #e8e8e8;
 }
 
-/* line 345, styles.scss */
+/* line 346, styles.scss */
 .table > thead > tr > td.success,
 .table > tbody > tr > td.success,
 .table > tfoot > tr > td.success,
@@ -379,7 +385,7 @@ table th[class*="col-"] {
   background-color: #dff0d8;
 }
 
-/* line 351, styles.scss */
+/* line 352, styles.scss */
 .table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover,
 .table-hover > tbody > tr.success:hover > td,
@@ -387,7 +393,7 @@ table th[class*="col-"] {
   background-color: #d0e9c6;
 }
 
-/* line 365, styles.scss */
+/* line 366, styles.scss */
 .table > thead > tr > td.info,
 .table > tbody > tr > td.info,
 .table > tfoot > tr > td.info,
@@ -403,7 +409,7 @@ table th[class*="col-"] {
   background-color: #d9edf7;
 }
 
-/* line 371, styles.scss */
+/* line 372, styles.scss */
 .table-hover > tbody > tr > td.info:hover,
 .table-hover > tbody > tr > th.info:hover,
 .table-hover > tbody > tr.info:hover > td,
@@ -411,7 +417,7 @@ table th[class*="col-"] {
   background-color: #c4e3f3;
 }
 
-/* line 385, styles.scss */
+/* line 386, styles.scss */
 .table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
 .table > tfoot > tr > td.warning,
@@ -427,7 +433,7 @@ table th[class*="col-"] {
   background-color: #fcf8e3;
 }
 
-/* line 391, styles.scss */
+/* line 392, styles.scss */
 .table-hover > tbody > tr > td.warning:hover,
 .table-hover > tbody > tr > th.warning:hover,
 .table-hover > tbody > tr.warning:hover > td,
@@ -435,7 +441,7 @@ table th[class*="col-"] {
   background-color: #faf2cc;
 }
 
-/* line 405, styles.scss */
+/* line 406, styles.scss */
 .table > thead > tr > td.danger,
 .table > tbody > tr > td.danger,
 .table > tfoot > tr > td.danger,
@@ -451,7 +457,7 @@ table th[class*="col-"] {
   background-color: #f2dede;
 }
 
-/* line 411, styles.scss */
+/* line 412, styles.scss */
 .table-hover > tbody > tr > td.danger:hover,
 .table-hover > tbody > tr > th.danger:hover,
 .table-hover > tbody > tr.danger:hover > td,
@@ -460,7 +466,7 @@ table th[class*="col-"] {
 }
 
 @media (max-width: 767px) {
-  /* line 415, styles.scss */
+  /* line 416, styles.scss */
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -471,12 +477,12 @@ table th[class*="col-"] {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* line 424, styles.scss */
+  /* line 425, styles.scss */
   .table-responsive > .table {
     margin-bottom: 0;
   }
 
-  /* line 432, styles.scss */
+  /* line 433, styles.scss */
   .table-responsive > .table > thead > tr > th,
   .table-responsive > .table > tbody > tr > th,
   .table-responsive > .table > tfoot > tr > th,
@@ -486,12 +492,12 @@ table th[class*="col-"] {
     white-space: nowrap;
   }
 
-  /* line 435, styles.scss */
+  /* line 436, styles.scss */
   .table-responsive > .table-bordered {
     border: 0;
   }
 
-  /* line 443, styles.scss */
+  /* line 444, styles.scss */
   .table-responsive > .table-bordered > thead > tr > th:first-child,
   .table-responsive > .table-bordered > tbody > tr > th:first-child,
   .table-responsive > .table-bordered > tfoot > tr > th:first-child,
@@ -501,7 +507,7 @@ table th[class*="col-"] {
     border-left: 0;
   }
 
-  /* line 451, styles.scss */
+  /* line 452, styles.scss */
   .table-responsive > .table-bordered > thead > tr > th:last-child,
   .table-responsive > .table-bordered > tbody > tr > th:last-child,
   .table-responsive > .table-bordered > tfoot > tr > th:last-child,
@@ -511,11 +517,118 @@ table th[class*="col-"] {
     border-right: 0;
   }
 
-  /* line 457, styles.scss */
+  /* line 458, styles.scss */
   .table-responsive > .table-bordered > tbody > tr:last-child > th,
   .table-responsive > .table-bordered > tfoot > tr:last-child > th,
   .table-responsive > .table-bordered > tbody > tr:last-child > td,
   .table-responsive > .table-bordered > tfoot > tr:last-child > td {
     border-bottom: 0;
   }
+}
+/*==============================================*/
+/*=============== BSL/MFL Switch ===============*/
+/*==============================================*/
+/* line 468, styles.scss */
+.station_label {
+  display: inline;
+}
+/* line 472, styles.scss */
+.station_label.mf {
+  color: #0055a0;
+}
+/* line 475, styles.scss */
+.station_label.bs {
+  color: #f76225;
+}
+
+/* line 479, styles.scss */
+.switch-wrapper {
+  display: inline;
+}
+
+/* line 484, styles.scss */
+.onoffswitch {
+  position: relative;
+  width: 90px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* line 488, styles.scss */
+.onoffswitch-checkbox {
+  display: none;
+}
+
+/* line 491, styles.scss */
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 20px;
+  background-color: #afaeae;
+}
+
+/* line 498, styles.scss */
+.onoffswitch-inner {
+  width: 200%;
+  margin-left: -100%;
+  -moz-transition: margin 0.3s ease-in 0s;
+  -webkit-transition: margin 0.3s ease-in 0s;
+  -o-transition: margin 0.3s ease-in 0s;
+  transition: margin 0.3s ease-in 0s;
+}
+
+/* line 505, styles.scss */
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* line 515, styles.scss */
+.onoffswitch-inner:before {
+  content: " ";
+  padding-left: 10px;
+}
+
+/* line 519, styles.scss */
+.onoffswitch-inner:after {
+  padding-right: 10px;
+  text-align: right;
+}
+
+/* line 523, styles.scss */
+.onoffswitch-switch {
+  width: 21px;
+  margin: 4.5px;
+  background: #FFFFFF;
+  border-radius: 20px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 56px;
+  -moz-transition: all 0.3s ease-in 0s;
+  -webkit-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s;
+  transition: all 0.3s ease-in 0s;
+}
+
+/* line 531, styles.scss */
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+/* line 534, styles.scss */
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
 }

@@ -854,10 +854,10 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
 
     if(flag == "c"){//the "c" flag or closure indicator
         if(day == "wk"){//checks if weekday or weekend
-            $('.start' + i).empty().append(start_station.name+" CLOSED @ "+timeformat(start_station.close_wk));
+            $('.start' + i).empty().append("<span class='warn'>"+start_station.name+" CLOSED @ "+timeformat(start_station.close_wk)+"</span");
         }
         else{
-            $('.start' + i).empty().append(start_station.name+" CLOSED @ "+timeformat(start_station.close_end));
+            $('.start' + i).empty().append("<span class='warn'>"+start_station.name+" CLOSED @ "+timeformat(start_station.close_end)+"</span");
         }
     }
     else{//the "d" flag or the done indicator
@@ -1034,13 +1034,4 @@ $('#start_dest').change(function() { //Function sees start destination and remov
     };
 });
 
-//-----------------------------------------------------------
-
-$('.line1').switchButton({ //initializes and configures subway line slider UI
-    on_label: 'MFL',
-    off_label: 'BSL',
-    width: 40,
-    height: 15,
-    button_width: 25
-});
 //-----------------------------------------------------------

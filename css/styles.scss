@@ -15,13 +15,10 @@ $table2:#e4e4e4;
 $reset:#a05553;
 $toolbar:#929090;
 $toolbar_active:#616060;
+$black: #000000;
 $white: #ffffff;
-
-$septared:   #f14728;
-$septablue: #1f4fa3;
-$black:#222222;
-$orange:#F15D30;
-$gray: #A0A0A0;
+$warning: #a1504d;
+$switch_bg: #afaeae;
 
 /*==============================================*/
 /*=============== General ======================*/
@@ -231,6 +228,10 @@ button.toolbar{
     .bs{
         background-color: $sept_orange!important;
     }
+}
+.warn{
+    color: $warning !important;
+    font-weight: bold;
 }
 
 /*==============================================*/
@@ -459,4 +460,77 @@ table th[class*="col-"] {
   }
 }
 
+/*==============================================*/
+/*=============== BSL/MFL Switch ===============*/
+/*==============================================*/
 
+
+.station_label{
+
+    display: inline;
+
+    &.mf{
+        color: $sept_blue;
+    }
+    &.bs{
+        color: $sept_orange;
+    }
+}
+.switch-wrapper{
+    display: inline;
+}
+
+
+.onoffswitch {
+    position: relative; width: 90px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; 
+    overflow: hidden; 
+    cursor: pointer;
+    border-radius: 20px;
+    background-color: $switch_bg;
+}
+.onoffswitch-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; 
+    -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; 
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    float: left; 
+    width: 50%; 
+    height: 30px; 
+    padding: 0; 
+    line-height: 30px;
+    font-size: 14px; 
+    color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: " ";
+    padding-left: 10px;
+}
+.onoffswitch-inner:after {
+    padding-right: 10px;
+    text-align: right;
+}
+.onoffswitch-switch {
+    width: 21px; margin: 4.5px;
+    background: #FFFFFF;
+    border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 56px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+}
