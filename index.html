@@ -9,23 +9,13 @@
 	<link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="top-bar" data-topbar>
-	  <ul class="title-area">
-	    <li class="name branding">Septajawn</li>
-	    </li>
-	    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
-	  </ul>
-
-	  <section class="top-bar-section">
-	    <!-- Right Nav Section -->
-	    <ul class="right">
+	<nav>
+	    <span class="name branding">Septajawn</span>
+	    <ul>
 	      <li><a href="#">About</a></li>
 	      <li><a href="#">Source</a></li>
 	      <li><a href="#">This site sucks</a></li>
 	    </ul>
-
-	    <!-- Left Nav Section -->
-	  </section>
 	</nav>
 	<div class="wrapper">
 		<div class="platter">
@@ -39,7 +29,7 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="large-8 medium-8 columns">
+				<div class="large-5 medium-5 columns">
 					<div class="center">
 					<select name="start_destination" id="start_dest" class="btn-group">
 						<option value="" disabled="disabled" selected="selected">Starting from...</option>
@@ -69,7 +59,7 @@
 
 					</div>
 				</div>
-				<div class="large-8 medium-8 columns">
+				<div class="large-5 medium-5 columns">
 					<div class="center">
 					<select name="end_destination" id="end_dest">
 						<option value="" disabled="disabled" selected="selected">Ending at...</option>
@@ -83,14 +73,20 @@
 				</div>
 			</div><!-- End row -->
 		</div><!-- End platter -->
+		
+
 		<div class="row">
-			
-			<button id="wk">Week</button>
-			<button id="sat">Sat</button>
-			<button id="sun">Sun</button>
-			<button id="rst">Reset</button>
+			<div class="large-12 large-centered medium-12 medium-centered columns">
+				<button class= "toolbar day" id="wk">Week</button>
+				<button class= "toolbar day" id="sat">Sat</button>
+				<button class= "toolbar day" id="sun">Sun</button>
+				<button class= "toolbar" id="rst">Reset</button>
+			</div>
+		</div>
+
+		<div class="row">
 			<div class="table-wrap large-11 large-centered medium-11 medium-centered columns">
-				<table class="table table-bordered table-striped times">
+				<table class="table table-striped times">
 					<tr>
 						<td class="start_station station"></td>
 						<td class="end_station station"></td>
@@ -101,12 +97,8 @@
 	</div><!-- End span12 wrapper -->
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
-<script src="js/foundation.js"></script>
-<script src="js/foundation.topbar.js"></script>
 <script src="js/formalize.js"></script>
 <script src="js/subway.js"></script>
-<script>
-$(document).foundation();
-</script>
+
 
 </html>
