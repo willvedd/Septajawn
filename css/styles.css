@@ -32,74 +32,75 @@ body {
 .table-wrap {
   max-height: 400px;
   overflow: scroll;
+  overflow-scrolling: touch;
 }
 
-/* line 44, styles.scss */
+/* line 45, styles.scss */
 .times {
   display: none;
   margin-top: 40px;
   background-color: #e4e4e4;
   color: #222222;
 }
-/* line 50, styles.scss */
+/* line 51, styles.scss */
 .times tr {
   font-size: 1.1rem;
 }
-/* line 54, styles.scss */
+/* line 55, styles.scss */
 .times td {
   text-align: center;
   width: 50%;
 }
-/* line 58, styles.scss */
+/* line 59, styles.scss */
 .times .station {
   font-size: 1.4rem;
   color: #e4e4e4;
 }
-/* line 62, styles.scss */
+/* line 63, styles.scss */
 .times .mf {
   background-color: #0055a0 !important;
 }
-/* line 65, styles.scss */
+/* line 66, styles.scss */
 .times .bs {
   background-color: #f15d30 !important;
 }
 
-/* line 69, styles.scss */
+/* line 70, styles.scss */
 .table-hide {
   display: none;
 }
 
-/* line 75, styles.scss */
+/* line 76, styles.scss */
 .switch-wrapper {
   margin-right: auto;
   margin-left: auto;
   margin-top: 20px;
   width: 160px;
 }
-/* line 82, styles.scss */
+/* line 83, styles.scss */
 .switch-wrapper .switch-button-label {
   float: left;
   font-size: 1.5rem;
   cursor: pointer;
 }
-/* line 88, styles.scss */
+/* line 89, styles.scss */
 .switch-wrapper .switch-button-label.off {
   color: #adadad;
   opacity: .5;
 }
-/* line 93, styles.scss */
+/* line 94, styles.scss */
 .switch-wrapper .switch-button-label.on {
   color: #f15d30;
 }
-/* line 97, styles.scss */
+/* line 98, styles.scss */
 .switch-wrapper .blue {
   color: #0055a0 !important;
 }
-/* line 100, styles.scss */
+/* line 101, styles.scss */
 .switch-wrapper .orange {
   color: #f15d30 !important;
 }
-/* line 104, styles.scss */
+/* line 105, styles.scss */
 .switch-wrapper .switch-button-background {
   float: left;
   position: relative;
@@ -111,7 +112,7 @@ body {
   border-radius: 8px;
   cursor: pointer;
 }
-/* line 120, styles.scss */
+/* line 121, styles.scss */
 .switch-wrapper .switch-button-button {
   position: absolute;
   left: -1px;
@@ -123,27 +124,27 @@ body {
   border-radius: 8px;
 }
 
-/* line 137, styles.scss */
+/* line 138, styles.scss */
 .branding {
   font-size: 2.5rem!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
 }
-/* line 141, styles.scss */
+/* line 142, styles.scss */
 .branding .septablue {
   color: #1f4fa3;
 }
-/* line 144, styles.scss */
+/* line 145, styles.scss */
 .branding .septared {
   color: #f14728;
 }
 
-/* line 148, styles.scss */
+/* line 149, styles.scss */
 .links {
   color: #222222;
 }
 
-/* line 153, styles.scss */
+/* line 154, styles.scss */
 .wrapper {
   position: relative;
   top: 30%;
@@ -155,7 +156,7 @@ body {
   float: none;
   max-width: 940px;
 }
-/* line 163, styles.scss */
+/* line 164, styles.scss */
 .wrapper .platter {
   background-image: url(../img/navy_blue.png);
   height: 100%;
@@ -163,14 +164,14 @@ body {
   border-radius: 5px;
   box-shadow: #222222 1px 5px 10px;
 }
-/* line 169, styles.scss */
+/* line 170, styles.scss */
 .wrapper .platter select {
   font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 176, styles.scss */
+/* line 177, styles.scss */
 .wrapper .platter #timepicker {
   font-size: 1.1rem;
   height: 40px;
@@ -178,7 +179,7 @@ body {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 183, styles.scss */
+/* line 184, styles.scss */
 .wrapper .platter .add-on {
   width: 40px;
   height: 40px;
@@ -186,7 +187,7 @@ body {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 190, styles.scss */
+/* line 191, styles.scss */
 .wrapper .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -200,7 +201,7 @@ body {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-/* line 204, styles.scss */
+/* line 205, styles.scss */
 .wrapper .submit {
   width: 100%;
   border: 0 none;
@@ -226,28 +227,28 @@ body {
   outline-style: none;
   color: #e4e4e4;
 }
-/* line 229, styles.scss */
+/* line 230, styles.scss */
 .wrapper .submit:hover {
   background: none repeat scroll 0 0 #478649;
   color: #e4e4e4;
 }
-/* line 233, styles.scss */
+/* line 234, styles.scss */
 .wrapper .submit:active {
   background-color: #3e7540;
 }
-/* line 238, styles.scss */
+/* line 239, styles.scss */
 .wrapper .center {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
 }
 
-/* line 245, styles.scss */
+/* line 246, styles.scss */
 button.active {
   color: #f14728;
 }
 
-/* line 248, styles.scss */
+/* line 249, styles.scss */
 button.hide {
   display: none !important;
 }

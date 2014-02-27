@@ -39,6 +39,7 @@ body{
 .table-wrap{
     max-height: 400px;
     overflow: scroll;
+    overflow-scrolling:touch;
 }
 
 .times{
