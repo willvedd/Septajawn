@@ -41,27 +41,33 @@ body {
   text-align: center;
 }
 
+/* line 59, styles.scss */
+*:focus {
+  outline: none;
+}
+
+/*removes blue glow from input*/
 /*==============================================*/
 /*=============== Nav/header ===================*/
 /*==============================================*/
-/* line 63, styles.scss */
+/* line 65, styles.scss */
 nav {
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: #222b2f;
 }
-/* line 67, styles.scss */
+/* line 69, styles.scss */
 nav .branding {
   font-size: 2.5rem!important;
   line-height: 42px;
   font-family: 'machinescript',arial,sans-serif;
   color: white;
 }
-/* line 73, styles.scss */
+/* line 75, styles.scss */
 nav a {
   color: white;
 }
-/* line 76, styles.scss */
+/* line 78, styles.scss */
 nav .wrapper {
   position: relative;
   top: 30%;
@@ -77,19 +83,19 @@ nav .wrapper {
 /*==============================================*/
 /*================= Picker =====================*/
 /*==============================================*/
-/* line 93, styles.scss */
+/* line 95, styles.scss */
 .platter {
   height: 100%;
   width: 100%;
 }
-/* line 96, styles.scss */
+/* line 98, styles.scss */
 .platter select {
   font-size: 1.1rem;
   height: 40px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
-/* line 103, styles.scss */
+/* line 105, styles.scss */
 .platter #timepicker {
   font-size: 1.1rem;
   height: 40px;
@@ -97,7 +103,7 @@ nav .wrapper {
   margin-bottom: 20px;
   padding: 0 10px;
 }
-/* line 110, styles.scss */
+/* line 112, styles.scss */
 .platter .add-on {
   width: 40px;
   height: 40px;
@@ -105,7 +111,7 @@ nav .wrapper {
   margin-bottom: 20px;
   padding: 0;
 }
-/* line 117, styles.scss */
+/* line 119, styles.scss */
 .platter .clk {
   vertical-align: text-top;
   background-image: url("../img/clk.png");
@@ -123,17 +129,18 @@ nav .wrapper {
 /*==============================================*/
 /*================ Buttons =====================*/
 /*==============================================*/
-/* line 136, styles.scss */
+/* line 138, styles.scss */
 button.hide {
   display: none !important;
 }
 
-/* line 140, styles.scss */
+/* line 142, styles.scss */
 button.submit {
   width: 100%;
   border: 0 none;
   border-radius: 2px 2px 2px 2px;
   color: white;
+  height: 75px;
   cursor: pointer;
   display: inline-block;
   font-family: Arial,sans-serif;
@@ -153,40 +160,41 @@ button.submit {
   outline-color: transparent;
   outline-style: none;
 }
-/* line 164, styles.scss */
+/* line 167, styles.scss */
 button.submit:hover {
   background: none repeat scroll 0 0 #286e3c;
   color: white;
 }
-/* line 168, styles.scss */
+/* line 171, styles.scss */
 button.submit:active {
   background-color: #215b32;
 }
 
-/* line 173, styles.scss */
+/* line 176, styles.scss */
 button.toolbar {
   color: white;
   border: none;
   width: 20%;
+  height: 50px;
 }
-/* line 177, styles.scss */
+/* line 181, styles.scss */
 button.toolbar .day {
   background-color: #929090;
 }
-/* line 180, styles.scss */
+/* line 184, styles.scss */
 button.toolbar.active {
   background-color: #616060 !important;
 }
-/* line 183, styles.scss */
+/* line 187, styles.scss */
 button.toolbar:hover {
-  background-color: #6c6a6a;
+  background-color: #8f8d8d;
 }
-/* line 186, styles.scss */
+/* line 190, styles.scss */
 button.toolbar#rst {
   background-color: #a05553 !important;
   margin-left: 5%;
 }
-/* line 190, styles.scss */
+/* line 194, styles.scss */
 button.toolbar#rst:hover {
   background-color: #6e3a39 !important;
 }
@@ -194,46 +202,58 @@ button.toolbar#rst:hover {
 /*==============================================*/
 /*=========== Results Table (mine) =============*/
 /*==============================================*/
-/* line 200, styles.scss */
+/* line 205, styles.scss */
+.table-header {
+  margin-top: 40px;
+  margin-bottom: 0 !important;
+}
+/* line 209, styles.scss */
+.table-header tr {
+  font-size: 1.1rem;
+}
+/* line 213, styles.scss */
+.table-header td {
+  text-align: center;
+  width: 50%;
+}
+/* line 218, styles.scss */
+.table-header .station {
+  font-size: 1.4rem;
+  color: white;
+}
+/* line 222, styles.scss */
+.table-header .mf {
+  background-color: #0055a0 !important;
+}
+/* line 225, styles.scss */
+.table-header .bs {
+  background-color: #f76225 !important;
+}
+
+/* line 231, styles.scss */
 .table-wrap {
   max-height: 400px;
-  overflow: scroll;
   overflow-y: scroll;
-  /* has to be scroll, not auto */
   -webkit-overflow-scrolling: touch;
 }
 
-/* line 207, styles.scss */
+/* line 237, styles.scss */
 .times {
   display: none;
-  margin-top: 40px;
   background-color: white;
   color: black;
 }
-/* line 213, styles.scss */
+/* line 242, styles.scss */
 .times tr {
   font-size: 1.1rem;
 }
-/* line 217, styles.scss */
+/* line 246, styles.scss */
 .times td {
   text-align: center;
   width: 50%;
 }
-/* line 221, styles.scss */
-.times .station {
-  font-size: 1.4rem;
-  color: white;
-}
-/* line 225, styles.scss */
-.times .mf {
-  background-color: #0055a0 !important;
-}
-/* line 228, styles.scss */
-.times .bs {
-  background-color: #f76225 !important;
-}
 
-/* line 232, styles.scss */
+/* line 252, styles.scss */
 .warn {
   color: #a1504d !important;
   font-weight: bold;
@@ -242,35 +262,34 @@ button.toolbar#rst:hover {
 /*==============================================*/
 /*========= Results Table (bootstrap) ==========*/
 /*==============================================*/
-/* line 240, styles.scss */
+/* line 262, styles.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* line 245, styles.scss */
+/* line 267, styles.scss */
 .table-hide {
   display: none;
 }
 
-/* line 248, styles.scss */
+/* line 270, styles.scss */
 table {
   max-width: 100%;
   background-color: transparent;
 }
 
-/* line 252, styles.scss */
+/* line 274, styles.scss */
 th {
   text-align: left;
 }
 
-/* line 255, styles.scss */
+/* line 277, styles.scss */
 .table {
   width: 100%;
-  margin-bottom: 20px;
 }
 
-/* line 264, styles.scss */
+/* line 285, styles.scss */
 .table > thead > tr > th,
 .table > tbody > tr > th,
 .table > tfoot > tr > th,
@@ -282,13 +301,13 @@ th {
   vertical-align: top;
 }
 
-/* line 269, styles.scss */
+/* line 290, styles.scss */
 .table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #dddddd;
 }
 
-/* line 278, styles.scss */
+/* line 299, styles.scss */
 .table > caption + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > th,
 .table > thead:first-child > tr:first-child > th,
@@ -298,17 +317,17 @@ th {
   border-top: 0;
 }
 
-/* line 281, styles.scss */
+/* line 302, styles.scss */
 .table > tbody + tbody {
   border-top: 2px solid #dddddd;
 }
 
-/* line 284, styles.scss */
+/* line 305, styles.scss */
 .table .table {
   background-color: #f9f9f9;
 }
 
-/* line 292, styles.scss */
+/* line 313, styles.scss */
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
 .table-condensed > tfoot > tr > th,
@@ -318,26 +337,26 @@ th {
   padding: 5px;
 }
 
-/* line 297, styles.scss */
+/* line 318, styles.scss */
 .table-striped > tbody > tr:nth-child(odd) > td,
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #e4e4e4;
 }
 
-/* line 301, styles.scss */
+/* line 322, styles.scss */
 .table-hover > tbody > tr:hover > td,
 .table-hover > tbody > tr:hover > th {
   background-color: #f5f5f5;
 }
 
-/* line 304, styles.scss */
+/* line 325, styles.scss */
 table col[class*="col-"] {
   position: static;
   float: none;
   display: table-column;
 }
 
-/* line 310, styles.scss */
+/* line 331, styles.scss */
 table td[class*="col-"],
 table th[class*="col-"] {
   position: static;
@@ -345,7 +364,7 @@ table th[class*="col-"] {
   display: table-cell;
 }
 
-/* line 326, styles.scss */
+/* line 347, styles.scss */
 .table > thead > tr > td.active,
 .table > tbody > tr > td.active,
 .table > tfoot > tr > td.active,
@@ -361,7 +380,7 @@ table th[class*="col-"] {
   background-color: #f5f5f5;
 }
 
-/* line 332, styles.scss */
+/* line 353, styles.scss */
 .table-hover > tbody > tr > td.active:hover,
 .table-hover > tbody > tr > th.active:hover,
 .table-hover > tbody > tr.active:hover > td,
@@ -369,7 +388,7 @@ table th[class*="col-"] {
   background-color: #e8e8e8;
 }
 
-/* line 346, styles.scss */
+/* line 367, styles.scss */
 .table > thead > tr > td.success,
 .table > tbody > tr > td.success,
 .table > tfoot > tr > td.success,
@@ -385,7 +404,7 @@ table th[class*="col-"] {
   background-color: #dff0d8;
 }
 
-/* line 352, styles.scss */
+/* line 373, styles.scss */
 .table-hover > tbody > tr > td.success:hover,
 .table-hover > tbody > tr > th.success:hover,
 .table-hover > tbody > tr.success:hover > td,
@@ -393,7 +412,7 @@ table th[class*="col-"] {
   background-color: #d0e9c6;
 }
 
-/* line 366, styles.scss */
+/* line 387, styles.scss */
 .table > thead > tr > td.info,
 .table > tbody > tr > td.info,
 .table > tfoot > tr > td.info,
@@ -409,7 +428,7 @@ table th[class*="col-"] {
   background-color: #d9edf7;
 }
 
-/* line 372, styles.scss */
+/* line 393, styles.scss */
 .table-hover > tbody > tr > td.info:hover,
 .table-hover > tbody > tr > th.info:hover,
 .table-hover > tbody > tr.info:hover > td,
@@ -417,7 +436,7 @@ table th[class*="col-"] {
   background-color: #c4e3f3;
 }
 
-/* line 386, styles.scss */
+/* line 407, styles.scss */
 .table > thead > tr > td.warning,
 .table > tbody > tr > td.warning,
 .table > tfoot > tr > td.warning,
@@ -433,7 +452,7 @@ table th[class*="col-"] {
   background-color: #fcf8e3;
 }
 
-/* line 392, styles.scss */
+/* line 413, styles.scss */
 .table-hover > tbody > tr > td.warning:hover,
 .table-hover > tbody > tr > th.warning:hover,
 .table-hover > tbody > tr.warning:hover > td,
@@ -441,7 +460,7 @@ table th[class*="col-"] {
   background-color: #faf2cc;
 }
 
-/* line 406, styles.scss */
+/* line 427, styles.scss */
 .table > thead > tr > td.danger,
 .table > tbody > tr > td.danger,
 .table > tfoot > tr > td.danger,
@@ -457,7 +476,7 @@ table th[class*="col-"] {
   background-color: #f2dede;
 }
 
-/* line 412, styles.scss */
+/* line 433, styles.scss */
 .table-hover > tbody > tr > td.danger:hover,
 .table-hover > tbody > tr > th.danger:hover,
 .table-hover > tbody > tr.danger:hover > td,
@@ -466,7 +485,7 @@ table th[class*="col-"] {
 }
 
 @media (max-width: 767px) {
-  /* line 416, styles.scss */
+  /* line 437, styles.scss */
   .table-responsive {
     width: 100%;
     margin-bottom: 15px;
@@ -477,12 +496,12 @@ table th[class*="col-"] {
     -webkit-overflow-scrolling: touch;
   }
 
-  /* line 425, styles.scss */
+  /* line 446, styles.scss */
   .table-responsive > .table {
     margin-bottom: 0;
   }
 
-  /* line 433, styles.scss */
+  /* line 454, styles.scss */
   .table-responsive > .table > thead > tr > th,
   .table-responsive > .table > tbody > tr > th,
   .table-responsive > .table > tfoot > tr > th,
@@ -492,12 +511,12 @@ table th[class*="col-"] {
     white-space: nowrap;
   }
 
-  /* line 436, styles.scss */
+  /* line 457, styles.scss */
   .table-responsive > .table-bordered {
     border: 0;
   }
 
-  /* line 444, styles.scss */
+  /* line 465, styles.scss */
   .table-responsive > .table-bordered > thead > tr > th:first-child,
   .table-responsive > .table-bordered > tbody > tr > th:first-child,
   .table-responsive > .table-bordered > tfoot > tr > th:first-child,
@@ -507,7 +526,7 @@ table th[class*="col-"] {
     border-left: 0;
   }
 
-  /* line 452, styles.scss */
+  /* line 473, styles.scss */
   .table-responsive > .table-bordered > thead > tr > th:last-child,
   .table-responsive > .table-bordered > tbody > tr > th:last-child,
   .table-responsive > .table-bordered > tfoot > tr > th:last-child,
@@ -517,7 +536,7 @@ table th[class*="col-"] {
     border-right: 0;
   }
 
-  /* line 458, styles.scss */
+  /* line 479, styles.scss */
   .table-responsive > .table-bordered > tbody > tr:last-child > th,
   .table-responsive > .table-bordered > tfoot > tr:last-child > th,
   .table-responsive > .table-bordered > tbody > tr:last-child > td,
@@ -528,25 +547,27 @@ table th[class*="col-"] {
 /*==============================================*/
 /*=============== BSL/MFL Switch ===============*/
 /*==============================================*/
-/* line 468, styles.scss */
+/* line 489, styles.scss */
 .station_label {
-  display: inline;
+  display: inline-block;
+  color: #afaeae;
+  font-size: 22px;
 }
-/* line 472, styles.scss */
+/* line 495, styles.scss */
 .station_label.mf {
   color: #0055a0;
 }
-/* line 475, styles.scss */
+/* line 498, styles.scss */
 .station_label.bs {
   color: #f76225;
 }
 
-/* line 479, styles.scss */
+/* line 502, styles.scss */
 .switch-wrapper {
-  display: inline;
+  display: inline-block;
 }
 
-/* line 484, styles.scss */
+/* line 507, styles.scss */
 .onoffswitch {
   position: relative;
   width: 90px;
@@ -555,12 +576,12 @@ table th[class*="col-"] {
   -ms-user-select: none;
 }
 
-/* line 488, styles.scss */
+/* line 511, styles.scss */
 .onoffswitch-checkbox {
   display: none;
 }
 
-/* line 491, styles.scss */
+/* line 514, styles.scss */
 .onoffswitch-label {
   display: block;
   overflow: hidden;
@@ -569,7 +590,7 @@ table th[class*="col-"] {
   background-color: #afaeae;
 }
 
-/* line 498, styles.scss */
+/* line 521, styles.scss */
 .onoffswitch-inner {
   width: 200%;
   margin-left: -100%;
@@ -579,7 +600,7 @@ table th[class*="col-"] {
   transition: margin 0.3s ease-in 0s;
 }
 
-/* line 505, styles.scss */
+/* line 528, styles.scss */
 .onoffswitch-inner:before, .onoffswitch-inner:after {
   float: left;
   width: 50%;
@@ -595,19 +616,19 @@ table th[class*="col-"] {
   box-sizing: border-box;
 }
 
-/* line 515, styles.scss */
+/* line 538, styles.scss */
 .onoffswitch-inner:before {
   content: " ";
   padding-left: 10px;
 }
 
-/* line 519, styles.scss */
+/* line 542, styles.scss */
 .onoffswitch-inner:after {
   padding-right: 10px;
   text-align: right;
 }
 
-/* line 523, styles.scss */
+/* line 546, styles.scss */
 .onoffswitch-switch {
   width: 21px;
   margin: 4.5px;
@@ -623,12 +644,12 @@ table th[class*="col-"] {
   transition: all 0.3s ease-in 0s;
 }
 
-/* line 531, styles.scss */
+/* line 554, styles.scss */
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
   margin-left: 0;
 }
 
-/* line 534, styles.scss */
+/* line 557, styles.scss */
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
 }

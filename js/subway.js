@@ -1,6 +1,4 @@
 //Broad Street Line
-//window.performance.mark('mark_start_schedule');
-
 
 var fern = {
     line: "bs",
@@ -606,14 +604,6 @@ var sixtynine = {
     sched_sun_nb: schedule(milb.sched_sun_nb, -1),
 };
 
-/*window.performance.mark('mark_end_schedule');
-performance.measure("Schedule", "mark_start_schedule", "mark_end_schedule");
-perfMeasures = performance.getEntriesByType("measure");
-for (i = 0; i < perfMeasures.length; i++) {
-    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-};*/
-
-
 //-----------------------------------------------------------
 
 var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, susque, cecil, girard, fairmount, spring, race, city_hall, walnut, lombard, ellsworth, tasker, snyder, oregon, att, frank, marg, church, eriet, tioga, alleghmf, somer, hunt, york, berks, girardmf, springmf, second, fifth, eight, elev, thirteen, fif, thirty, thirtyfour, fourty, fourtysix, fiftytwo, fiftysix, sixty, sixtythree, milb, sixtynine]; //Setting array of stations
@@ -654,9 +644,12 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
 
 window.day = parseDay();//setting global variable for day. Needs to be global for day toolbar
 
+//-----------------------------------------------------------
+
 $('.submit').click(function(){
     submit();
-    $(this).addClass("hide");//hides the submit button, allow more dynamic selections
+    $(this).addClass("hide");
+    $(".table_and_tools").removeClass("hide");
 });
 
 function submit() {
@@ -731,9 +724,13 @@ function submit() {
         }
     });  
     $('#rst').click(function(){//Resets the form and removes any previous results
-        $(".submit").removeClass("hide");//Unhides the submit button
+        
+        $(".submit").removeClass("hide");
+        $(".table_and_tools").addClass("hide")
+
         $('#start_dest').prop('selectedIndex',0);//resets station drop down box
         $('#end_dest').prop('selectedIndex',0);//resets station drop down box
+
         $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
         $('.start_station').empty();
         $('.end_station').empty();
@@ -764,8 +761,6 @@ function routeInit(start, end, time, day) { //Using form to get times
 
     route(start_station, end_station, day, time);
 };
-
-
 
 //-----------------------------------------------------------
 
@@ -883,23 +878,12 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
     $('.table').fadeIn("slow");//fading the table in to soften the UX
 
      
-    /*$('.table-wrap').animate({//sets animation for automatic scrolling to time pointer
-       scrollTop: $(".start"+pointer).offset().top
-    }, 500);*/ //autoscrolling still needs work
-
-    /*window.performance.mark('mark_end_process');
-    performance.measure("Process", "mark_start_process", "mark_end_process");
-    perfMeasures = performance.getEntriesByType("measure");
-    for (i = 0; i < perfMeasures.length; i++) {
-    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-    };*/
+    // $('.table-wrap').animate({//sets animation for automatic scrolling to time pointer
+    //    scrollTop: $(".start"+pointer).offset().top
+    // }, 500); //autoscrolling still needs work
 
 
 };
-
-//-----------------------------------------------------------
-
-
 
 //-----------------------------------------------------------
 
@@ -951,7 +935,6 @@ function parseDay() {//returns "wk","sat","sun" depending on day of week
     } else {
         return "wk";
     }
-
 };
 
 //-----------------------------------------------------------
@@ -966,29 +949,30 @@ $('.line1').ready(function() { //Function that populates starting station list a
 
     var lineval1 = $('.line1');
 
-    if (lineval1.is(":checked")) {
-        $('.station').addClass("mf").removeClass("bs");
-    } else {
-        $('.station').addClass("bs").removeClass("mf");
-    };
-
     $(".line1").change(function() {
-        $('.label2').toggleClass('blue');
-        $('.table').fadeOut("slow");
+        $('.submit').removeClass("hide");
+        $('.table_and_tools').addClass('hide');
 
         if (lineval1.is(":checked")) {
 
             var linevalue1 = "mf";
-            setTimeout(color_delay, 500); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
+            setTimeout(color_delay, 250); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
             function color_delay() {
-                $('.station').addClass("mf").removeClass("bs")
+                $('.label1').removeClass("bs");//changes color of switch button labels
+                $('.label2').addClass("mf");//changes color of switch button labels
             }
+
+            $('.station').addClass("mf").removeClass("bs");//Changes color of table header
+
         } else {
             var linevalue1 = "bs";
-            setTimeout(color_delay2, 500); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
+            setTimeout(color_delay2, 250); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
             function color_delay2() {
-                $('.station').addClass("bs").removeClass("mf")
+                $('.label1').addClass("bs");//changes color of switch button labels
+                $('.label2').removeClass("mf");//changes color of switch button labels
             }
+
+            $('.station').addClass("bs").removeClass("mf");//Changes color of table header
         };
 
         $('#start_dest').empty();

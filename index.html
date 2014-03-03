@@ -21,11 +21,11 @@
 		<div class="platter">
 			<div class="row">
 				<div class="large-4 large-centered medium-centered columns">
-					<span class="station station_label">BSL</span>
+					<span class="station_label label1 bs">BSL</span>
 					<div class="switch-wrapper">
 						<form>
 							<div class="onoffswitch">
-							    <input type="checkbox" class="onoffswitch-checkbox line1" id="myonoffswitch" checked>
+							    <input type="checkbox" class="onoffswitch-checkbox line1" id="myonoffswitch">
 							    <label class="onoffswitch-label" for="myonoffswitch">
 							        <div class="onoffswitch-inner"></div>
 							        <div class="onoffswitch-switch"></div>
@@ -34,7 +34,7 @@
 							
 						</form>
 					</div>
-					<span class="station station_label">MFL</span>
+					<span class="station_label label2">MFL</span>
 				</div>
 			</div>
 			<div class="row">
@@ -83,26 +83,33 @@
 			</div><!-- End row -->
 		</div><!-- End platter -->
 		
-
-		<div class="row">
-			<div class="large-12 large-centered medium-12 medium-centered columns">
-				<button class= "toolbar day" id="wk">Week</button>
-				<button class= "toolbar day" id="sat">Sat</button>
-				<button class= "toolbar day" id="sun">Sun</button>
-				<button class= "toolbar" id="rst">Reset</button>
+		<div class="table_and_tools hide">
+			<div class="row">
+				<div class="large-11 large-centered medium-10 medium-centered columns">
+					<button class= "toolbar day" id="wk">Week</button>
+					<button class= "toolbar day" id="sat">Sat</button>
+					<button class= "toolbar day" id="sun">Sun</button>
+					<button class= "toolbar" id="rst">Reset</button>
+				</div>
 			</div>
-		</div>
 
-		<div class="row">
-			<div class="table-wrap large-12 large-centered medium-10 medium-centered columns">
-				<table class="table table-striped times">
-					<tr>
-						<td class="start_station station"></td>
-						<td class="end_station station"></td>
-					</tr>
-				</table>
-			</div>
-		</div><!-- End row -->
+			<div class="row">
+				<div class="large-11 large-centered medium-10 medium-centered columns">
+					<table class="table table-header">
+						<tr>
+							<td class="start_station station bs"></td>
+							<td class="end_station station bs"></td>
+						</tr>
+					</table>
+					<div class="table-wrap">
+						<table class="table table-striped times">
+							<tr>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div><!-- End row -->
+		</div><!-- End table_and_tools-->
 	</div><!-- End span12 wrapper -->
 </body>
 <script src="https://code.jquery.com/jquery.js"></script>
