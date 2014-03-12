@@ -20,14 +20,38 @@ $white: #ffffff;
 $warning: #a1504d;
 $switch_bg: #afaeae;
 
+
 /*==============================================*/
-/*=============== General ======================*/
+/*================= Fonts ======================*/
 /*==============================================*/
 
 @font-face {
   font-family: 'machinescript';
   src: url('../fonts/machinescript.ttf'); /* IE9 Compat Modes */
 }
+
+@font-face {
+  font-family: 'fontello';
+  src: url('../fonts/fontello.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.icon-menu:before { content: '\e800'; } /* '' */
+.icon-ccw:before { content: '\e801'; font-size:21px;} /* '' */
+.icon-reply:before { content: '\e802'; font-size:21px;} /* '' */
+[class^="icon-"]:before, [class*=" icon-"]:before {
+  font-family: "fontello";
+  font-style: normal;
+  font-weight: normal;
+  speak: none;
+  display: inline-block;
+  width: 1em;
+  text-align: center;
+  }
+
+/*==============================================*/
+/*=============== General ======================*/
+/*==============================================*/
 
 h1{
 	color: $white;
