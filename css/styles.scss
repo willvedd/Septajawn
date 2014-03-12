@@ -50,6 +50,10 @@ body{
   background:none;
 }
 
+.wrapper{
+  margint-top:25px;
+}
+
 .center{
   margin-right: auto;
   margin-left: auto;
@@ -139,7 +143,7 @@ button.hide{
     display: none !important;
 }
 
-button.submit{
+a.submit{
     width: 100%;
     border: 0 none;
     border-radius: 2px 2px 2px 2px;
@@ -173,11 +177,14 @@ button.submit{
     }
 }
 
-button.toolbar{
+button.tool{
   color: $white;
   border: none;
-  width: 20%;
+  width: 24%;
   height: 50px;
+  float:left;
+  box-shadow: -1px 0 0 $toolbar_active;
+
   .day{
     background-color: $toolbar;
   }
@@ -189,12 +196,17 @@ button.toolbar{
   }
   &#rst{
     background-color: $reset!important;
-    margin-left:5%;
+    margin-left:4%;
+    box-shadow: none;
     
     &:hover{
       background-color: darken($reset,15%)!important;
     }
   } 
+}
+
+.toolbar{
+  width: 100%;
 }
 
 
@@ -203,7 +215,7 @@ button.toolbar{
 /*==============================================*/
 
 .table-header{
-  margin-top: 40px;
+  margin-top: 30px;
   margin-bottom: 0 !important;
 
   tr{
@@ -234,6 +246,13 @@ button.toolbar{
   -webkit-overflow-scrolling: touch;
 }
 
+.table_and_tools{
+  margin-top: 20px;
+  margin-bottom:0;
+}
+
+
+
 .times{
   display: none;
   background-color: $white;
@@ -254,8 +273,20 @@ button.toolbar{
   font-weight: bold;
 }
 
+@media only screen and (max-width: 40.062em){
+  
+  .table-wrap{
+      max-height: 1200px;
+    } /*keeps table fixed to bottom for most mobile devices*/
+
+}
+
+
+
+
+
 /*==============================================*/
-/*========= Results Table (bootstrap) ==========*/
+/*===== Results Table (twitter bootstrap) ======*/
 /*==============================================*/
 
 

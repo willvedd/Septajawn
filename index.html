@@ -9,36 +9,38 @@
 	<link href="css/styles.css" rel="stylesheet">
 </head>
 <body>
-	<nav>
-	    <span class="name branding">Septajawn</span>
-	    <ul>
-	      <li><a href="#">About</a></li>
-	      <li><a href="#">Source</a></li>
-	      <li><a href="#">This site sucks</a></li>
-	    </ul>
-	</nav>
+	
 	<div class="wrapper">
+		<nav>
+			<div class="row">
+				<div class="large-offset-1 large-10 medium-offset-1 medium-10 columns">
+	    			<span class="name branding">Septajawn</span>
+	    		</div>
+	    	</div>
+		</nav>
 		<div class="platter">
 			<div class="row">
 				<div class="large-4 large-centered medium-centered columns">
-					<span class="station_label label1 bs">BSL</span>
-					<div class="switch-wrapper">
-						<form>
-							<div class="onoffswitch">
-							    <input type="checkbox" class="onoffswitch-checkbox line1" id="myonoffswitch">
-							    <label class="onoffswitch-label" for="myonoffswitch">
-							        <div class="onoffswitch-inner"></div>
-							        <div class="onoffswitch-switch"></div>
-							    </label>
-							</div>
-							
-						</form>
+					<div class="center">
+						<span class="station_label label1 bs">BSL</span>
+						<div class="switch-wrapper">
+							<form>
+								<div class="onoffswitch">
+								    <input type="checkbox" class="onoffswitch-checkbox line1" id="myonoffswitch">
+								    <label class="onoffswitch-label" for="myonoffswitch">
+								        <div class="onoffswitch-inner"></div>
+								        <div class="onoffswitch-switch"></div>
+								    </label>
+								</div>
+								
+							</form>
+						</div>
+						<span class="station_label label2">MFL</span>
 					</div>
-					<span class="station_label label2">MFL</span>
 				</div>
 			</div>
 			<div class="row">
-				<div class="large-5 medium-5 columns">
+				<div class="large-offset-2 large-4 medium-offset-2 medium-4 columns">
 					<div class="center">
 					<select name="start_destination" id="start_dest" class="btn-group">
 						<option value="" disabled="disabled" selected="selected">Starting from...</option>
@@ -68,7 +70,7 @@
 
 					</div>
 				</div>
-				<div class="large-5 medium-5 columns">
+				<div class="large-4 medium-4 end columns">
 					<div class="center">
 					<select name="end_destination" id="end_dest">
 						<option value="" disabled="disabled" selected="selected">Ending at...</option>
@@ -78,18 +80,20 @@
 			</div><!-- End row -->
 			<div class="row">
 				<div class="large-4 large-centered medium-4 medium-centered columns">
-					<button class="submit">Route</button>
+					<a href="#bottom" class="submit">Route</a>
 				</div>
 			</div><!-- End row -->
 		</div><!-- End platter -->
 		
-		<div class="table_and_tools hide">
+		<div class="table_and_tools hide" id="bottom">
 			<div class="row">
 				<div class="large-11 large-centered medium-10 medium-centered columns">
-					<button class= "toolbar day" id="wk">Week</button>
-					<button class= "toolbar day" id="sat">Sat</button>
-					<button class= "toolbar day" id="sun">Sun</button>
-					<button class= "toolbar" id="rst">Reset</button>
+					<div class="toolbar">
+						<button class= "tool day" id="wk">Week</button>
+						<button class= "tool day" id="sat">Sat</button>
+						<button class= "tool day" id="sun">Sun</button>
+						<button class= "tool" id="rst">Reset</button>
+					</div>
 				</div>
 			</div>
 
@@ -112,7 +116,7 @@
 		</div><!-- End table_and_tools-->
 	</div><!-- End span12 wrapper -->
 </body>
-<script src="https://code.jquery.com/jquery.js"></script>
+<script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/formalize.js"></script>
 <script src="js/subway.js"></script>
 

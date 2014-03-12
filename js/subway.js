@@ -644,6 +644,10 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
 
 window.day = parseDay();//setting global variable for day. Needs to be global for day toolbar
 
+var vpHeight = $(window).height(); //getting height of viewport
+
+console.log("Height: "+vpHeight);
+
 //-----------------------------------------------------------
 
 $('.submit').click(function(){
@@ -785,7 +789,11 @@ function route(start_station, end_station, day, time) {//Logic that generates re
                 leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
                 arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
                 break;//need to stop the while loop
-            }
+            };
+            if(start_station.sched_wk_sb[i]<time){//compares schedule to current time, indicates which one is closest
+                pointer = i;
+                console.log("pointer funciton")
+            };
             i++;
 
             flag = "d"//setting a flag to the rendering function that no more trains are coming
@@ -875,13 +883,16 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
         $("#sun").addClass("active");
     };
 
+    $('.table-wrap').height(vpHeight-150);//Sets the height of the schedule table. It is meant to fill entire screen with the toolbar, hence subtracting 150 pixels
+
     $('.table').fadeIn("slow");//fading the table in to soften the UX
+ 
+    // $('.table-wrap').animate(
+    // {   top: $('.start'+pointer).offset().top,
+    //     left: 0}, 
+    // 500);  //This snippet is for the autoscrolling behavior to highlight the most relevant time 
 
-     
-    // $('.table-wrap').animate({//sets animation for automatic scrolling to time pointer
-    //    scrollTop: $(".start"+pointer).offset().top
-    // }, 500); //autoscrolling still needs work
-
+    console.log($(".start"+pointer).offset().top);
 
 };
 
