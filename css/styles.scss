@@ -13,7 +13,7 @@ $sept_blue: #0055a0;
 $table1:#f9f9f9;
 $table2:#e4e4e4;
 $reset:#a05553;
-$toolbar:#929090;
+$toolbar:#979797;
 $toolbar_active:#616060;
 $black: #000000;
 $white: #ffffff;
@@ -50,10 +50,6 @@ body{
   background:none;
 }
 
-.wrapper{
-  margint-top:25px;
-}
-
 .center{
   margin-right: auto;
   margin-left: auto;
@@ -69,6 +65,7 @@ body{
 nav{
   padding-top: 20px;
   padding-bottom:20px;
+  margin-bottom:40px;
   background-color: $nav;
   .branding{
     font-size: 2.5rem!important;
@@ -167,6 +164,7 @@ a.submit{
     background: none repeat scroll 0 0 $submit;
     outline-color: transparent;
     outline-style: none;
+    text-decoration: none;
     
     &:hover {
       background: none repeat scroll 0 0 darken($submit,10%);
@@ -185,7 +183,7 @@ button.tool{
   float:left;
   box-shadow: -1px 0 0 $toolbar_active;
 
-  .day{
+  &.day{
     background-color: $toolbar;
   }
   &.active{
