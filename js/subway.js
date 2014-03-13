@@ -892,8 +892,6 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
     //     left: 0}, 
     // 500);  //This snippet is for the autoscrolling behavior to highlight the most relevant time 
 
-    console.log($(".start"+pointer).offset().top);
-
 };
 
 //-----------------------------------------------------------
