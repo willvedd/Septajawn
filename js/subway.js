@@ -676,17 +676,18 @@ function submit() {
 
     routeInit(start, end, time, day);
 
-    $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
+    if((start&&end)!=undefined){
+        $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
 
-        var start_sel = document.getElementById("start_dest");
-        var start = start_sel.options[start_sel.selectedIndex].value;
-        var end_sel = document.getElementById("end_dest");
-        var end = end_sel.options[end_sel.selectedIndex].value;
+            var start_sel = document.getElementById("start_dest");
+            var start = start_sel.options[start_sel.selectedIndex].value;
+            var end_sel = document.getElementById("end_dest");
+            var end = end_sel.options[end_sel.selectedIndex].value;
 
-        if ((start_sel != undefined) && (end_sel != undefined)) {
             routeInit(start, end, time, day); //Prevents console errors from undefined select variables
-        }
-    });
+        });
+    };
+    
     $('#wk').click(function(){//dynamically modifies the results based on the day buttons
 
         var start_sel = document.getElementById("start_dest");
@@ -741,6 +742,7 @@ function submit() {
         $('.end_station').empty();
         $('.times_row').empty(); //empty the times for unique and consecutive executions
         $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
+        $('.platter').addClass("vert_center");//vertically centers picker/platter again
 
         window.day = parseDay();
     });  
@@ -864,6 +866,8 @@ function route(start_station, end_station, day, time) {//Logic that generates re
 function render(start_station, end_station, leave_time, arrive_time, flag, pointer, day) {
 
     console.log("Render executed");
+
+    $('.platter').removeClass("vert_center");//vertically uncenters the picker/form div
 
     function render_clear(){
         $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
