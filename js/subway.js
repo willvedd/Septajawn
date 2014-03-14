@@ -332,7 +332,7 @@ var alleghmf = {
     line: "mf",
     order: -12,
     id: "alleghmf",
-    name: "Allegheny (MF)",
+    name: "Allegheny",
     sched_wk_sb: schedule(tioga.sched_wk_sb, 1),
     sched_sat_sb: schedule(tioga.sched_sat_sb, 1),
     sched_sun_sb: schedule(tioga.sched_sun_sb, 1),

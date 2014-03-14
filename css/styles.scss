@@ -69,6 +69,7 @@ html{
 }
 body{
   background:none;
+  position: relative;
 }
 
 .center{
@@ -115,8 +116,9 @@ nav{
 /*================= Picker =====================*/
 /*==============================================*/
 .platter{
-  height: 100%;
+  position: absolute;
   width: 100%;
+  top: 30%;
   select{
     font-size: 1.1rem;
     height: 40px;
