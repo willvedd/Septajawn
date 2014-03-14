@@ -18,6 +18,7 @@ $toolbar_active:#616060;
 $black: #000000;
 $white: #ffffff;
 $warning: #a1504d;
+$highlight: #FCFCB0;
 $switch_bg: #afaeae;
 
 
@@ -235,6 +236,14 @@ button.tool{
     width: 50%;
   }
 
+  td.station{
+    width: 45%;
+  }
+  td.chevron{
+    width: 10%;
+    padding: 0;
+  }
+
   .station{
     font-size: 1.4rem;
     color: $white;
@@ -279,6 +288,10 @@ button.tool{
 .warn{
   color: $warning !important;
   font-weight: bold;
+}
+
+.pointer{
+  background-color: $highlight !important;
 }
 
 @media only screen and (max-width: 40.062em){
@@ -597,7 +610,16 @@ table th[class*="col-"] {
 /*============== Media queries =================*/
 /*==============================================*/
 
-@media only screen and (min-width: 40.063em) {
+
+@media only screen and (max-width: 40.062em){ //mobile
+  
+  .table-wrap{
+      max-height: 1200px;
+    } /*keeps table fixed to bottom for most mobile devices*/
+}
+
+
+@media only screen and (min-width: 40.063em) {//tablets and desktop
   
   html{
     background: url(../img/subway_car2.jpg) no-repeat center center fixed;  
@@ -606,5 +628,12 @@ table th[class*="col-"] {
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+  }
+    td.station{
+    width: 47.5%;
+  }
+  td.chevron{
+    width: 5%;
+    padding: 0;
   }
 }

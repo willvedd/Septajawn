@@ -776,8 +776,17 @@ function route(start_station, end_station, day, time) {//Logic that generates re
     var leave_time = new Array();
     var arrive_time = new Array();
     var i=0;
+    var sb;
     var pointer;
     var flag;
+
+    if(start_station.order<end_station.order){
+        sb = true;
+    }
+    else{
+        sb = false;
+    }
+
 
     function subroute(start,end,close){//Magic all happens here...great comment right?
         while (i< start.length) {
@@ -791,17 +800,37 @@ function route(start_station, end_station, day, time) {//Logic that generates re
                 arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
                 break;//need to stop the while loop
             };
-            if(start_station.sched_wk_sb[i]<time){//compares schedule to current time, indicates which one is closest
-                pointer = i;
-                console.log("pointer funciton")
-            };
+            if(sb){
+                if((day=="wk")&&(start_station.sched_wk_sb[i]<time)){//compares schedule to current time, indicates which one is closest
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                    console.log("pointer funciton");
+                }
+                else if ((day=="sat")&&(start_station.sched_sat_sb[i]<time)){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
+                else if(start_station.sched_sun_sb[i]<time){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
+            }
+            else{
+                if((day=="wk")&&(start_station.sched_wk_nb[i]<time)){//compares schedule to current time, indicates which one is closest
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                    console.log("pointer funciton");
+                }
+                else if ((day=="sat")&&(start_station.sched_sat_nb[i]<time)){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
+                else if(start_station.sched_sun_nb[i]<time){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
+            }
             i++;
 
             flag = "d"//setting a flag to the rendering function that no more trains are coming
         };
     };
 
-    if (start_station.order < end_station.order) { //southbound
+    if (sb) { //southbound
         if (day === "wk") { //weekday southbound scheduling
             subroute( start_station.sched_wk_sb , end_station.sched_wk_sb , start_station.close_wk );
         } 
@@ -887,6 +916,9 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
     $('.table-wrap').height(vpHeight-150);//Sets the height of the schedule table. It is meant to fill entire screen with the toolbar, hence subtracting 150 pixels
 
     $('.table').fadeIn("slow");//fading the table in to soften the UX
+
+    $('.start'+pointer).addClass('pointer');//adds class to highlight closest upcoming time, can't address both start and end simultaneously in jquery
+    $('.end'+pointer).addClass('pointer');//""
  
     // $('.table-wrap').animate(
     // {   top: $('.start'+pointer).offset().top,
