@@ -1,4 +1,4 @@
-//Broad Street Line
+ //Broad Street Line
 
 var fern = {
     line: "bs",
@@ -266,6 +266,7 @@ var att = {
     sched_sat_nb: schedule(oregon.sched_sat_sb, -3),
     sched_sun_nb: schedule(oregon.sched_sun_sb, -3),
 };
+
 //Market Frankford Line
 var frank = {
     line: "mf",
@@ -610,7 +611,7 @@ var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, s
 
 //-----------------------------------------------------------
 
-function schedule(prev_station, diff) { //sets schedules for all stations except fern rock
+function schedule(prev_station, diff) { //sets schedules for all stations
 
     var schedule = new Array();
 
@@ -823,7 +824,7 @@ function route(start_station, end_station, day, time) {//Logic that generates re
         };
     };
 
-    console.log("Pointer: "+pointer);
+    console.log("Pointer: "+pointer);//This pointer tells me which table row is next/should be highlighted
 
     render(start_station, end_station, leave_time, arrive_time, flag, pointer, window.day);
 
@@ -890,7 +891,8 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
     // $('.table-wrap').animate(
     // {   top: $('.start'+pointer).offset().top,
     //     left: 0}, 
-    // 500);  //This snippet is for the autoscrolling behavior to highlight the most relevant time 
+    // 500); 
+    //This snippet is for the autoscrolling behavior to highlight the most relevant time currently buggy
 
 };
 

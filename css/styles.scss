@@ -36,9 +36,10 @@ $switch_bg: #afaeae;
   font-weight: normal;
   font-style: normal;
 }
-.icon-menu:before { content: '\e800'; } /* '' */
-.icon-ccw:before { content: '\e801'; font-size:21px;} /* '' */
-.icon-reply:before { content: '\e802'; font-size:21px;} /* '' */
+.icon-star:before { content: '\e802'; } /* '' */
+.icon-star-empty:before { content: '\e803'; } /* '' */
+.icon-menu:before { content: '\e801'; } /* '' */
+.icon-ccw:before { content: '\e800'; } /* '' */
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
@@ -63,12 +64,7 @@ html, body
 }
 
 html{
-  //background: url(../img/subway_car1.jpg) no-repeat center center fixed;  
   background-color: $bg;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
 }
 body{
   background:none;
@@ -125,14 +121,8 @@ nav{
     height: 40px;
     margin-top: 20px;
     margin-bottom: 20px;
+    position: relative;
 
-  }
-  #timepicker{
-    font-size: 1.1rem;
-    height: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 0 10px;
   }
   .add-on{
     width: 40px;
@@ -141,19 +131,15 @@ nav{
     margin-bottom: 20px;  
     padding: 0;
   }
-  .clk{
-    vertical-align: text-top;
-    background-image: url("../img/clk.png");
-    background-repeat: no-repeat;
-    display: inline-block;
-    height: 24px!important;
-    width: 25px!important;
-    position: relative;
-    top: 45%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-  }
+}
+.overlay {
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color:rgba(0, 0, 0, 0.65);
+    z-index:9999;
 }
 
 /*==============================================*/
@@ -170,7 +156,7 @@ a.submit{
     border-radius: 2px 2px 2px 2px;
     color: $white;
     height: 75px;
-
+    position: relative;
     cursor: pointer;
     display: inline-block;
     font-family: Arial,sans-serif;
@@ -302,9 +288,6 @@ button.tool{
     } /*keeps table fixed to bottom for most mobile devices*/
 
 }
-
-
-
 
 
 /*==============================================*/
@@ -609,4 +592,19 @@ table th[class*="col-"] {
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px; 
+}
+/*==============================================*/
+/*============== Media queries =================*/
+/*==============================================*/
+
+@media only screen and (min-width: 40.063em) {
+  
+  html{
+    background: url(../img/subway_car2.jpg) no-repeat center center fixed;  
+    background-color: $bg;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
 }
