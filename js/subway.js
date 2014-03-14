@@ -999,6 +999,7 @@ $('.line1').ready(function() { //Function that populates starting station list a
     $(".line1").change(function() {
         $('.submit').removeClass("hide");
         $('.table_and_tools').addClass('hide');
+        $('.platter').addClass('vert_center');
 
         if (lineval1.is(":checked")) {
 
