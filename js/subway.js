@@ -655,7 +655,15 @@ $('.submit').click(function(){
     submit();
     $(this).addClass("hide");
     $(".table_and_tools").removeClass("hide");
+
+
+
+   
+
 });
+
+document.cookie="username=John Doe; domain=NULL";
+
 
 function submit() {
 
@@ -744,7 +752,9 @@ function submit() {
         $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
         $('.platter').addClass("vert_center");//vertically centers picker/platter again
 
-        window.day = parseDay();
+        window.day = parseDay();//resets day to currenty day
+
+        return;
     });  
 };
 
@@ -1067,3 +1077,8 @@ $('#start_dest').change(function() { //Function sees start destination and remov
 });
 
 //-----------------------------------------------------------
+
+
+function favorite(num) { //rounding function necessary because javascript has issues adding doubles to each other.
+    
+};
