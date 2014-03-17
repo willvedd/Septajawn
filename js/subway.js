@@ -1070,8 +1070,3 @@ $('#start_dest').change(function() { //Function sees start destination and remov
 
 //-----------------------------------------------------------
 
-$('.fav').click(function(){
-        setCookie('start',"testing",20*365);
-        setCookie('end',"testing2",20*365);
-});
-
