@@ -655,15 +655,7 @@ $('.submit').click(function(){
     submit();
     $(this).addClass("hide");
     $(".table_and_tools").removeClass("hide");
-
-
-
-   
-
 });
-
-document.cookie="username=John Doe";
-
 
 function submit() {
 
@@ -1078,7 +1070,10 @@ $('#start_dest').change(function() { //Function sees start destination and remov
 
 //-----------------------------------------------------------
 
+$('.fav').click(function(){
 
-function favorite(num) { //rounding function necessary because javascript has issues adding doubles to each other.
-    
-};
+        setCookie('start',"testing",20*365);
+        setCookie('end',"testing2",20*365);
+
+});
+
