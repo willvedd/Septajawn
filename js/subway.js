@@ -662,7 +662,7 @@ $('.submit').click(function(){
 
 });
 
-document.cookie="username=John Doe; domain=NULL";
+document.cookie="username=John Doe";
 
 
 function submit() {
