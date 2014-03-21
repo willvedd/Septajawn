@@ -1,6 +1,4 @@
-//Broad Street Line
-window.performance.mark('mark_start_schedule');
-
+ //Broad Street Line
 
 var fern = {
     line: "bs",
@@ -268,6 +266,7 @@ var att = {
     sched_sat_nb: schedule(oregon.sched_sat_sb, -3),
     sched_sun_nb: schedule(oregon.sched_sun_sb, -3),
 };
+
 //Market Frankford Line
 var frank = {
     line: "mf",
@@ -333,7 +332,7 @@ var alleghmf = {
     line: "mf",
     order: -12,
     id: "alleghmf",
-    name: "Allegheny (MF)",
+    name: "Allegheny",
     sched_wk_sb: schedule(tioga.sched_wk_sb, 1),
     sched_sat_sb: schedule(tioga.sched_sat_sb, 1),
     sched_sun_sb: schedule(tioga.sched_sun_sb, 1),
@@ -606,21 +605,13 @@ var sixtynine = {
     sched_sun_nb: schedule(milb.sched_sun_nb, -1),
 };
 
-window.performance.mark('mark_end_schedule');
-performance.measure("Schedule", "mark_start_schedule", "mark_end_schedule");
-perfMeasures = performance.getEntriesByType("measure");
-for (i = 0; i < perfMeasures.length; i++) {
-    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-};
-
-
 //-----------------------------------------------------------
 
 var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, susque, cecil, girard, fairmount, spring, race, city_hall, walnut, lombard, ellsworth, tasker, snyder, oregon, att, frank, marg, church, eriet, tioga, alleghmf, somer, hunt, york, berks, girardmf, springmf, second, fifth, eight, elev, thirteen, fif, thirty, thirtyfour, fourty, fourtysix, fiftytwo, fiftysix, sixty, sixtythree, milb, sixtynine]; //Setting array of stations
 
 //-----------------------------------------------------------
 
-function schedule(prev_station, diff) { //sets schedules for all stations except fern rock
+function schedule(prev_station, diff) { //sets schedules for all stations
 
     var schedule = new Array();
 
@@ -654,14 +645,21 @@ function schedule(prev_station, diff) { //sets schedules for all stations except
 
 window.day = parseDay();//setting global variable for day. Needs to be global for day toolbar
 
+var vpHeight = $(window).height(); //getting height of viewport
+
+console.log("Height: "+vpHeight);
+
+//-----------------------------------------------------------
+
 $('.submit').click(function(){
     submit();
-    $(this).addClass("hide");//hides the submit button, allow more dynamic selections
+    $(this).addClass("hide");
+    $(".table_and_tools").removeClass("hide");
 });
 
 function submit() {
 
-    window.performance.mark('mark_start_process');
+    //window.performance.mark('mark_start_process');
 
     console.log("Submit executed");
     
@@ -678,17 +676,18 @@ function submit() {
 
     routeInit(start, end, time, day);
 
-    $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
+    if((start&&end)!=undefined){
+        $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
 
-        var start_sel = document.getElementById("start_dest");
-        var start = start_sel.options[start_sel.selectedIndex].value;
-        var end_sel = document.getElementById("end_dest");
-        var end = end_sel.options[end_sel.selectedIndex].value;
+            var start_sel = document.getElementById("start_dest");
+            var start = start_sel.options[start_sel.selectedIndex].value;
+            var end_sel = document.getElementById("end_dest");
+            var end = end_sel.options[end_sel.selectedIndex].value;
 
-        if ((start_sel != undefined) && (end_sel != undefined)) {
             routeInit(start, end, time, day); //Prevents console errors from undefined select variables
-        }
-    });
+        });
+    };
+    
     $('#wk').click(function(){//dynamically modifies the results based on the day buttons
 
         var start_sel = document.getElementById("start_dest");
@@ -731,16 +730,23 @@ function submit() {
         }
     });  
     $('#rst').click(function(){//Resets the form and removes any previous results
-        $(".submit").removeClass("hide");//Unhides the submit button
+        
+        $(".submit").removeClass("hide");
+        $(".table_and_tools").addClass("hide")
+
         $('#start_dest').prop('selectedIndex',0);//resets station drop down box
         $('#end_dest').prop('selectedIndex',0);//resets station drop down box
+
         $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
         $('.start_station').empty();
         $('.end_station').empty();
         $('.times_row').empty(); //empty the times for unique and consecutive executions
         $('.message_row').remove();//empties the special flag message, otherwise they accumulate at top of table
+        $('.platter').addClass("vert_center");//vertically centers picker/platter again
 
-        window.day = parseDay();
+        window.day = parseDay();//resets day to currenty day
+
+        return;
     });  
 };
 
@@ -765,8 +771,6 @@ function routeInit(start, end, time, day) { //Using form to get times
     route(start_station, end_station, day, time);
 };
 
-
-
 //-----------------------------------------------------------
 
 function route(start_station, end_station, day, time) {//Logic that generates requested times depending on direction and day
@@ -776,8 +780,17 @@ function route(start_station, end_station, day, time) {//Logic that generates re
     var leave_time = new Array();
     var arrive_time = new Array();
     var i=0;
+    var sb;
     var pointer;
     var flag;
+
+    if(start_station.order<end_station.order){
+        sb = true;
+    }
+    else{
+        sb = false;
+    }
+
 
     function subroute(start,end,close){//Magic all happens here...great comment right?
         while (i< start.length) {
@@ -790,6 +803,30 @@ function route(start_station, end_station, day, time) {//Logic that generates re
                 leave_time.pop();//removes the last item in leave_time array because it is one entry past close time
                 arrive_time.pop();//removes the last item in leave_time array because it is one entry past close time
                 break;//need to stop the while loop
+            };
+            if(sb){
+                if((day=="wk")&&(start_station.sched_wk_sb[i]<time)){//compares schedule to current time, indicates which one is closest
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                    console.log("pointer funciton");
+                }
+                else if ((day=="sat")&&(start_station.sched_sat_sb[i]<time)){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
+                else if(start_station.sched_sun_sb[i]<time){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
+            }
+            else{
+                if((day=="wk")&&(start_station.sched_wk_nb[i]<time)){//compares schedule to current time, indicates which one is closest
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                    console.log("pointer funciton");
+                }
+                else if ((day=="sat")&&(start_station.sched_sat_nb[i]<time)){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
+                else if(start_station.sched_sun_nb[i]<time){
+                    pointer = i+1;//assigning pointer, incremented to get the next one
+                }
             }
             i++;
 
@@ -797,7 +834,7 @@ function route(start_station, end_station, day, time) {//Logic that generates re
         };
     };
 
-    if (start_station.order < end_station.order) { //southbound
+    if (sb) { //southbound
         if (day === "wk") { //weekday southbound scheduling
             subroute( start_station.sched_wk_sb , end_station.sched_wk_sb , start_station.close_wk );
         } 
@@ -820,7 +857,7 @@ function route(start_station, end_station, day, time) {//Logic that generates re
         };
     };
 
-    console.log("Pointer: "+pointer);
+    console.log("Pointer: "+pointer);//This pointer tells me which table row is next/should be highlighted
 
     render(start_station, end_station, leave_time, arrive_time, flag, pointer, window.day);
 
@@ -831,6 +868,8 @@ function route(start_station, end_station, day, time) {//Logic that generates re
 function render(start_station, end_station, leave_time, arrive_time, flag, pointer, day) {
 
     console.log("Render executed");
+
+    $('.platter').removeClass("vert_center");//vertically uncenters the picker/form div
 
     function render_clear(){
         $('.times_row').remove(); //Prevents empty/ghosted <tr> from being left in the markup from previous executions
@@ -854,10 +893,10 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
 
     if(flag == "c"){//the "c" flag or closure indicator
         if(day == "wk"){//checks if weekday or weekend
-            $('.start' + i).empty().append(start_station.name+" CLOSED @ "+timeformat(start_station.close_wk));
+            $('.start' + i).empty().append("<span class='warn'>"+start_station.name+" CLOSED @ "+timeformat(start_station.close_wk)+"</span");
         }
         else{
-            $('.start' + i).empty().append(start_station.name+" CLOSED @ "+timeformat(start_station.close_end));
+            $('.start' + i).empty().append("<span class='warn'>"+start_station.name+" CLOSED @ "+timeformat(start_station.close_end)+"</span");
         }
     }
     else{//the "d" flag or the done indicator
@@ -880,26 +919,20 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
         $("#sun").addClass("active");
     };
 
+    $('.table-wrap').height(vpHeight-150);//Sets the height of the schedule table. It is meant to fill entire screen with the toolbar, hence subtracting 150 pixels
+
     $('.table').fadeIn("slow");//fading the table in to soften the UX
 
-     
-    /*$('.table-wrap').animate({//sets animation for automatic scrolling to time pointer
-       scrollTop: $(".start"+pointer).offset().top
-    }, 500);*/ //autoscrolling still needs work
-
-    window.performance.mark('mark_end_process');
-    performance.measure("Process", "mark_start_process", "mark_end_process");
-    perfMeasures = performance.getEntriesByType("measure");
-    for (i = 0; i < perfMeasures.length; i++) {
-    console.log(perfMeasures[i].name + ": " + perfMeasures[i].duration);
-    };
-
+    $('.start'+pointer).addClass('pointer');//adds class to highlight closest upcoming time, can't address both start and end simultaneously in jquery
+    $('.end'+pointer).addClass('pointer');//""
+ 
+    // $('.table-wrap').animate(
+    // {   top: $('.start'+pointer).offset().top,
+    //     left: 0}, 
+    // 500); 
+    //This snippet is for the autoscrolling behavior to highlight the most relevant time currently buggy
 
 };
-
-//-----------------------------------------------------------
-
-
 
 //-----------------------------------------------------------
 
@@ -951,7 +984,6 @@ function parseDay() {//returns "wk","sat","sun" depending on day of week
     } else {
         return "wk";
     }
-
 };
 
 //-----------------------------------------------------------
@@ -966,29 +998,31 @@ $('.line1').ready(function() { //Function that populates starting station list a
 
     var lineval1 = $('.line1');
 
-    if (lineval1.is(":checked")) {
-        $('.station').addClass("mf").removeClass("bs");
-    } else {
-        $('.station').addClass("bs").removeClass("mf");
-    };
-
     $(".line1").change(function() {
-        $('.label2').toggleClass('blue');
-        $('.table').fadeOut("slow");
+        $('.submit').removeClass("hide");
+        $('.table_and_tools').addClass('hide');
+        $('.platter').addClass('vert_center');
 
         if (lineval1.is(":checked")) {
 
             var linevalue1 = "mf";
-            setTimeout(color_delay, 500); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
+            setTimeout(color_delay, 250); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
             function color_delay() {
-                $('.station').addClass("mf").removeClass("bs")
+                $('.label1').removeClass("bs");//changes color of switch button labels
+                $('.label2').addClass("mf");//changes color of switch button labels
             }
+
+            $('.station').addClass("mf").removeClass("bs");//Changes color of table header
+
         } else {
             var linevalue1 = "bs";
-            setTimeout(color_delay2, 500); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
+            setTimeout(color_delay2, 250); //This delay makes the CSS changes smoother in conjunction with the fade in/out of the times table
             function color_delay2() {
-                $('.station').addClass("bs").removeClass("mf")
+                $('.label1').addClass("bs");//changes color of switch button labels
+                $('.label2').removeClass("mf");//changes color of switch button labels
             }
+
+            $('.station').addClass("bs").removeClass("mf");//Changes color of table header
         };
 
         $('#start_dest').empty();
@@ -1036,11 +1070,3 @@ $('#start_dest').change(function() { //Function sees start destination and remov
 
 //-----------------------------------------------------------
 
-$('.line1').switchButton({ //initializes and configures subway line slider UI
-    on_label: 'MFL',
-    off_label: 'BSL',
-    width: 40,
-    height: 15,
-    button_width: 25
-});
-//-----------------------------------------------------------
