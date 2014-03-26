@@ -508,7 +508,7 @@ var thirtyfour = {
     sched_sat_nb: schedule(thirty.sched_sat_nb, -1),
     sched_sun_nb: schedule(thirty.sched_sun_nb, -1),
 };
-var fourty = {
+var forty = {
     line: "mf",
     order: 3,
     id: "forty",
@@ -520,34 +520,34 @@ var fourty = {
     sched_sat_nb: schedule(thirtyfour.sched_sat_nb, -2),
     sched_sun_nb: schedule(thirtyfour.sched_sun_nb, -2),
 };
-var fourtysix = {
+var fortysix = {
     line: "mf",
     order: 4,
-    id: "fourtysix",
+    id: "fortysix",
     name: "46th St",
-    sched_wk_sb: schedule(fourty.sched_wk_sb, 2),
-    sched_sat_sb: schedule(fourty.sched_sat_sb, 2),
-    sched_sun_sb: schedule(fourty.sched_sun_sb, 2),
-    sched_wk_nb: schedule(fourty.sched_wk_nb, -2),
-    sched_sat_nb: schedule(fourty.sched_sat_nb, -2),
-    sched_sun_nb: schedule(fourty.sched_sun_nb, -2),
+    sched_wk_sb: schedule(forty.sched_wk_sb, 2),
+    sched_sat_sb: schedule(forty.sched_sat_sb, 2),
+    sched_sun_sb: schedule(forty.sched_sun_sb, 2),
+    sched_wk_nb: schedule(forty.sched_wk_nb, -2),
+    sched_sat_nb: schedule(forty.sched_sat_nb, -2),
+    sched_sun_nb: schedule(forty.sched_sun_nb, -2),
 };
 var fiftytwo = {
     line: "mf",
     order: 5,
     id: "fiftytwo",
     name: "52nd St",
-    sched_wk_sb: schedule(fourtysix.sched_wk_sb, 1),
-    sched_sat_sb: schedule(fourtysix.sched_sat_sb, 1),
-    sched_sun_sb: schedule(fourtysix.sched_sun_sb, 1),
-    sched_wk_nb: schedule(fourtysix.sched_wk_nb, -1),
-    sched_sat_nb: schedule(fourtysix.sched_sat_nb, -1),
-    sched_sun_nb: schedule(fourtysix.sched_sun_nb, -1),
+    sched_wk_sb: schedule(fortysix.sched_wk_sb, 1),
+    sched_sat_sb: schedule(fortysix.sched_sat_sb, 1),
+    sched_sun_sb: schedule(fortysix.sched_sun_sb, 1),
+    sched_wk_nb: schedule(fortysix.sched_wk_nb, -1),
+    sched_sat_nb: schedule(fortysix.sched_sat_nb, -1),
+    sched_sun_nb: schedule(fortysix.sched_sun_nb, -1),
 };
 var fiftysix = {
     line: "mf",
     order: 6,
-    id: "fiftytwo",
+    id: "fiftysix",
     name: "52nd St",
     sched_wk_sb: schedule(fiftytwo.sched_wk_sb, 1),
     sched_sat_sb: schedule(fiftytwo.sched_sat_sb, 1),
@@ -607,7 +607,7 @@ var sixtynine = {
 
 //-----------------------------------------------------------
 
-var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, susque, cecil, girard, fairmount, spring, race, city_hall, walnut, lombard, ellsworth, tasker, snyder, oregon, att, frank, marg, church, eriet, tioga, alleghmf, somer, hunt, york, berks, girardmf, springmf, second, fifth, eight, elev, thirteen, fif, thirty, thirtyfour, fourty, fourtysix, fiftytwo, fiftysix, sixty, sixtythree, milb, sixtynine]; //Setting array of stations
+var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, susque, cecil, girard, fairmount, spring, race, city_hall, walnut, lombard, ellsworth, tasker, snyder, oregon, att, frank, marg, church, eriet, tioga, alleghmf, somer, hunt, york, berks, girardmf, springmf, second, fifth, eight, elev, thirteen, fif, thirty, thirtyfour, forty, fortysix, fiftytwo, fiftysix, sixty, sixtythree, milb, sixtynine]; //Setting array of stations
 
 //-----------------------------------------------------------
 
