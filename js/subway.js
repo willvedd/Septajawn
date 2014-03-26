@@ -1,3 +1,10 @@
+
+ //JSON TEST...and it works! need to swap out mess of objects below with somethign simpler via JSON
+
+ $.getJSON('json/bsl_wk_sb.json', function(data) {
+        console.log(data.att);
+    });
+
  //Broad Street Line
 
 var fern = {
@@ -1043,6 +1050,8 @@ $('.line1').ready(function() { //Function that populates starting station list a
 
 $('#start_dest').change(function() { //Function sees start destination and removes it as an option for end destination
 
+    console.log(dataz);
+
     var selection = document.getElementById("start_dest").options[document.getElementById("start_dest").selectedIndex].value;
 
     var selection_end = document.getElementById("end_dest").options[document.getElementById("end_dest").selectedIndex].value;
@@ -1069,4 +1078,14 @@ $('#start_dest').change(function() { //Function sees start destination and remov
 });
 
 //-----------------------------------------------------------
+
+
+   
+
+
+
+
+
+
+
 
