@@ -237,19 +237,19 @@ button.tool{
   tr{
     font-size: 1.1rem;
   }
-  
+   
   td{
     text-align: center;
     width: 50%;
-  }
-
-  td.station{
-    width: 45%;
   }
   td.chevron{
     width: 10%;
     padding: 0;
   }
+  td.station{
+    width: 45%;
+  }
+  
 
   .station{
     font-size: 1.4rem;
