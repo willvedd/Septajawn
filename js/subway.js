@@ -39,10 +39,22 @@ function submit() {
 
     console.log("Submit executed");
     
-    var start_sel = document.getElementById("start_dest");
-    var start = start_sel.options[start_sel.selectedIndex].value;
-    var end_sel = document.getElementById("end_dest");
-    var end = end_sel.options[end_sel.selectedIndex].value;
+    //function getVal() {
+
+        console.log("getval");
+
+        var start_sel = document.getElementById("start_dest");
+        var start = start_sel.options[start_sel.selectedIndex].value;
+        var end_sel = document.getElementById("end_dest");
+        var end = end_sel.options[end_sel.selectedIndex].value;
+
+        var start_station = stations[start];
+        console.log("Start: "+start_station.id);
+        var end_station = stations.fern;
+        console.log("End: "+end_station.id);
+    //};
+
+    //getVal();
 
     var now = new Date();
     var hours = now.getHours();
@@ -50,15 +62,14 @@ function submit() {
     
     var time = hours+"."+minutes;//setting time 
 
-    route(start, end, time, day);
+    console.log("confirm: "+start_station.id);
+
+    route(start_station, end, time, day);
 
     if((start&&end)!=undefined){
         $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
 
-            var start_sel = document.getElementById("start_dest");
-            var start = start_sel.options[start_sel.selectedIndex].value;
-            var end_sel = document.getElementById("end_dest");
-            var end = end_sel.options[end_sel.selectedIndex].value;
+            getVal();
 
             route(start, end, time, day); //Prevents console errors from undefined select variables
         });
@@ -66,10 +77,7 @@ function submit() {
     
     $('#wk').click(function(){//dynamically modifies the results based on the day buttons
 
-        var start_sel = document.getElementById("start_dest");
-        var start = start_sel.options[start_sel.selectedIndex].value;
-        var end_sel = document.getElementById("end_dest");
-        var end = end_sel.options[end_sel.selectedIndex].value;
+        getVal();
         
         window.day = "wk";
 
@@ -79,10 +87,7 @@ function submit() {
     });
     $('#sat').click(function(){//dynamically modifies the results based on the day buttons
 
-        var start_sel = document.getElementById("start_dest");
-        var start = start_sel.options[start_sel.selectedIndex].value;
-        var end_sel = document.getElementById("end_dest");
-        var end = end_sel.options[end_sel.selectedIndex].value;
+        getVal();
            
 
         window.day = "sat";
@@ -94,10 +99,7 @@ function submit() {
     });
     $('#sun').click(function(){//dynamically modifies the results based on the day buttons
     
-        var start_sel = document.getElementById("start_dest");
-        var start = start_sel.options[start_sel.selectedIndex].value;
-        var end_sel = document.getElementById("end_dest");
-        var end = end_sel.options[end_sel.selectedIndex].value;
+        getVal();
         
         window.day = "sun";
 
@@ -207,6 +209,11 @@ function route(start_station, end_station, time, day) {//Logic that generates re
             flag = "d"//setting a flag to the rendering function that no more trains are coming
         };
     };
+
+    console.log("subroute:"+start_station);
+    console.log("subroute2:"+stations.fern);
+
+    console.log("Past subroute");
 
     if (sb) { //southbound
         if (day === "wk") { //weekday southbound scheduling
@@ -375,11 +382,14 @@ $('.line1').ready(function() { //Function that populates starting station list a
     console.log("made it here5");
 
     $(".line1").change(function() {
+
+        console.log("made it here6");
+
         $('.submit').removeClass("hide");
         $('.table_and_tools').addClass('hide');
         $('.platter').addClass('vert_center');
 
-        console.log("made it here6");
+        
 
         if (lineval1.is(":checked")) {
 
