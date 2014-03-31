@@ -1,8 +1,4 @@
 
-
-
-console.time('JSON function');
-
 $.getJSON('json/stations.json', function(data) {//importing JSON data
     console.time('getJSON function');
     window.stations = data;
@@ -14,6 +10,8 @@ $.getJSON('json/stations.json', function(data) {//importing JSON data
     console.log(stations.fern);
     console.timeEnd("Stations");
 });
+
+
 
 console.timeEnd('JSON function');
 
@@ -35,6 +33,8 @@ $('.submit').click(function(){
 
 function submit() {
 
+    
+
     //window.performance.mark('mark_start_process');
 
     console.log("Submit executed");
@@ -46,12 +46,10 @@ function submit() {
         var start_sel = document.getElementById("start_dest");
         var start = start_sel.options[start_sel.selectedIndex].value;
         var end_sel = document.getElementById("end_dest");
-        var end = end_sel.options[end_sel.selectedIndex].value;
+        var end = end_sel.options[end_sel.selectedIndex].value
 
-        var start_station = stations[start];
-        console.log("Start: "+start_station.id);
-        var end_station = stations.fern;
-        console.log("End: "+end_station.id);
+        console.log("Start: "+stations[start]);
+        console.log("End: "+stations[end]);
     //};
 
     //getVal();
@@ -61,8 +59,6 @@ function submit() {
     var minutes = now.getMinutes(); 
     
     var time = hours+"."+minutes;//setting time 
-
-    console.log("confirm: "+start_station.id);
 
     route(start_station, end, time, day);
 
@@ -160,16 +156,39 @@ function route(start_station, end_station, time, day) {//Logic that generates re
     var i=0;
     var sb, pointer, flag;
 
-    if(start_station.order<end_station.order){
-        sb = true;
+    if(start_station.order<end_station.order){//southbound
+        if (day === "wk") { //weekday southbound scheduling
+            subroute( start_station.wk_sb , end_station.wk_sb , start_station.close_wk );
+        } 
+        else if (day === "sat") { //saturday southbound scheduling
+            subroute( start_station.sat_sb , end_station.sat_sb , start_station.close_end );
+        }
+        else { //sunday southbound scheduling
+            subroute( start_station.sun_sb , end_station.sun_sb , start_station.close_end );
+        };
     }
-    else{
-        sb = false;
-    }
+    else{//Northbound
+       if (day === "wk") { //weekday northbound scheduling
+            subroute( start_station.wk_nb , end_station.wk_nb , start_station.close_wk );
+        } 
+        else if (day === "sat") { //saturday northbound scheduling
+             subroute( start_station.sat_nb , end_station.sat_nb , start_station.close_end );
+        }
+        else { //sunday northbound scheduling
+             subroute( start_station.sun_nb , end_station.sun_nb , start_station.close_end );
+        };
+    };
+
+    console.log("start: "+start_station);
+    console.log("end: "+end_station);
+
 
 
     function subroute(start,end,close){//Magic all happens here...great comment right?
-        while (i< start.length) {
+        for (var i=0; i< start.length; i++) {
+
+            console.log("Start ID: "+start.id);
+            console.log("End ID: "+start.id);
             leave_time[i] = start[i];//setting leave times from the start station object
             arrive_time[i] = end[i];//setting arrive times from the end station object
 
@@ -204,39 +223,10 @@ function route(start_station, end_station, time, day) {//Logic that generates re
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
             }
-            i++;
 
             flag = "d"//setting a flag to the rendering function that no more trains are coming
         };
-    };
-
-    console.log("subroute:"+start_station);
-    console.log("subroute2:"+stations.fern);
-
-    console.log("Past subroute");
-
-    if (sb) { //southbound
-        if (day === "wk") { //weekday southbound scheduling
-            subroute( start_station.wk_sb , end_station.wk_sb , start_station.close_wk );
-        } 
-        else if (day === "sat") { //saturday southbound scheduling
-            subroute( start_station.sat_sb , end_station.sat_sb , start_station.close_end );
-        }
-        else { //sunday southbound scheduling
-            subroute( start_station.sun_sb , end_station.sun_sb , start_station.close_end );
-        };
-    }
-    else { //northbound
-        if (day === "wk") { //weekday northbound scheduling
-            subroute( start_station.wk_nb , end_station.wk_nb , start_station.close_wk );
-        } 
-        else if (day === "sat") { //saturday northbound scheduling
-             subroute( start_station.sat_nb , end_station.sat_nb , start_station.close_end );
-        }
-        else { //sunday northbound scheduling
-             subroute( start_station.sun_nb , end_station.sun_nb , start_station.close_end );
-        };
-    };
+    };//END of subroute function
 
     console.log("Pointer: "+pointer);//This pointer tells me which table row is next/should be highlighted
 
@@ -379,11 +369,10 @@ $('.line1').ready(function() { //Function that populates starting station list a
 
     var lineval1 = $('.line1');
 
-    console.log("made it here5");
 
     $(".line1").change(function() {
 
-        console.log("made it here6");
+
 
         $('.submit').removeClass("hide");
         $('.table_and_tools').addClass('hide');
@@ -399,7 +388,7 @@ $('.line1').ready(function() { //Function that populates starting station list a
                 $('.label1').removeClass("bs");//changes color of switch button labels
                 $('.label2').addClass("mf");//changes color of switch button labels
             }
-            console.log("made it here7");
+    
             $('.station').addClass("mf").removeClass("bs");//Changes color of table header
 
         } else {
@@ -413,7 +402,7 @@ $('.line1').ready(function() { //Function that populates starting station list a
             $('.station').addClass("bs").removeClass("mf");//Changes color of table header
         };
 
-        console.log("made it here8");
+
 
 
         $('#start_dest').empty();
@@ -422,12 +411,11 @@ $('.line1').ready(function() { //Function that populates starting station list a
         $('#start_dest').append('<option value="" disabled="disabled" selected="selected">Starting from...</option>');
         $('#end_dest').append('<option value="" disabled="disabled" selected="selected">Ending at...</option>');
 
-        for (i = 0; i < stations.length; i++) {
-            if (linevalue1 == stations[i].line) {
-                $('#start_dest').append("<option value='" + stations[i].id + "'>" + stations[i].name + "</option>");
+        $.each(stations, function( key, value ) {
+            if (linevalue1 == value.line) {
+                $('#start_dest').append("<option value='" + value.id + "'>" + value.name + "</option>");
             }
-        }
-        console.log("made it here9");
+        });
     });
 });
 
@@ -435,17 +423,13 @@ $('.line1').ready(function() { //Function that populates starting station list a
 
 $('#start_dest').change(function() { //Function sees start destination and removes it as an option for end destination
 
-    console.log("made it here1");
-
     var selection = document.getElementById("start_dest").options[document.getElementById("start_dest").selectedIndex].value;
 
     var selection_end = document.getElementById("end_dest").options[document.getElementById("end_dest").selectedIndex].value;
 
-    console.log("made it here2");
-
     if ((selection_end == "") || (selection == selection_end)) { //Resets drop down list if end isn't defined or if start and end are the s
         $('#end_dest').empty();
-        console.log("made it here3");
+        
         $('#end_dest').append("<option value='' disabled='disabled' selected='selected'>Ending at...</option>");
 
 
@@ -456,14 +440,16 @@ $('#start_dest').change(function() { //Function sees start destination and remov
             var linevalue1 = "bs";
         };
 
-        for (i = 0; i < stations.length; i++) {
-            if (selection != stations[i].id && linevalue1 == stations[i].line) {
-                $('#end_dest').append("<option value='" + stations[i].id + "'>" + stations[i].name + "</option>");
+        $.each(stations, function( key, value ) {
+
+            if ((selection != value.id) && (linevalue1 == value.line)) {
+                $('#end_dest').append("<option value='" + value.id + "'>" + value.name + "</option>");
             };
-        };
+        });
     };
-    console.log("made it here4");
 });
+    
+
 
 //-----------------------------------------------------------
 
