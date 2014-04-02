@@ -2,19 +2,8 @@
 $.getJSON('json/stations.json', function(data) {//importing JSON data
     console.time('getJSON function');
     window.stations = data;
-    
     console.timeEnd('getJSON function');
-
-    console.time("Stations");
-    console.log(stations.city_hall.sat_nb);
-    console.log(stations.fern);
-    console.timeEnd("Stations");
 });
-
-
-
-console.timeEnd('JSON function');
-
 //-----------------------------------------------------------
 
 window.day = parseDay();//setting global variable for day. Needs to be global for day toolbar
@@ -37,11 +26,10 @@ function submit() {
 
     //window.performance.mark('mark_start_process');
 
-    console.log("Submit executed");
     
     //function getVal() {
 
-        console.log("getval");
+        console.log(stations);
 
         var start_sel = document.getElementById("start_dest");
         var start = start_sel.options[start_sel.selectedIndex].value;
@@ -60,7 +48,7 @@ function submit() {
     
     var time = hours+"."+minutes;//setting time 
 
-    route(start_station, end, time, day);
+    route(stations[start],stations[end], time, day);
 
     if((start&&end)!=undefined){
         $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
@@ -158,6 +146,7 @@ function route(start_station, end_station, time, day) {//Logic that generates re
 
     if(start_station.order<end_station.order){//southbound
         if (day === "wk") { //weekday southbound scheduling
+
             subroute( start_station.wk_sb , end_station.wk_sb , start_station.close_wk );
         } 
         else if (day === "sat") { //saturday southbound scheduling
@@ -179,16 +168,16 @@ function route(start_station, end_station, time, day) {//Logic that generates re
         };
     };
 
-    console.log("start: "+start_station);
-    console.log("end: "+end_station);
-
+    console.log("start_station.sun_nb"+window.start_station.sun_nb);
 
 
     function subroute(start,end,close){//Magic all happens here...great comment right?
         for (var i=0; i< start.length; i++) {
 
-            console.log("Start ID: "+start.id);
-            console.log("End ID: "+start.id);
+            console.log("Start ID: "+this.id);
+            console.log("End ID: "+this.id);
+
+            console.log("start.wk_nb[i]"+start.wk_nb[i]);
             leave_time[i] = start[i];//setting leave times from the start station object
             arrive_time[i] = end[i];//setting arrive times from the end station object
 
@@ -200,29 +189,29 @@ function route(start_station, end_station, time, day) {//Logic that generates re
                 break;//need to stop the while loop
             };
             if(sb){
-                if((day=="wk")&&(start_station.wk_sb[i]<time)){//compares schedule to current time, indicates which one is closest
+                if((day=="wk")&&(start.wk_sb[i]<time)){//compares schedule to current time, indicates which one is closest
                     pointer = i+1;//assigning pointer, incremented to get the next one
                     console.log("pointer funciton");
                 }
-                else if ((day=="sat")&&(start_station.sat_sb[i]<time)){
+                else if ((day=="sat")&&(start.sat_sb[i]<time)){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
-                else if(start_station.sun_sb[i]<time){
+                else if(start.sun_sb[i]<time){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
             }
             else{
-                if((day=="wk")&&(start_station.wk_nb[i]<time)){//compares schedule to current time, indicates which one is closest
+                if((day=="wk")&&(start.wk_nb[i]<time)){//compares schedule to current time, indicates which one is closest
                     pointer = i+1;//assigning pointer, incremented to get the next one
                     console.log("pointer funciton");
                 }
-                else if ((day=="sat")&&(start_station.sat_nb[i]<time)){
+                else if ((day=="sat")&&(start.sat_nb[i]<time)){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
-                else if(start_station.sun_nb[i]<time){
+                else if(start.sun_nb[i]<time){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
-            }
+            };
 
             flag = "d"//setting a flag to the rendering function that no more trains are coming
         };
@@ -445,6 +434,9 @@ $('#start_dest').change(function() { //Function sees start destination and remov
             if ((selection != value.id) && (linevalue1 == value.line)) {
                 $('#end_dest').append("<option value='" + value.id + "'>" + value.name + "</option>");
             };
+
+            console.log("Key: "+key);
+            console.log("Value: "+value);
         });
     };
 });
