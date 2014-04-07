@@ -1,9 +1,14 @@
 
+
 $.getJSON('json/stations.json', function(data) {//importing JSON data
     console.time('getJSON function');
     window.stations = data;
     console.timeEnd('getJSON function');
 });
+
+//-----------------------------------------------------------
+
+
 //-----------------------------------------------------------
 
 window.day = parseDay();//setting global variable for day. Needs to be global for day toolbar
@@ -22,25 +27,14 @@ $('.submit').click(function(){
 
 function submit() {
 
-    
-
     //window.performance.mark('mark_start_process');
 
+    console.log("Submit executed");
     
-    //function getVal() {
-
-        console.log(stations);
-
-        var start_sel = document.getElementById("start_dest");
-        var start = start_sel.options[start_sel.selectedIndex].value;
-        var end_sel = document.getElementById("end_dest");
-        var end = end_sel.options[end_sel.selectedIndex].value
-
-        console.log("Start: "+stations[start]);
-        console.log("End: "+stations[end]);
-    //};
-
-    //getVal();
+    var start_sel = document.getElementById("start_dest");
+    var start = start_sel.options[start_sel.selectedIndex].value;
+    var end_sel = document.getElementById("end_dest");
+    var end = end_sel.options[end_sel.selectedIndex].value;
 
     var now = new Date();
     var hours = now.getHours();
@@ -48,47 +42,59 @@ function submit() {
     
     var time = hours+"."+minutes;//setting time 
 
-    route(stations[start],stations[end], time, day);
+    routeInit(start, end, time, day);
 
     if((start&&end)!=undefined){
         $('#start_dest, #end_dest').change(function() { //After initial submission, script checks for changes and dynamically updates
 
-            getVal();
+            var start_sel = document.getElementById("start_dest");
+            var start = start_sel.options[start_sel.selectedIndex].value;
+            var end_sel = document.getElementById("end_dest");
+            var end = end_sel.options[end_sel.selectedIndex].value;
 
-            route(start, end, time, day); //Prevents console errors from undefined select variables
+            routeInit(start, end, time, day); //Prevents console errors from undefined select variables
         });
     };
     
     $('#wk').click(function(){//dynamically modifies the results based on the day buttons
 
-        getVal();
+        var start_sel = document.getElementById("start_dest");
+        var start = start_sel.options[start_sel.selectedIndex].value;
+        var end_sel = document.getElementById("end_dest");
+        var end = end_sel.options[end_sel.selectedIndex].value;
         
         window.day = "wk";
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
-            route(start, end, time, "wk"); //Prevents console errors from undefined select variables
+            routeInit(start, end, time, "wk"); //Prevents console errors from undefined select variables
         }
     });
     $('#sat').click(function(){//dynamically modifies the results based on the day buttons
 
-        getVal();
+        var start_sel = document.getElementById("start_dest");
+        var start = start_sel.options[start_sel.selectedIndex].value;
+        var end_sel = document.getElementById("end_dest");
+        var end = end_sel.options[end_sel.selectedIndex].value;
            
 
         window.day = "sat";
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
-            route(start, end, time, day); //Prevents console errors from undefined select variables
+            routeInit(start, end, time, day); //Prevents console errors from undefined select variables
         }
 
     });
     $('#sun').click(function(){//dynamically modifies the results based on the day buttons
     
-        getVal();
+        var start_sel = document.getElementById("start_dest");
+        var start = start_sel.options[start_sel.selectedIndex].value;
+        var end_sel = document.getElementById("end_dest");
+        var end = end_sel.options[end_sel.selectedIndex].value;
         
         window.day = "sun";
 
         if ((start_sel != undefined) && (end_sel != undefined)) {
-            route(start, end, time, "sun");  //Prevents console errors from undefined select variables
+            routeInit(start, end, time, "sun");  //Prevents console errors from undefined select variables
         }
     });  
     $('#rst').click(function(){//Resets the form and removes any previous results
@@ -118,7 +124,7 @@ function submit() {
 
 //-----------------------------------------------------------
 
-function routeInit(start, end, time, day) { //Passing form values to generate times
+function routeInit(start, end, time, day) { //Using form to get times
 
     console.log("Routeinit executed");
 
@@ -135,49 +141,29 @@ function routeInit(start, end, time, day) { //Passing form values to generate ti
 
 //-----------------------------------------------------------
 
-function route(start_station, end_station, time, day) {//Logic that generates requested times depending on direction and day
+function route(start_station, end_station, day, time) {//Logic that generates requested times depending on direction and day
 
     console.log("Route executed");
 
     var leave_time = new Array();
     var arrive_time = new Array();
     var i=0;
-    var sb, pointer, flag;
+    var sb;
+    var pointer;
+    var flag;
 
-    if(start_station.order<end_station.order){//southbound
-        if (day === "wk") { //weekday southbound scheduling
-
-            subroute( start_station.wk_sb , end_station.wk_sb , start_station.close_wk );
-        } 
-        else if (day === "sat") { //saturday southbound scheduling
-            subroute( start_station.sat_sb , end_station.sat_sb , start_station.close_end );
-        }
-        else { //sunday southbound scheduling
-            subroute( start_station.sun_sb , end_station.sun_sb , start_station.close_end );
-        };
+    if(start_station.order<end_station.order){
+        sb = true;
     }
-    else{//Northbound
-       if (day === "wk") { //weekday northbound scheduling
-            subroute( start_station.wk_nb , end_station.wk_nb , start_station.close_wk );
-        } 
-        else if (day === "sat") { //saturday northbound scheduling
-             subroute( start_station.sat_nb , end_station.sat_nb , start_station.close_end );
-        }
-        else { //sunday northbound scheduling
-             subroute( start_station.sun_nb , end_station.sun_nb , start_station.close_end );
-        };
-    };
-
-    console.log("start_station.sun_nb"+window.start_station.sun_nb);
+    else{
+        sb = false;
+    }
 
 
     function subroute(start,end,close){//Magic all happens here...great comment right?
-        for (var i=0; i< start.length; i++) {
 
-            console.log("Start ID: "+this.id);
-            console.log("End ID: "+this.id);
+        while (i< start.length) {
 
-            console.log("start.wk_nb[i]"+start.wk_nb[i]);
             leave_time[i] = start[i];//setting leave times from the start station object
             arrive_time[i] = end[i];//setting arrive times from the end station object
 
@@ -189,37 +175,62 @@ function route(start_station, end_station, time, day) {//Logic that generates re
                 break;//need to stop the while loop
             };
             if(sb){
-                if((day=="wk")&&(start.wk_sb[i]<time)){//compares schedule to current time, indicates which one is closest
+                if((day=="wk")&&(start_station.wk_sb[i]<time)){//compares schedule to current time, indicates which one is closest
                     pointer = i+1;//assigning pointer, incremented to get the next one
                     console.log("pointer funciton");
                 }
-                else if ((day=="sat")&&(start.sat_sb[i]<time)){
+                else if ((day=="sat")&&(start_station.sat_sb[i]<time)){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
-                else if(start.sun_sb[i]<time){
+                else if(start_station.sun_sb[i]<time){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
             }
             else{
-                if((day=="wk")&&(start.wk_nb[i]<time)){//compares schedule to current time, indicates which one is closest
+                if((day=="wk")&&(start_station.wk_nb[i]<time)){//compares schedule to current time, indicates which one is closest
                     pointer = i+1;//assigning pointer, incremented to get the next one
                     console.log("pointer funciton");
                 }
-                else if ((day=="sat")&&(start.sat_nb[i]<time)){
+                else if ((day=="sat")&&(start_station.sat_nb[i]<time)){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
-                else if(start.sun_nb[i]<time){
+                else if(start_station.sun_nb[i]<time){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
-            };
-
+            }
+            
             flag = "d"//setting a flag to the rendering function that no more trains are coming
+
+            i++;
         };
-    };//END of subroute function
+    };
+
+    if (sb) { //southbound
+        if (day === "wk") { //weekday southbound scheduling
+            subroute( start_station.wk_sb , end_station.wk_sb , start_station.close_wk );
+        } 
+        else if (day === "sat") { //saturday southbound scheduling
+            subroute( start_station.sat_sb , end_station.sat_sb , start_station.close_end );
+        }
+        else { //sunday southbound scheduling
+            subroute( start_station.sun_sb , end_station.sun_sb , start_station.close_end );
+        };
+    }
+    else { //northbound
+        if (day === "wk") { //weekday northbound scheduling
+            subroute( start_station.wk_nb , end_station.wk_nb , start_station.close_wk );
+        } 
+        else if (day === "sat") { //saturday northbound scheduling
+             subroute( start_station.sat_nb , end_station.sat_nb , start_station.close_end );
+        }
+        else { //sunday northbound scheduling
+             subroute( start_station.sun_nb , end_station.sun_nb , start_station.close_end );
+        };
+    };
 
     console.log("Pointer: "+pointer);//This pointer tells me which table row is next/should be highlighted
 
-    render(start_station, end_station, leave_time, arrive_time, flag, pointer, window.day);
+    //render(start_station, end_station, leave_time, arrive_time, flag, pointer, window.day);
 
 };
 
@@ -358,16 +369,10 @@ $('.line1').ready(function() { //Function that populates starting station list a
 
     var lineval1 = $('.line1');
 
-
     $(".line1").change(function() {
-
-
-
         $('.submit').removeClass("hide");
         $('.table_and_tools').addClass('hide');
         $('.platter').addClass('vert_center');
-
-        
 
         if (lineval1.is(":checked")) {
 
@@ -377,7 +382,7 @@ $('.line1').ready(function() { //Function that populates starting station list a
                 $('.label1').removeClass("bs");//changes color of switch button labels
                 $('.label2').addClass("mf");//changes color of switch button labels
             }
-    
+
             $('.station').addClass("mf").removeClass("bs");//Changes color of table header
 
         } else {
@@ -391,20 +396,17 @@ $('.line1').ready(function() { //Function that populates starting station list a
             $('.station').addClass("bs").removeClass("mf");//Changes color of table header
         };
 
-
-
-
         $('#start_dest').empty();
         $('#end_dest').empty();
 
         $('#start_dest').append('<option value="" disabled="disabled" selected="selected">Starting from...</option>');
         $('#end_dest').append('<option value="" disabled="disabled" selected="selected">Ending at...</option>');
 
-        $.each(stations, function( key, value ) {
-            if (linevalue1 == value.line) {
-                $('#start_dest').append("<option value='" + value.id + "'>" + value.name + "</option>");
+        for (i = 0; i < stations.length; i++) {
+            if (linevalue1 == stations[i].line) {
+                $('#start_dest').append("<option value='" + stations[i].id + "'>" + stations[i].name + "</option>");
             }
-        });
+        }
     });
 });
 
@@ -418,7 +420,7 @@ $('#start_dest').change(function() { //Function sees start destination and remov
 
     if ((selection_end == "") || (selection == selection_end)) { //Resets drop down list if end isn't defined or if start and end are the s
         $('#end_dest').empty();
-        
+
         $('#end_dest').append("<option value='' disabled='disabled' selected='selected'>Ending at...</option>");
 
 
@@ -429,29 +431,18 @@ $('#start_dest').change(function() { //Function sees start destination and remov
             var linevalue1 = "bs";
         };
 
-        $.each(stations, function( key, value ) {
-
-            if ((selection != value.id) && (linevalue1 == value.line)) {
-                $('#end_dest').append("<option value='" + value.id + "'>" + value.name + "</option>");
+        for (i = 0; i < stations.length; i++) {
+            if (selection != stations[i].id && linevalue1 == stations[i].line) {
+                $('#end_dest').append("<option value='" + stations[i].id + "'>" + stations[i].name + "</option>");
             };
-
-            console.log("Key: "+key);
-            console.log("Value: "+value);
-        });
+        };
     };
 });
-    
-
 
 //-----------------------------------------------------------
 
-
-   
-
-
-
-
-
-
-
+$('.fav').click(function(){
+        setCookie('start',"testing",20*365);
+        setCookie('end',"testing2",20*365);
+});
 
