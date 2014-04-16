@@ -1,5 +1,6 @@
  //Broad Street Line
-
+console.time("load");
+console.time("schedule_generate");
 var fern = {
     line: "bs",
     order: -14,
@@ -605,6 +606,8 @@ var sixtynine = {
     sched_sun_nb: schedule(milb.sched_sun_nb, -1),
 };
 
+console.timeEnd("schedule_generate");
+
 //-----------------------------------------------------------
 
 var stations = [fern, olney, logan, wyoming, hunt_park, erie, allegh, nphilly, susque, cecil, girard, fairmount, spring, race, city_hall, walnut, lombard, ellsworth, tasker, snyder, oregon, att, frank, marg, church, eriet, tioga, alleghmf, somer, hunt, york, berks, girardmf, springmf, second, fifth, eight, elev, thirteen, fif, thirty, thirtyfour, fourty, fourtysix, fiftytwo, fiftysix, sixty, sixtythree, milb, sixtynine]; //Setting array of stations
@@ -659,10 +662,9 @@ $('.submit').click(function(){
 
 function submit() {
 
+    console.time("submit_to_finish");
     //window.performance.mark('mark_start_process');
 
-    console.log("Submit executed");
-    
     var start_sel = document.getElementById("start_dest");
     var start = start_sel.options[start_sel.selectedIndex].value;
     var end_sel = document.getElementById("end_dest");
@@ -730,7 +732,7 @@ function submit() {
         }
     });  
     $('#rst').click(function(){//Resets the form and removes any previous results
-        
+        console.time("reset");
         $(".submit").removeClass("hide");
         $(".table_and_tools").addClass("hide")
 
@@ -745,8 +747,9 @@ function submit() {
         $('.platter').addClass("vert_center");//vertically centers picker/platter again
 
         window.day = parseDay();//resets day to currenty day
-
+        console.timeEnd("reset");
         return;
+
     });  
 };
 
@@ -775,6 +778,7 @@ function routeInit(start, end, time, day) { //Using form to get times
 
 function route(start_station, end_station, day, time) {//Logic that generates requested times depending on direction and day
 
+    console.time("schedule");
     console.log("Route executed");
 
     var leave_time = new Array();
@@ -815,8 +819,10 @@ function route(start_station, end_station, day, time) {//Logic that generates re
                 else if(start_station.sched_sun_sb[i]<time){
                     pointer = i+1;//assigning pointer, incremented to get the next one
                 }
+                
             }
             else{
+                console.time("pointer");
                 if((day=="wk")&&(start_station.sched_wk_nb[i]<time)){//compares schedule to current time, indicates which one is closest
                     pointer = i+1;//assigning pointer, incremented to get the next one
                     console.log("pointer funciton");
@@ -826,7 +832,7 @@ function route(start_station, end_station, day, time) {//Logic that generates re
                 }
                 else if(start_station.sched_sun_nb[i]<time){
                     pointer = i+1;//assigning pointer, incremented to get the next one
-                }
+                } 
             }
             i++;
 
@@ -856,17 +862,17 @@ function route(start_station, end_station, day, time) {//Logic that generates re
              subroute( start_station.sched_sun_nb , end_station.sched_sun_nb , start_station.close_end );
         };
     };
-
-    console.log("Pointer: "+pointer);//This pointer tells me which table row is next/should be highlighted
+    console.timeEnd("schedule");
 
     render(start_station, end_station, leave_time, arrive_time, flag, pointer, window.day);
 
+    
 };
 
 //-----------------------------------------------------------
 
 function render(start_station, end_station, leave_time, arrive_time, flag, pointer, day) {
-
+    console.time("render");
     console.log("Render executed");
 
     $('.platter').removeClass("vert_center");//vertically uncenters the picker/form div
@@ -926,6 +932,8 @@ function render(start_station, end_station, leave_time, arrive_time, flag, point
     $('.start'+pointer).addClass('pointer');//adds class to highlight closest upcoming time, can't address both start and end simultaneously in jquery
     $('.end'+pointer).addClass('pointer');//""
  
+    console.timeEnd("render");
+    console.timeEnd("submit_to_finish");
     // $('.table-wrap').animate(
     // {   top: $('.start'+pointer).offset().top,
     //     left: 0}, 
@@ -996,6 +1004,7 @@ function round(num) { //rounding function necessary because javascript has issue
 
 $('.line1').ready(function() { //Function that populates starting station list and other display functions
 
+    console.time("lineset1");
     var lineval1 = $('.line1');
 
     $(".line1").change(function() {
@@ -1037,11 +1046,13 @@ $('.line1').ready(function() { //Function that populates starting station list a
             }
         }
     });
+ console.timeEnd("lineset1");
 });
 
 //-----------------------------------------------------------
 
 $('#start_dest').change(function() { //Function sees start destination and removes it as an option for end destination
+    console.time("lineset2");
 
     var selection = document.getElementById("start_dest").options[document.getElementById("start_dest").selectedIndex].value;
 
@@ -1066,7 +1077,10 @@ $('#start_dest').change(function() { //Function sees start destination and remov
             };
         };
     };
+    console.timeEnd("lineset2");
 });
+
+ console.timeEnd("load");
 
 //-----------------------------------------------------------
 
