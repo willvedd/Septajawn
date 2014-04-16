@@ -7,7 +7,7 @@ Currently, the best way to find subway times online is through Septa's website (
 
 To me, this project served as an exercise to learn Javascript, jQuery, fundamentals of mobile webapp design. And hopefully the best practices as well. Admitedly, some of the code might seem hackish.
 
-IMPORTANT: Septajawn is still a work in progress, but there is a working prototype (http://septajawn.willvedd.com)
+IMPORTANT: Septajawn is still a work in progress, but there is a working prototype (http://willvedd.github.io/Septajawn)
 
 Intended future implementations:
 -Adding express lines to BSL
